@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using GymRat.Data;
+using GymRat.Models;
+using GymRat.ViewModels;
 
 namespace GymRat.Controllers
 {
@@ -15,9 +19,9 @@ namespace GymRat.Controllers
             context = dbContext;
         }
 
-        public IActionResult Index(MeasureIndexViewModel measureIndexViewModel)
+        public IActionResult Index(MeasureViewModel measureViewModel)
         {
-            IList<MeasureIndexViewModel> measurements = new List<MeasureIndexViewModel>();
+            IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
             //sort the table then pull out the 2 variables
 
             var regions = context
@@ -47,18 +51,18 @@ namespace GymRat.Controllers
                 if (lastMeasurement != null && firstMeasurement != null)
                 {
                     // (last - first)
-                    MeasureIndexViewModel newMeasureIndexViewModel = new MeasureIndexViewModel();
+                    MeasureViewModel newMeasureViewModel = new MeasureViewModel();
                     double difference = lastMeasurement.Size - firstMeasurement.Size;
-                    newMeasureIndexViewModel.Size = difference;
-                    newMeasureIndexViewModel.HasData = true;
+                    newMeasureViewModel.Size = difference;
+                    newMeasureViewModel.HasData = true;
 
-                    measurements.Add(newMeasureIndexViewModel);
+                    measurements.Add(newMeasureViewModel);
                 }
                 else
                 {
-                    MeasureIndexViewModel newMeasureIndexViewModel = new MeasureIndexViewModel();
-                    newMeasureIndexViewModel.HasData = false;
-                    measurements.Add(newMeasureIndexViewModel);
+                    MeasureViewModel newMeasureViewModel = new MeasureViewModel();
+                    newMeasureViewModel.HasData = false;
+                    measurements.Add(newMeasureViewModel);
                 }
             }
 
