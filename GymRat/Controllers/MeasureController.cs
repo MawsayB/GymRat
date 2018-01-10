@@ -12,64 +12,69 @@ namespace GymRat.Controllers
 {
     public class MeasureController : Controller
     {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         //private GymRatDbContext context;
 
         //public MeasureController(GymRatDbContext dbContext)
         //{
-            //context = dbContext;
+        //context = dbContext;
         //}
 
         //public IActionResult Index(MeasureViewModel measureViewModel)
         //{
-            //IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
-            //sort the table then pull out the 2 variables
+        //IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
+        //sort the table then pull out the 2 variables
 
-            //var regions = context
-                //.Measurements
-                //.Select(m => m.Region)
-                //.Distinct()
-                //.ToList();
+        //var regions = context
+        //.Measurements
+        //.Select(m => m.Region)
+        //.Distinct()
+        //.ToList();
 
-            //foreach (var region in regions)
-            //{
+        //foreach (var region in regions)
+        //{
 
-                // most recent record, pull the size
-                //var lastMeasurement = context
-                //.Measurements
-                // m is the RECORD/ENTRY
-                //.OrderBy(m => m.Date)
-                //.Where(m => m.Region == region)
-                //.LastOrDefault();
+        // most recent record, pull the size
+        //var lastMeasurement = context
+        //.Measurements
+        // m is the RECORD/ENTRY
+        //.OrderBy(m => m.Date)
+        //.Where(m => m.Region == region)
+        //.LastOrDefault();
 
-                // the first entry
-                //var firstMeasurement = context
-                //.Measurements
-                //.OrderBy(m => m.Date)
-                //.Where(m => m.Region == region)
-                //.FirstOrDefault();
+        // the first entry
+        //var firstMeasurement = context
+        //.Measurements
+        //.OrderBy(m => m.Date)
+        //.Where(m => m.Region == region)
+        //.FirstOrDefault();
 
-                //if (lastMeasurement != null && firstMeasurement != null)
-                //{
-                    // (last - first)
-                    //MeasureViewModel newMeasureViewModel = new MeasureViewModel();
-                    //double difference = lastMeasurement.Size - firstMeasurement.Size;
-                    //newMeasureViewModel.Size = difference;
-                    //newMeasureViewModel.HasData = true;
+        //if (lastMeasurement != null && firstMeasurement != null)
+        //{
+        // (last - first)
+        //MeasureViewModel newMeasureViewModel = new MeasureViewModel();
+        //double difference = lastMeasurement.Size - firstMeasurement.Size;
+        //newMeasureViewModel.Size = difference;
+        //newMeasureViewModel.HasData = true;
 
-                    //measurements.Add(newMeasureViewModel);
-                //}
-                //else
-                //{
-                    //MeasureViewModel newMeasureViewModel = new MeasureViewModel();
-                    //newMeasureViewModel.HasData = false;
-                    //measurements.Add(newMeasureViewModel);
-                //}
-            //}
+        //measurements.Add(newMeasureViewModel);
+        //}
+        //else
+        //{
+        //MeasureViewModel newMeasureViewModel = new MeasureViewModel();
+        //newMeasureViewModel.HasData = false;
+        //measurements.Add(newMeasureViewModel);
+        //}
+        //}
 
-            // push these variables to the view
-            // show variable in the table in the View
+        // push these variables to the view
+        // show variable in the table in the View
 
-            //return View("Index", measurements);
+        //return View("Index", measurements);
         //}
 
         //pickmeasure screen
@@ -78,29 +83,29 @@ namespace GymRat.Controllers
         //[HttpGet]
         //public IActionResult Add()
         //{
-            //AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
+        //AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
 
-            //return View();
+        //return View();
         //}
 
         //[HttpPost]
         //public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
         //{
-            //if (ModelState.IsValid)
-            //{
-                //Measure newMeasure = new Measure
-                //{
-                    //Date = addMeasureViewModel.Date,
-                    //Region = addMeasureViewModel.Region,
-                    //Size = addMeasureViewModel.Size
-                //};
-                //context.Measurements.Add(newMeasure);
-                //context.SaveChanges();
+        //if (ModelState.IsValid)
+        //{
+        //Measure newMeasure = new Measure
+        //{
+        //Date = addMeasureViewModel.Date,
+        //Region = addMeasureViewModel.Region,
+        //Size = addMeasureViewModel.Size
+        //};
+        //context.Measurements.Add(newMeasure);
+        //context.SaveChanges();
 
-                //return Redirect("http://localhost:65225/Measuring/Index");
-            //}
+        //return Redirect("http://localhost:65225/Measuring/Index");
+        //}
 
-            //return View(addMeasureViewModel);
+        //return View(addMeasureViewModel);
         //}
     }
 }
