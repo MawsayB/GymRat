@@ -80,32 +80,32 @@ namespace GymRat.Controllers
         //pickmeasure screen
 
         //add measurement screen
-        //[HttpGet]
-        //public IActionResult Add()
-        //{
-        //AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
+        [HttpGet]
+        public IActionResult Add()
+        {
+        AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
 
-        //return View();
-        //}
+        return View();
+        }
 
-        //[HttpPost]
-        //public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
-        //{
-        //if (ModelState.IsValid)
-        //{
-        //Measure newMeasure = new Measure
-        //{
-        //Date = addMeasureViewModel.Date,
-        //Region = addMeasureViewModel.Region,
-        //Size = addMeasureViewModel.Size
-        //};
-        //context.Measurements.Add(newMeasure);
-        //context.SaveChanges();
+        [HttpPost]
+        public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Measure newMeasure = new Measure
+                {
+                    Date = addMeasureViewModel.Date,
+                    //BodyRegion = addMeasureViewModel.BodyRegion,
+                    Size = addMeasureViewModel.Size
+                };
+                    //context.Measurements.Add(newMeasure);
+                    //context.SaveChanges();
 
-        //return Redirect("http://localhost:65225/Measuring/Index");
-        //}
+            return Redirect("http://localhost:65225/Measuring/Index");
+            }
 
-        //return View(addMeasureViewModel);
-        //}
+            return View(addMeasureViewModel);
+        }
     }
 }
