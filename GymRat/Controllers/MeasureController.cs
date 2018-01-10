@@ -10,7 +10,7 @@ using GymRat.ViewModels;
 
 namespace GymRat.Controllers
 {
-    public class MeasurementController : Controller
+    public class MeasureController : Controller
     {
         private GymRatDbContext context;
 
