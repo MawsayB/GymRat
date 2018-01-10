@@ -65,7 +65,7 @@ namespace GymRat.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return Redirect("https://localhost:44357/Home/Menu");
                 }
                 if (result.RequiresTwoFactor)
                 {
