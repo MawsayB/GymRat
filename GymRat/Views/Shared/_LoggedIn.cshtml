@@ -3,6 +3,7 @@
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
     <title>Index</title>
 
     <style type="text/css">
@@ -20,8 +21,28 @@
         }
 
 
+        .button {
+            background-color: white;
+            color: #3F99DB;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Century Gothic';
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            float: right;
+        }
+
         container {
             width: 80%;
+        }
+
+
+        form {
+            text-align: left;
+            margin-left: 10%;
+            font-size: 24px;
         }
 
 
@@ -34,25 +55,86 @@
             font-weight: bold;
         }
 
+        input[type=date], select {
+            width: 25%;
+            padding: 12px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 3px solid #3F99DB;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 20px;
+            resize: vertical;
+        }
+
+        input[type=text], select {
+            width: 25%;
+            padding: 12px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 3px solid #3F99DB;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 20px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: white;
+            color: #3F99DB;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Century Gothic';
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+        }
+
+
+
         .logo {
             max-width: 100%;
-            height: auto;
+            width: 110px;
+            height: 149px;
+            margin-left: auto;
+            margin-right: 550px;
+            display: block;
         }
 
 
         p {
             margin: 0px;
             padding: 0px;
-            font-size: 10vw;
+            font-size: 70px;
+        }
+
+        h2 {
+            font-size: 30px;
         }
 
         input {
             font-size: 16px;
         }
 
+
+        table {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #3F99DB;
+        }
+
+            table td {
+                border: 2px solid #3F99DB;
+            }
+
+
         ul {
             list-style: none;
         }
+
 
         .zone {
             font-size: 36px;
@@ -63,7 +145,9 @@
     <container>
         <div>
             <a href="/Consistency"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDEyNCAxMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEyNCAxMjQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMTEyLDZIMTJDNS40LDYsMCwxMS40LDAsMThzNS40LDEyLDEyLDEyaDEwMGM2LjYsMCwxMi01LjQsMTItMTJTMTE4LjYsNiwxMTIsNnoiIGZpbGw9IiM5MzNFQzUiLz4KCTxwYXRoIGQ9Ik0xMTIsNTBIMTJDNS40LDUwLDAsNTUuNCwwLDYyYzAsNi42LDUuNCwxMiwxMiwxMmgxMDBjNi42LDAsMTItNS40LDEyLTEyQzEyNCw1NS40LDExOC42LDUwLDExMiw1MHoiIGZpbGw9IiM5MzNFQzUiLz4KCTxwYXRoIGQ9Ik0xMTIsOTRIMTJjLTYuNiwwLTEyLDUuNC0xMiwxMnM1LjQsMTIsMTIsMTJoMTAwYzYuNiwwLDEyLTUuNCwxMi0xMlMxMTguNiw5NCwxMTIsOTR6IiBmaWxsPSIjOTMzRUM1Ii8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" align="left" width="50" height="50"></a>
+            <a href="/Consistency" class="button">Sign Out</a>
         </div>
+        <br />
 
         <div class="container body-content">
             @RenderBody()
