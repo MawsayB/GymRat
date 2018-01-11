@@ -24,6 +24,11 @@ namespace GymRat.Controllers
             return View();
         }
 
+        public IActionResult Add()
+        {
+            return View();
+        }
+
         //public IActionResult Index(MeasureViewModel measureViewModel)
         //{
         //IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
@@ -91,21 +96,21 @@ namespace GymRat.Controllers
         //[HttpPost]
         //public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
         //{
-            //if (ModelState.IsValid)
-            //{
-                //Measure newMeasure = new Measure
-                //{
-                    //Date = addMeasureViewModel.Date,
-                    //BodyRegion = addMeasureViewModel.BodyRegion,
-                    //Size = addMeasureViewModel.Size
-                //};
-                    //context.Measurements.Add(newMeasure);
-                    //context.SaveChanges();
+        //if (ModelState.IsValid)
+        //{
+        //Measure newMeasure = new Measure
+        //{
+        //Date = addMeasureViewModel.Date,
+        //BodyRegion = addMeasureViewModel.BodyRegion,
+        //Size = addMeasureViewModel.Size
+        //};
+        //context.Measurements.Add(newMeasure);
+        //context.SaveChanges();
 
-            //return Redirect("http://localhost:65225/Measuring/Index");
-            //}
+        //return Redirect("http://localhost:65225/Measuring/Index");
+        //}
 
-            //return View(addMeasureViewModel);
+        //return View(addMeasureViewModel);
         //}
     }
 }
