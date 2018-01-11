@@ -26,10 +26,13 @@ namespace GymRat.Controllers
 
         public IActionResult Add()
         {
+            //create an instance of the entity model
             AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
 
-            IList<BodyRegion> bodyRegion = context.BodyRegions.ToList();
+            //get data
+            List<BodyRegion> bodyRegion = context.BodyRegions.ToList();
 
+            //assign value to View
             addMeasureViewModel.BodyRegions = bodyRegion;
 
             return View(addMeasureViewModel);
