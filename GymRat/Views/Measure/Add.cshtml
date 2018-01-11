@@ -54,7 +54,7 @@
         <h2 class="headline">Update</h2>
         <br />
 
-        <form asp-controller="Measuring" asp-action="Add" method="post">
+        <form asp-controller="Measure" asp-action="Add" method="post">
 
             <div class="form-group">
                 <input asp-for="Date" size="35" placeholder="Date" class="form-control"/>
@@ -62,8 +62,8 @@
             </div>
 
             <div class="form-group">
-                <input asp-for="Region" size="12" placeholder="region" class="form-control" />
-                <span asp-validation-for="Region"></span>
+                <label asp-for="BodyRegionID" placeholder="body region" class="form-control"></label>
+                <select asp-for="BodyRegionID" asp-items="Model.BodyRegions"></select>
             </div>
 
             <div class="form-group">

@@ -26,7 +26,33 @@ namespace GymRat.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
+
+            IList<BodyRegion> bodyRegion = context.BodyRegions.ToList();
+
+            addMeasureViewModel.BodyRegions = bodyRegion;
+
+            return View(addMeasureViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Measure newMeasure = new Measure
+                {
+                    Date = addMeasureViewModel.Date,
+                    BodyRegionID = addMeasureViewModel.BodyRegionID,
+                    Size = addMeasureViewModel.Size
+                };
+                context.Measurements.Add(newMeasure);
+                context.SaveChanges();
+
+                return Redirect("http://localhost:65225/Measuring/Index");
+            }
+
+            return View(addMeasureViewModel);
         }
 
         //public IActionResult Index(MeasureViewModel measureViewModel)
@@ -83,34 +109,5 @@ namespace GymRat.Controllers
         //}
 
         //pickmeasure screen
-
-        //add measurement screen
-        //[HttpGet]
-        //public IActionResult Add()
-        //{
-        //AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
-
-        //return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
-        //{
-        //if (ModelState.IsValid)
-        //{
-        //Measure newMeasure = new Measure
-        //{
-        //Date = addMeasureViewModel.Date,
-        //BodyRegion = addMeasureViewModel.BodyRegion,
-        //Size = addMeasureViewModel.Size
-        //};
-        //context.Measurements.Add(newMeasure);
-        //context.SaveChanges();
-
-        //return Redirect("http://localhost:65225/Measuring/Index");
-        //}
-
-        //return View(addMeasureViewModel);
-        //}
     }
 }
