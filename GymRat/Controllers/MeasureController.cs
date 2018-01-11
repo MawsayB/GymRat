@@ -12,17 +12,17 @@ namespace GymRat.Controllers
 {
     public class MeasureController : Controller
     {
+        private readonly GymRatDbContext context;
+
+        public MeasureController(GymRatDbContext dbContext)
+        {
+            context = dbContext;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
-
-        //private GymRatDbContext context;
-
-        //public MeasureController(GymRatDbContext dbContext)
-        //{
-        //context = dbContext;
-        //}
 
         //public IActionResult Index(MeasureViewModel measureViewModel)
         //{
