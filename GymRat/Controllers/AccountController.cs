@@ -232,7 +232,7 @@ namespace GymRat.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    return Redirect("https://localhost:44357/Home/Menu");
                 }
                 AddErrors(result);
             }
