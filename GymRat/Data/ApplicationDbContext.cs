@@ -8,6 +8,12 @@ using GymRat.Models;
 
 namespace GymRat.Data
 {
+    public class GymRatDbContext
+    {
+        //Measure table
+        public DbSet<Measure> Measurements { get; set; }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
