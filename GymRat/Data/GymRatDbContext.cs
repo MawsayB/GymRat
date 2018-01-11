@@ -9,7 +9,7 @@ namespace GymRat.Data
 {
     public class GymRatDbContext
     {
-        //Measurement table
+        //Measure table
         public DbSet<Measure> Measurements { get; set; }
     }
 }
