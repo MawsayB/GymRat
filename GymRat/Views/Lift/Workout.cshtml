@@ -1,4 +1,4 @@
-﻿@model GymRat.ViewModels.WorkoutViewModel
+﻿@model GymRat.Models.MuscleGroup
 
 <style>
     .button {
@@ -61,21 +61,24 @@
 
         <h3>Set 1</h3>
         <h1>EXERCISE</h1>
+        <h4>x of 20 complete</h4>
     <form asp-controller="Measuring" asp-action="Add" method="post">
 
         <div class="form-group">
-            <input asp-for="Reps" size="10" placeholder="Reps" class="form-control" />
-            <span asp-validation-for="Reps"></span>
+            <input asp-for="ID" size="10" placeholder="Reps" class="form-control" />
+            <span asp-validation-for="ID"></span>
         </div>
-
-        <h4>(x of 20 remain)</h4>
 
         <div class="form-group">
-            <input asp-for="Weight" size="10" placeholder="Weight" class="form-control" />
-            <span asp-validation-for="Weight"></span>
+            <input asp-for="Name" size="10" placeholder="Weight" class="form-control" />
+            <span asp-validation-for="Name"></span>
         </div>
 
-        <h4>max: lbs.</h4>
+        <h5>most recent:</h5>
+        <h5>Set 1: 20 x 5, 25 x 10, 5 x 10</h5>
+        <h5>Set 2: 20 x 5, 25 x 10, 5 x 10</h5>
+        <h5>Set 3: 20 x 5, 25 x 10, 5 x 10</h5>
+        <h5>your max: lbs.</h5>
 
         <div class="form-group">
             <input type="submit" class="button" value="Save" />

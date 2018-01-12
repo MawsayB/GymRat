@@ -10,31 +10,31 @@ namespace GymRat.ViewModels
 {
     public class WorkoutViewModel
     {
-        public int ID { get; set; }
+        //public int ID { get; set; }
 
-        public List<SelectListItem> MuscleGroups { get; set; }
+        //public List<SelectListItem> MuscleGroups { get; set; }
 
-        public WorkoutViewModel()
+        //public WorkoutViewModel()
 
-        {
+        //{
 
-        }
+        //}
 
-        public WorkoutViewModel(IEnumerable<MuscleGroup> muscleGroups)
-        {
+        //public WorkoutViewModel(IEnumerable<MuscleGroup> muscleGroups)
+        //{
 
-            MuscleGroups = new List<SelectListItem>();
+            //MuscleGroups = new List<SelectListItem>();
 
-            foreach (var musclegroup in muscleGroups)
-            {
-                MuscleGroups.Add(new SelectListItem
-                {
-                    Value = musclegroup.ID.ToString(),
-                    Text = musclegroup.Name
-                });
+            //foreach (var musclegroup in muscleGroups)
+            //{
+                //MuscleGroups.Add(new SelectListItem
+                //{
+                    //Value = musclegroup.ID.ToString(),
+                    //Text = musclegroup.Name
+                //});
 
-            }
+            //}
 
-        }
+        //}
     }
 }
