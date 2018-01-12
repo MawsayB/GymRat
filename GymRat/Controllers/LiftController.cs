@@ -24,6 +24,13 @@ namespace GymRat.Controllers
 
         public IActionResult Workout()
         {
+            // after Workout is complete
+            // show User Today's Workout!
+            return View();
+        }
+
+        public IActionResult TodaysWorkout()
+        {
             return View();
         }
 
