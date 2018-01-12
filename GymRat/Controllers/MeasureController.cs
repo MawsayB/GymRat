@@ -24,19 +24,13 @@ namespace GymRat.Controllers
             return View();
         }
 
-        //public IActionResult Add()
-        //{
-            //create an instance of the entity model
-            //AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
+        public IActionResult Add()
+        {
+            //create an instance of the entity model with the new list
+            AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel(context.BodyRegions.ToList());
 
-            //get data
-            //List<BodyRegion> bodyRegion = context.BodyRegions.ToList();
-
-            //assign value to View
-            //addMeasureViewModel.BodyRegions = bodyRegion;
-
-            //return View(addMeasureViewModel);
-        //}
+            return View(addMeasureViewModel);
+        }
 
         [HttpPost]
         public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
