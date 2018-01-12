@@ -11,20 +11,20 @@ namespace GymRat.ViewModels
     public class AddMeasureViewModel
     {
         [Required]
-        [Display(Name = "Date: ")]
+        [Display(Name = "Date")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
         //region
         [Required]
-        [Display(Name = "Region: ")]
+        [Display(Name = "Region")]
         public int BodyRegionID { get; set; }
 
         public List<SelectListItem> BodyRegions { get; set; }
 
         //size
         [Required]
-        [Display(Name = "Size: ")]
+        [Display(Name = "Size")]
         public double Size { get; set; }
 
         public AddMeasureViewModel()
