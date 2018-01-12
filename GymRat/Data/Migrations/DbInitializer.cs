@@ -30,6 +30,20 @@ namespace GymRat.Data.Migrations
                 context.BodyRegions.Add(b);
             }
             context.SaveChanges();
+
+            var MuscleGroup = new MuscleGroup[]
+            {
+            new MuscleGroup{ID=1, Name="Shoulders"},
+            new MuscleGroup{ID=2, Name="Back"},
+            new MuscleGroup{ID=3, Name="Chest"},
+            new MuscleGroup{ID=4, Name="Bisceps & Triceps"},
+            new MuscleGroup{ID=5, Name="Legs & Butt"},
+            };
+            foreach (MuscleGroup m in MuscleGroup)
+            {
+                context.MuscleGroups.Add(m);
+            }
+            context.SaveChanges();
         }
     }
 }

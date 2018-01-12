@@ -101,6 +101,22 @@ namespace GymRat.Data.Migrations
                     b.ToTable("Measurements");
                 });
 
+            modelBuilder.Entity("GymRat.Models.MuscleGroup", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ActivityID");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("WorkoutID");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("MuscleGroups");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
