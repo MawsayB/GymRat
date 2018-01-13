@@ -24,6 +24,16 @@ namespace GymRat.Controllers
             return View();
         }
 
+        public IActionResult Details()
+        {
+            return View();
+        }
+
+        public IActionResult Menu()
+        {
+            return View();
+        }
+
         public IActionResult Add()
         {
             //create an instance of the entity model with the new list

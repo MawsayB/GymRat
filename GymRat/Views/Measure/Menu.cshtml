@@ -1,9 +1,5 @@
 ﻿
 <style>
-    tr td {
-        font-size: 20px;
-    }
-
     .button {
         background-color: white;
         color: #3F99DB;
@@ -14,15 +10,27 @@
         font-size: 16px;
         font-weight: bold;
         text-decoration: none;
+        float: left;
+    }
+
+    .block {
+        float: left;
     }
 
     .logo {
         width: 230px;
         height: 230px;
+        margin-top: 100px;
     }
 
     .headline {
         font-size: 48px;
+        margin-left: -25px;
+    }
+
+    .radio {
+        font-size: 30px;
+        text-align: left;
     }
 
     table {
@@ -32,53 +40,48 @@
         border: 4px solid #3F99DB;
     }
 
-    table th {
-        font-size: 28px;
-        border: 4px solid #3F99DB;
-        text-align: center;
-        padding: 4px;
+        table th {
+            font-size: 36px;
+            border: 4px solid #3F99DB;
+            text-align: center;
         }
-
-    table tr td {
-        padding: 4px;
-    }
-
-    table tr {
-        border: 4px solid #3F99DB;
-    }
 </style>
 
 <body>
-    <br />
     <div>
-        <div class="col-lg-4">
+
+        <div class="col-lg-6">
             <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDI5OC4wMTggMjk4LjAxOCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjk4LjAxOCAyOTguMDE4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCI+CjxnPgoJPHBhdGggZD0iTTI3Ni41MTgsMC41NEgyMS41QzkuNjQ0LDAuNTQsMCwxMC4xODUsMCwyMi4wNHYzLjQ1YzAsOS44NTMsNi42NjksMTguMTU3LDE1LjcyNCwyMC42ODl2MTgxLjk5NiAgIGMwLDQuMTQzLDMuMzU4LDcuNSw3LjUsNy41aDExOC4yODV2MTUuNDQzYy05LjQ1MSwzLjE0OS0xNi4yODcsMTIuMDczLTE2LjI4NywyMi41NjljMCwxMy4xMTcsMTAuNjcxLDIzLjc4OSwyMy43ODcsMjMuNzg5ICAgYzEzLjExNiwwLDIzLjc4Ny0xMC42NzIsMjMuNzg3LTIzLjc4OWMwLTEwLjQ5Ni02LjgzNi0xOS40Mi0xNi4yODctMjIuNTY5di0xNS40NDNoMTE4LjI4NWM0LjE0MiwwLDcuNS0zLjM1Nyw3LjUtNy41VjQ2LjE4ICAgYzkuMDU1LTIuNTMyLDE1LjcyNC0xMC44MzcsMTUuNzI0LTIwLjY4OXYtMy40NUMyOTguMDE4LDEwLjE4NSwyODguMzczLDAuNTQsMjc2LjUxOCwwLjU0eiBNMTQ5LjAwOSwyODIuNDc4ICAgYy00Ljg0NiwwLTguNzg3LTMuOTQyLTguNzg3LTguNzg5YzAtNC44NDYsMy45NDEtOC43ODgsOC43ODctOC43ODhzOC43ODcsMy45NDIsOC43ODcsOC43ODggICBDMTU3Ljc5NiwyNzguNTM1LDE1My44NTUsMjgyLjQ3OCwxNDkuMDA5LDI4Mi40Nzh6IE0yNjcuMjk0LDIyMC42NzZIMzAuNzI0VjQ2Ljk5aDIzNi41N1YyMjAuNjc2eiBNMjgzLjAxOCwyNS40OSAgIGMwLDMuNTg0LTIuOTE2LDYuNS02LjUsNi41SDIxLjVjLTMuNTg0LDAtNi41LTIuOTE2LTYuNS02LjV2LTMuNDVjMC0zLjU4NCwyLjkxNi02LjUsNi41LTYuNWgyNTUuMDE4YzMuNTg0LDAsNi41LDIuOTE2LDYuNSw2LjUgICBWMjUuNDl6IiBmaWxsPSIjM2Y5OWRiIi8+Cgk8cGF0aCBkPSJNNTEuMjg3LDIwMy4wOTljMS45MTksMCwzLjgzOS0wLjczMiw1LjMwNC0yLjE5N2wyOC43NS0yOC43NTFsMjcuNzQxLDEzLjg2OWMzLjM4NSwxLjY5Miw3LjQ5NywwLjU5OCw5LjU5NC0yLjU0OCAgIGwyOC40MTMtNDIuNjIybDQyLjYyMSwyOC40MTVjMS44MjksMS4yMiw0LjEwMSwxLjU3Myw2LjIxNywwLjk3M2MyLjExNC0wLjYwNCwzLjg1Ny0yLjEwNCw0Ljc2OC00LjEwNGwyOS4zMjUtNjQuMzk2bDUuODY1LDEzLjA5NSAgIGMxLjI0NywyLjc4NSwzLjk4Myw0LjQzNyw2Ljg0OSw0LjQzN2MxLjAyNSwwLDIuMDY2LTAuMjExLDMuMDYxLTAuNjU3YzMuNzgtMS42OTMsNS40NzMtNi4xMywzLjc3OS05LjkxbC0xMy41MTgtMzAuMTgyICAgYy0wLjgxMy0xLjgxNS0yLjMxNC0zLjIzMy00LjE3My0zLjk0MmMtMS44NTgtMC43MDctMy45MjMtMC42NDktNS43MzgsMC4xNjNMMTk5Ljk3LDg4LjI1OGMtMy43OCwxLjY5My01LjQ3Miw2LjEzMS0zLjc3OCw5LjkxMSAgIGMxLjY5NSwzLjc4MSw2LjEzMSw1LjQ3Miw5LjkxMSwzLjc3OGwxNC4yNDctNi4zODNsLTI1LjY1Miw1Ni4zM2wtNDEuNTI4LTI3LjY4N2MtMS42NTUtMS4xMDItMy42ODItMS41MDQtNS42MzEtMS4xMTQgICBjLTEuOTUxLDAuMzkxLTMuNjY2LDEuNTM5LTQuNzcsMy4xOTRsLTI4LjkwMSw0My4zNTRsLTI2LjY1NC0xMy4zMjZjLTIuODg2LTEuNDQ0LTYuMzczLTAuODc5LTguNjU3LDEuNDA1bC0zMi41NzIsMzIuNTc0ICAgYy0yLjkyOSwyLjkyOS0yLjkyOSw3LjY3OCwwLjAwMSwxMC42MDZDNDcuNDQ4LDIwMi4zNjYsNDkuMzY4LDIwMy4wOTksNTEuMjg3LDIwMy4wOTl6IiBmaWxsPSIjM2Y5OWRiIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" class="logo" />
             <p class="headline">Analyze</p>
         </div>
-        <!-- TODO: populate muscle group name below-->
-        <h2 class="headline">Shoulders</h2>
-        <br />
 
-        <table>
-            <tr>
-                <th>Exercise</th>
-                <th>start</th>
-                <th>highest</th>
-            </tr>
+        <h2 class="headline">Select a Muscle Group</h2>
+        <hr />
 
-            <tr>
-                <td>exercise name</td>
-                <td>X lbs</td>
-                <td>Y lbs</td>
-            </tr>
+        <div class="col-lg-6">
 
-            <tr>
-                <td>exercise name</td>
-                <td>X lbs</td>
-                <td>Y lbs</td>
-            </tr>
+            <div class="radio">
+                <label><input type="radio" name="butt"> Butt</label>
+            </div>
 
-        </table>
+            <div class="radio">
+                <label><input type="radio" name="thighs"> Thighs</label>
+            </div>
+
+            <div class="radio">
+                <label><input type="radio" name="waist"> Waist</label>
+            </div>
+
+
+            <div class="radio">
+                <label><input type="radio" name="weight"> Weight</label>
+            </div>
+
+            <br />
+            <a href="https://localhost:44357/Measure/Details" class="button" style="text-decoration:none">Submit</a>
+            <br />
+            <br />
+            <br />
+        </div>
     </div>
-    <br />
 </body>
