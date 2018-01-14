@@ -12,9 +12,9 @@ namespace GymRat.Controllers
 {
     public class MeasureController : Controller
     {
-        private readonly ApplicationDbContext context;
+        private readonly GymRatDbContext context;
 
-        public MeasureController(ApplicationDbContext dbContext)
+        public MeasureController(GymRatDbContext dbContext)
         {
             context = dbContext;
         }

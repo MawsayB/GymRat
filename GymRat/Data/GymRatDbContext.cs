@@ -9,14 +9,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GymRat.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class GymRatDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<BodyRegion> BodyRegions { get; set; }
         public DbSet<Measure> Measurements { get; set; }
 
         public DbSet<MuscleGroup> MuscleGroups { get; set; }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public GymRatDbContext(DbContextOptions<GymRatDbContext> options)
 
             : base(options)
         { }

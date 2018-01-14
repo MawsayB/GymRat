@@ -9,7 +9,7 @@ namespace GymRat.Data.Migrations
 {
     public class DbInitializer
     {
-        public static void Initialize(ApplicationDbContext context)
+        public static void Initialize(GymRatDbContext context)
         {
             context.Database.EnsureCreated();
 

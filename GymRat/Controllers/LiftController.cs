@@ -10,9 +10,9 @@ namespace GymRat.Controllers
 {
     public class LiftController : Controller
     {
-        private readonly ApplicationDbContext context;
+        private readonly GymRatDbContext context;
 
-        public LiftController(ApplicationDbContext dbContext)
+        public LiftController(GymRatDbContext dbContext)
         {
             context = dbContext;
         }
