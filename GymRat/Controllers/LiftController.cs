@@ -22,6 +22,12 @@ namespace GymRat.Controllers
             return View();
         }
 
+        //letting User pick body region
+        public IActionResult MenuB()
+        {
+            return View();
+        }
+
         public IActionResult Workout()
         {
             // after Workout is complete
@@ -29,6 +35,7 @@ namespace GymRat.Controllers
             return View();
         }
 
+        //summary AFTER workout is complete
         public IActionResult TodaysWorkout()
         {
             return View();
