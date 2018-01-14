@@ -85,10 +85,9 @@ namespace GymRat.Data.Migrations
 
             modelBuilder.Entity("GymRat.Models.Measure", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("BodyRegionID");
+
+                    b.Property<int>("ID");
 
                     b.Property<DateTime>("Date");
 
@@ -96,7 +95,7 @@ namespace GymRat.Data.Migrations
 
                     b.Property<int>("UserID");
 
-                    b.HasKey("ID");
+                    b.HasKey("BodyRegionID", "ID");
 
                     b.ToTable("Measurements");
                 });

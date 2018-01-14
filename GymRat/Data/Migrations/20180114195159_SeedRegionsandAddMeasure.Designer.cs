@@ -11,8 +11,8 @@ using System;
 namespace GymRat.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180111173049_AddBodyRegionsMeasure")]
-    partial class AddBodyRegionsMeasure
+    [Migration("20180114195159_SeedRegionsandAddMeasure")]
+    partial class SeedRegionsandAddMeasure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,10 +86,9 @@ namespace GymRat.Data.Migrations
 
             modelBuilder.Entity("GymRat.Models.Measure", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("BodyRegionID");
+
+                    b.Property<int>("ID");
 
                     b.Property<DateTime>("Date");
 
@@ -97,9 +96,25 @@ namespace GymRat.Data.Migrations
 
                     b.Property<int>("UserID");
 
-                    b.HasKey("ID");
+                    b.HasKey("BodyRegionID", "ID");
 
                     b.ToTable("Measurements");
+                });
+
+            modelBuilder.Entity("GymRat.Models.MuscleGroup", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ActivityID");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("WorkoutID");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("MuscleGroups");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

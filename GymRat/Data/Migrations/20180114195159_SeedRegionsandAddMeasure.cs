@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GymRat.Data.Migrations
 {
-    public partial class SeeBodyRegions : Migration
+    public partial class SeedRegionsandAddMeasure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

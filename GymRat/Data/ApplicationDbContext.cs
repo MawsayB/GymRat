@@ -19,15 +19,15 @@ namespace GymRat.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 
             : base(options)
-        {}
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<BodyRegion>()
-            //.HasKey(c => new { b.BodyRegionID, b.ID });
             modelBuilder.Ignore<SelectListItem>();
             modelBuilder.Ignore<SelectListGroup>();
+            modelBuilder.Entity<Measure>()
+                .HasKey(m => new { m.BodyRegionID, m.ID });
         }
     }
 }
