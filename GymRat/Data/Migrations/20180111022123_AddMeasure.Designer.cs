@@ -10,7 +10,7 @@ using System;
 
 namespace GymRat.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(GymRatDbContext))]
     [Migration("20180111022123_AddMeasure")]
     partial class AddMeasure
     {

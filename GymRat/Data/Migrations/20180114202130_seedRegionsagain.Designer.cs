@@ -10,7 +10,7 @@ using System;
 
 namespace GymRat.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(GymRatDbContext))]
     [Migration("20180114202130_seedRegionsagain")]
     partial class seedRegionsagain
     {

@@ -10,7 +10,7 @@ using System;
 
 namespace GymRat.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(GymRatDbContext))]
     [Migration("20180114203315_LinkKeysRegionMeasure")]
     partial class LinkKeysRegionMeasure
     {
