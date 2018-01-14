@@ -11,9 +11,10 @@ using System;
 namespace GymRat.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180114202010_seedRegions")]
+    partial class seedRegions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,21 +79,22 @@ namespace GymRat.Data.Migrations
 
                     b.Property<int?>("MeasureBodyRegionID");
 
-                    b.Property<string>("MeasureID");
+                    b.Property<int?>("MeasureUserID");
 
                     b.Property<string>("Name");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("MeasureBodyRegionID");
+                    b.HasIndex("MeasureBodyRegionID", "MeasureUserID");
 
                     b.ToTable("BodyRegions");
                 });
 
             modelBuilder.Entity("GymRat.Models.Measure", b =>
                 {
-                    b.Property<int>("BodyRegionID")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("BodyRegionID");
+
+                    b.Property<int>("UserID");
 
                     b.Property<DateTime>("Date");
 
@@ -100,9 +102,7 @@ namespace GymRat.Data.Migrations
 
                     b.Property<double>("Size");
 
-                    b.Property<int>("UserID");
-
-                    b.HasKey("BodyRegionID");
+                    b.HasKey("BodyRegionID", "UserID");
 
                     b.ToTable("Measurements");
                 });
@@ -235,7 +235,7 @@ namespace GymRat.Data.Migrations
                 {
                     b.HasOne("GymRat.Models.Measure")
                         .WithMany("BodyRegions")
-                        .HasForeignKey("MeasureBodyRegionID");
+                        .HasForeignKey("MeasureBodyRegionID", "MeasureUserID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GymRat.Models;
 
 namespace GymRat.Models
 {
@@ -15,6 +16,7 @@ namespace GymRat.Models
 
         //easy way to have consistent regions in table
         public int BodyRegionID { get; set; }
+        public ICollection<BodyRegion> BodyRegions { get; set; }
 
         //to be able to record for individual users
         public int UserID { get; set; }

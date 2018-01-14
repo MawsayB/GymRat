@@ -27,7 +27,7 @@ namespace GymRat.Data
             modelBuilder.Ignore<SelectListItem>();
             modelBuilder.Ignore<SelectListGroup>();
             modelBuilder.Entity<Measure>()
-                .HasKey(m => new { m.BodyRegionID, m.ID });
+                .HasKey(m => m.BodyRegionID);
         }
     }
 }
