@@ -1,6 +1,25 @@
-﻿@model GymRat.Models
+﻿@model GymRat.ViewModels.AddWorkoutViewModel
 
 <style>
+    .button {
+        background-color: white;
+        color: #3F99DB;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Century Gothic';
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .down {
+        margin-top: 20px;
+        font-size: 18px;
+        width: 250px;
+        margin-bottom: 5px;
+    }
+
     .lift {
         font-size: 48px;
         padding-top: 5px;
@@ -9,7 +28,7 @@
     .logo {
         width: 230px;
         height: 230px;
-        margin-top: 20px;
+        margin-top: 110px;
         margin-left: 30px;
     }
 </style>
@@ -19,25 +38,40 @@
         <p class="lift">Lift</p>
     </div>
 
-    <div class="col-lg-6">
-        <form asp-controller="Measure" asp-action="Add" method="post">
+    <div class="col-lg-6 down">
+        <form asp-controller="Lift" asp-action="Add" method="post">
 
             <div class="form-group">
                 <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" size="20" />
+                <input asp-for="Name" class="form-control"/>
                 <span asp-validation-for="Name"></span>
             </div>
 
+            <!-- TODO: add MuscleGroup name as Dropdown menu -->
             <div class="form-group">
-                <label asp-for=""></label>
-                <select asp-for="" asp-items=""></select>
+                <label asp-for="MuscleGroupID"></label>
+                <input asp-for="MuscleGroupID" class="form-control" />
+                <span asp-validation-for="MuscleGroupID"></span>
+            </div>
+
+            <!-- TODO: add Activites Downdown menu -->
+
+            <div class="form-group">
+                <label asp-for="ActivityID"></label>
+                <input asp-for="ActivityID" class="form-control">
+                <span asp-validation-for="ActivityID"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Size"></label>
-                <h5>(inches / pounds)</h5>
-                <input asp-for="Size" placeholder="pounds/inches" class="form-control">
-                <span asp-validation-for="Size"></span>
+                <label asp-for="Sets"></label>
+                <input asp-for="Sets" class="form-control" />
+                <span asp-validation-for="Sets"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Reps"></label>
+                <input asp-for="Reps" class="form-control" />
+                <span asp-validation-for="Reps"></span>
             </div>
 
             <div class="form-group">
