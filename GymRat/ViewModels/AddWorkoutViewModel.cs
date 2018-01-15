@@ -22,8 +22,28 @@ namespace GymRat.ViewModels
 
         //activity
         [Required]
-        [Display(Name = "Activity")]
+        [Display(Name = "Activity 1")]
         public int ActivityID { get; set; }
+
+        //[Required]
+        //[Display(Name = "Activity 2")]
+        //public int ActivityID { get; set; }
+
+        //[Required]
+        //[Display(Name = "Activity 3")]
+        //public int ActivityID { get; set; }
+
+        //[Required]
+        //[Display(Name = "Activity 4")]
+        //public int ActivityID { get; set; }
+
+        //[Required]
+        //[Display(Name = "Activity 5")]
+        //public int ActivityID { get; set; }
+
+        //[Required]
+        //[Display(Name = "Activity 6")]
+        //public int ActivityID { get; set; }
 
         //# of sets???
         //TODO: make default 3
