@@ -22,11 +22,16 @@ namespace GymRat.Controllers
             return View();
         }
 
-        //letting User pick body region
-        public IActionResult MenuB()
+        public IActionResult Select()
         {
             return View();
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
 
         public IActionResult Workout()
         {
