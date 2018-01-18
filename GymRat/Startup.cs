@@ -28,7 +28,7 @@ namespace GymRat
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<GymRatDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("GymRatDbContext")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<GymRatDbContext>()
