@@ -18,13 +18,11 @@ namespace GymRat.ViewModels
         //region
         [Required]
         [Display(Name = "Region")]
-        public int BodyRegionID { get; set; }
-
-        public List<SelectListItem> BodyRegions { get; set; }
+        public string Region { get; set; }
 
         //size
         [Required]
-        [Display(Name = "Size")]
+        [Display(Name = "Current Size")]
         public double Size { get; set; }
 
         public AddMeasureViewModel()

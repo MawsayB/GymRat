@@ -49,13 +49,13 @@ namespace GymRat.Controllers
                 Measure newMeasure = new Measure
                 {
                     Date = addMeasureViewModel.Date,
-                    BodyRegionID = addMeasureViewModel.BodyRegionID,
+                    Region = addMeasureViewModel.Region,
                     Size = addMeasureViewModel.Size
                 };
                 context.Measurements.Add(newMeasure);
                 context.SaveChanges();
 
-                return Redirect("http://localhost:65225/Measuring/Index");
+                return Redirect("http://localhost:65225/Measure/Index");
             }
 
             return View(addMeasureViewModel);
