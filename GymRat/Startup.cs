@@ -28,7 +28,7 @@ namespace GymRat
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<GymRatDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("GymRatDbContext")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<GymRatDbContext>()
@@ -43,7 +43,7 @@ namespace GymRat
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, GymRatDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -66,6 +66,13 @@ namespace GymRat
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            context.Database.EnsureCreated();
+            if (!context.BodyRegions.Any())
+            {
+                context.BodyRegions.Add(new BodyRegion() { ID = 1, Name = "Butt" });
+                context.SaveChanges();
+            }
         }
     }
 }
