@@ -67,7 +67,8 @@
 
                 <div class="form-group">
                     <label asp-for="BodyRegionID"></label>
-                    <select asp-for="BodyRegionID" asp-items="@Model.BodyRegions"></select>
+                    <input asp-for="BodyRegionID" class="form-control">
+                    <span asp-validation-for="BodyRegions"></span>
                 </div>
 
                 <div class="form-group">    

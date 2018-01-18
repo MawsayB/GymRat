@@ -67,12 +67,6 @@ namespace GymRat
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            context.Database.EnsureCreated();
-            if (!context.BodyRegions.Any())
-            {
-                context.BodyRegions.Add(new BodyRegion() { ID = 1, Name = "Butt" });
-                context.SaveChanges();
-            }
         }
     }
 }

@@ -30,24 +30,6 @@ namespace GymRat.ViewModels
         public AddMeasureViewModel()
 
         {
-
-        }
-
-        public AddMeasureViewModel(IEnumerable<BodyRegion> bodyRegions)
-        {
-
-            BodyRegions = new List<SelectListItem>();
-
-            foreach (var bodyregion in bodyRegions)
-            {
-                BodyRegions.Add(new SelectListItem
-                {
-                    Value = bodyregion.ID.ToString(),
-                    Text = bodyregion.Name
-                });
-
-            }
-
         }
     }
 }
