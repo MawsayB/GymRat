@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using GymRat.Data;
+using NeedFiles.Data;
 using GymRat.Models;
 using GymRat.Services;
 
-namespace GymRat
+namespace NeedFiles
 {
     public class Startup
     {

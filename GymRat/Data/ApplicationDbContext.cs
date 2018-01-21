@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using GymRat.Models;
 
-namespace NeedFiles.Data
+namespace GymRat.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //Measurement table
+        public DbSet<Measure> Measurements { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
