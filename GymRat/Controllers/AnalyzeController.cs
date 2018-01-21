@@ -9,9 +9,9 @@ namespace GymRat.Controllers
 {
     public class AnalyzeController : Controller
     {
-        private readonly GymRatDbContext context;
+        private readonly ApplicationDbContext context;
 
-        public AnalyzeController(GymRatDbContext dbContext)
+        public AnalyzeController(ApplicationDbContext dbContext)
         {
             context = dbContext;
         }

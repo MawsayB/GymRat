@@ -10,7 +10,7 @@ using System;
 
 namespace GymRat.Data.Migrations
 {
-    [DbContext(typeof(GymRatDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20180118211040_SetUp3")]
     partial class SetUp3
     {
