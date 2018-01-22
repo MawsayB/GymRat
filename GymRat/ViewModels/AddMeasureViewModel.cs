@@ -25,9 +25,5 @@ namespace GymRat.ViewModels
         [Display(Name = "Current Size")]
         public double Size { get; set; }
 
-        public AddMeasureViewModel()
-
-        {
-        }
     }
 }
