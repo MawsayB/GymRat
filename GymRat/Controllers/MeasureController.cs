@@ -55,7 +55,7 @@ namespace GymRat.Controllers
                 context.Measurements.Add(newMeasure);
                 context.SaveChanges();
 
-                return Redirect("http://localhost:44357/Measure/Index");
+                return View("Index");
             }
 
             return View(addMeasureViewModel);

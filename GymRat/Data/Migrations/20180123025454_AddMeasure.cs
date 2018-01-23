@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace NeedFiles.Data.Migrations
 {
-    public partial class MeasureTable : Migration
+    public partial class AddMeasure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

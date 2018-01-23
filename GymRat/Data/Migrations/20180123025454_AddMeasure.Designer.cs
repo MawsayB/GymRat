@@ -11,8 +11,8 @@ using System;
 namespace NeedFiles.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180121042917_MeasureTable")]
-    partial class MeasureTable
+    [Migration("20180123025454_AddMeasure")]
+    partial class AddMeasure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
