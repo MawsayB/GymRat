@@ -1,5 +1,42 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<style>
+    .button {
+        background-color: white;
+        color: #3F99DB;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Century Gothic';
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+
+    .details {
+        margin-left: 300px;
+    }
+
+    .add {
+        margin-right: 300px;
+    }
+
+    h3 {
+        padding-bottom: 30px;
+    }
+
+</style>
+
+
+<h2>Entry recorded!</h2>
+<h3>Add entries monthly to continue to see your progress.</h3>
+
+<div class="col-lg-6">
+    <a href="https://localhost:44357/Measure/Details" class="button details" style="text-decoration:none">My Measurement History</a>
+</div>
+
+<div class="col-lg-6">
+    <a href="https://localhost:44357/Measure/Add" class="button add" style="text-decoration:none">Record Another Measurement</a>
+    <br />
+    <br />
+</div>
+

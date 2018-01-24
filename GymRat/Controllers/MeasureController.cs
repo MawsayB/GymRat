@@ -60,7 +60,7 @@ namespace GymRat.Controllers
                 context.Measurements.Add(newMeasure);
                 context.SaveChanges();
 
-                return View("Index");
+                return View("Confirmation");
             }
 
             return View(addMeasureViewModel);
