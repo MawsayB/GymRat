@@ -31,6 +31,7 @@ namespace GymRat.Controllers
 
         public IActionResult Menu()
         {
+            MeasureRecordsViewModel measureRecordsViewModel = new MeasureRecordsViewModel();
             return View();
         }
 
