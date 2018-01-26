@@ -19,7 +19,7 @@ namespace GymRat.Controllers
             context = dbContext;
         }
 
-        public IActionResult Index()
+        public IActionResult Confirmation()
         {
             return View();
         }
@@ -31,6 +31,7 @@ namespace GymRat.Controllers
 
         public IActionResult Menu()
         {
+            MeasureRecordsViewModel measureRecordsViewModel = new MeasureRecordsViewModel();
             return View();
         }
 
@@ -55,64 +56,66 @@ namespace GymRat.Controllers
                 context.Measurements.Add(newMeasure);
                 context.SaveChanges();
 
-                return View("Index");
+                return View("Confirmation");
             }
 
             return View(addMeasureViewModel);
         }
 
-        //public IActionResult Index(MeasureViewModel measureViewModel)
-        //{
-        //IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
-        //sort the table then pull out the 2 variables
+        public IActionResult Index(MeasureViewModel measureViewModel)
+        {
+            IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
+            //sort the table then pull out the 2 variables
 
-        //var regions = context
-        //.Measurements
-        //.Select(m => m.Region)
-        //.Distinct()
-        //.ToList();
+            var regions = context
+            .Measurements
+            .Select(m => m.Region)
+            .Distinct()
+            .ToList();
 
-        //foreach (var region in regions)
-        //{
+            foreach (var region in regions)
+            {
 
-        // most recent record, pull the size
-        //var lastMeasurement = context
-        //.Measurements
-        // m is the RECORD/ENTRY
-        //.OrderBy(m => m.Date)
-        //.Where(m => m.Region == region)
-        //.LastOrDefault();
+                //most recent record, pull the size
+                var lastMeasurement = context
+                .Measurements
+                // m is the RECORD/ENTRY
+                .OrderBy(m => m.Date)
+                .Where(m => m.Region == region)
+                .LastOrDefault();
 
-        // the first entry
-        //var firstMeasurement = context
-        //.Measurements
-        //.OrderBy(m => m.Date)
-        //.Where(m => m.Region == region)
-        //.FirstOrDefault();
+                // the first entry
+                var firstMeasurement = context
+                .Measurements
+                .OrderBy(m => m.Date)
+                .Where(m => m.Region == region)
+                .FirstOrDefault();
 
-        //if (lastMeasurement != null && firstMeasurement != null)
-        //{
-        // (last - first)
-        //MeasureViewModel newMeasureViewModel = new MeasureViewModel();
-        //double difference = lastMeasurement.Size - firstMeasurement.Size;
-        //newMeasureViewModel.Size = difference;
-        //newMeasureViewModel.HasData = true;
+                if (lastMeasurement != null && firstMeasurement != null)
+                {
+                    // (last - first Size)
+                    MeasureViewModel newMeasureViewModel = new MeasureViewModel();
+                    double difference = lastMeasurement.Size - firstMeasurement.Size;
+                    newMeasureViewModel.Size = difference;
 
-        //measurements.Add(newMeasureViewModel);
-        //}
-        //else
-        //{
-        //MeasureViewModel newMeasureViewModel = new MeasureViewModel();
-        //newMeasureViewModel.HasData = false;
-        //measurements.Add(newMeasureViewModel);
-        //}
-        //}
+                    // also show the region that goes with the size
+                    newMeasureViewModel.Region = region;
 
-        // push these variables to the view
-        // show variable in the table in the View
+                    // push variables to the View
+                    measurements.Add(newMeasureViewModel);
+                }
+                else
+                {
+                    MeasureViewModel newMeasureViewModel = new MeasureViewModel();
+                    newMeasureViewModel.Size = 0;
+                    measurements.Add(newMeasureViewModel);
+                }
+            }
 
-        //return View("Index", measurements);
-        //}
+            // push these variables to the view
+            // show variable in the table in the View
+            return View("Index", measurements);
+        }
 
         //pickmeasure screen
     }

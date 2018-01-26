@@ -8,6 +8,6 @@ namespace GymRat.ViewModels
 {
     public class MeasureViewModel : Measure
     {
-        Boolean HasData { get; set; }
+
     }
 }
