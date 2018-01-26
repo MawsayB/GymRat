@@ -16,13 +16,13 @@ namespace GymRat.ViewModels
 
         public List<Measure> Regions { get; set; }
 
-        public MeasureRecordsViewModel()
-        {
+        //public MeasureRecordsViewModel()
+        //{
             // populate the list of all the regions
-            Regions = new List<Measure>();
+            //Regions = new List<Measure>();
 
-            foreach (Measure )
-        }
+            //foreach (Measure )
+        //}
 
     }
 }
