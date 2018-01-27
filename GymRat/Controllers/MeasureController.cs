@@ -24,14 +24,14 @@ namespace GymRat.Controllers
             return View();
         }
 
-        public IActionResult Details()
+        public IActionResult Search()
         {
             return View();
         }
 
         public IActionResult Menu()
         {
-            MeasureRecordsViewModel measureRecordsViewModel = new MeasureRecordsViewModel();
+            SearchMeasureViewModel measureRecordsViewModel = new SearchMeasureViewModel();
             return View();
         }
 

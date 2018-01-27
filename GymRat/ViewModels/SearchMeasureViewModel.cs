@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GymRat.ViewModels
 {
-    public class MeasureRecordsViewModel
+    public class SearchMeasureViewModel
     {
         public Measure Region { get; set; }
         // put all measurements into a list
