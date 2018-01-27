@@ -116,7 +116,5 @@ namespace GymRat.Controllers
             // show variable in the table in the View
             return View("Index", measurements);
         }
-
-        //pickmeasure screen
     }
 }
