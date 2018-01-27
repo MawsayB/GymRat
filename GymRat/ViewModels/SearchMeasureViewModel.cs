@@ -9,22 +9,30 @@ namespace GymRat.ViewModels
 {
     public class SearchMeasureViewModel
     {
-        public Measure Region { get; set; }
-        // put all measurements into a list
-        // take the list and sort by Region then date for specific region
-        // take the list and show all by Date for ALL
+        //the current column
+        public MeasureDataOptions Column { get; set; }
 
-        // a list of all the regions
-        // you want to do a search
-        public List<RegionOptions> Regions { get; set; }
+        //all columns for display (date, region, size, all)
+        public List<MeasureDataOptions> Columns { get; set; }
 
-        //public MeasureRecordsViewModel()
-        //{
-            // populate the list of all the regions
-            //Regions = new List<Measure>();
+        //a list of measurements to show the user
+        public List<Measure> Measurements { get; set;}
 
-            //foreach (Measure )
-        //}
+        //the search term/VALUE
+        [Display(Name = "Search Term:")]
+        public string Value { get; set; } = "";
+
+        //makes a list of all the Measure data options
+        public SearchMeasureViewModel()
+        {
+            Columns = new List<MeasureDataOptions>();
+
+            foreach (MeasureDataOptions enumVal in Enum.GetValues(typeof(MeasureDataOptions)))
+            {
+                Columns.Add(enumVal);
+            }
+
+        }
 
     }
 }

@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace GymRat.Models
 {
-    public enum RegionOptions
+    public enum MeasureDataOptions
     {
 
-        // Enum representing the Body Regions of a Measurement
+        // Enum representing the Body Region data COLUMNS of a Measurement
         // that can be viewed and searched.
 
-        Butt,
-        Thigh,
-        Waist,
+        Date,
+        Region,
+        Size,
         All
     }
 }
