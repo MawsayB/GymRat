@@ -14,7 +14,9 @@ namespace GymRat.ViewModels
         // take the list and sort by Region then date for specific region
         // take the list and show all by Date for ALL
 
-        public List<Measure> Regions { get; set; }
+        // a list of all the regions
+        // you want to do a search
+        public List<RegionOptions> Regions { get; set; }
 
         //public MeasureRecordsViewModel()
         //{
