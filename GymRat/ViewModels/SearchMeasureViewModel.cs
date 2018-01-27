@@ -19,7 +19,7 @@ namespace GymRat.ViewModels
         public List<Measure> Measurements { get; set;}
 
         //the search term/VALUE
-        [Display(Name = "Search Term:")]
+        [Display(Name = "Keyword")]
         public string Value { get; set; } = "";
 
         //makes a list of all the Measure data options

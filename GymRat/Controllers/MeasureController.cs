@@ -26,6 +26,12 @@ namespace GymRat.Controllers
 
         public IActionResult Search()
         {
+            SearchMeasureViewModel measureViewModel = new SearchMeasureViewModel();
+            return View(measureViewModel);
+        }
+
+        public IActionResult Results()
+        {
             return View();
         }
 
