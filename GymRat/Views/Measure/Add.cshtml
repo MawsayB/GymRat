@@ -50,6 +50,11 @@
         margin-left: 75px;
     }
 
+    .num-box {
+        width: 100px;
+        margin-left: 60px;
+    }
+
     .regionOptions {
         font-weight: normal;
         text-align: left;
@@ -106,7 +111,7 @@
                 <div class="form-group">
                     <label asp-for="Size"></label>
                     <h5>(inches)</h5>
-                    <input asp-for="Size" size="35" class="form-control" />
+                    <input asp-for="Size" class="form-control num-box" />
                     <span asp-validation-for="Size"></span>
                 </div>
 
