@@ -13,6 +13,5 @@ namespace GymRat.Models
         Butt,
         Thigh,
         Waist,
-        All
     }
 }
