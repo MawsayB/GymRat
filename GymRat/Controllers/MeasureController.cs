@@ -32,6 +32,7 @@ namespace GymRat.Controllers
 
         public IActionResult List()
         {
+
             return View();
         }
 
