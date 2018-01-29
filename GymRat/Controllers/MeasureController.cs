@@ -24,14 +24,21 @@ namespace GymRat.Controllers
             return View();
         }
 
-        public IActionResult Details()
+        public IActionResult Search()
         {
+            SearchMeasureViewModel measureViewModel = new SearchMeasureViewModel();
+            return View(measureViewModel);
+        }
+
+        public IActionResult List()
+        {
+
             return View();
         }
 
         public IActionResult Menu()
         {
-            MeasureRecordsViewModel measureRecordsViewModel = new MeasureRecordsViewModel();
+            SearchMeasureViewModel measureRecordsViewModel = new SearchMeasureViewModel();
             return View();
         }
 
@@ -39,7 +46,7 @@ namespace GymRat.Controllers
         {
             //create an instance of the entity model with the new list
             AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
-            return View();
+            return View(addMeasureViewModel);
         }
 
         [HttpPost]
@@ -116,7 +123,5 @@ namespace GymRat.Controllers
             // show variable in the table in the View
             return View("Index", measurements);
         }
-
-        //pickmeasure screen
     }
 }
