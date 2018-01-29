@@ -30,7 +30,7 @@ namespace GymRat.Controllers
             return View(measureViewModel);
         }
 
-        public IActionResult Results()
+        public IActionResult List()
         {
             return View();
         }
