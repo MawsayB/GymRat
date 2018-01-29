@@ -46,7 +46,7 @@ namespace GymRat.Controllers
         {
             //create an instance of the entity model with the new list
             AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
-            return View();
+            return View(addMeasureViewModel);
         }
 
         [HttpPost]

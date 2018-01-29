@@ -44,6 +44,20 @@
     .headline {
         font-size: 48px;
     }
+
+    input[type="radio"] {
+        margin: 0px 0px 0 5px;
+        margin-left: 75px;
+    }
+
+    .regionOptions {
+        font-weight: normal;
+        text-align: left;
+    }
+
+    p {
+        margin-bottom: 0px;
+    }
 </style>
 
 
@@ -55,7 +69,7 @@
             <p class="headline">Measure</p>
         </div>
 
-        <div class="col-lg-6 form">
+        <div class="col-lg-6 form form-group">
             <br />
             <form asp-controller="Measure" asp-action="Add" method="post">
 
@@ -67,17 +81,30 @@
                 <br />
 
                 <div class="form-group">
-                    <label asp-for="Region"></label>
-                    <input asp-for="Region" size="35" placeholder="butt, thigh, waist" class="form-control"/>
-                    <span asp-vaidation-for="Region"></span>
-                </div>
+                    <strong><label asp-for="Region"></label></strong>
+                    <h5>(select one)</h5>
+                    <div class="listRegions">
+                        @foreach (var region in Model.Regions)
+                        {
+                            var checkedRegion = region.Equals(Model.Region);
 
-                <br />
+                            <p class="regionOptions">
+                                <input type="radio"
+                                       name="Region"
+                                       id="@region"
+                                       value="@region"
+                                       checked="checkedRegion" />
+                                <label for="@region" class="regionOptions">@region</label>
+                            </p>
+
+                        }
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label asp-for="Size"></label>
                     <h5>(inches)</h5>
-                    <input asp-for="Size" size="35" class="form-control"/>
+                    <input asp-for="Size" size="35" class="form-control" />
                     <span asp-validation-for="Size"></span>
                 </div>
 
@@ -86,6 +113,6 @@
                 </div>
             </form>
         </div>
-        </div>
+    </div>
 
 </body>
