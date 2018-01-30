@@ -30,19 +30,7 @@ namespace GymRat.Controllers
             return View(measureViewModel);
         }
 
-        public IActionResult List()
-        {
-            return View();
-        }
-
-        public IActionResult Menu()
-        {
-            MeasureMenuViewModel measureMenuViewModel = new MeasureMenuViewModel();
-            return View(measureMenuViewModel);
-        }
-
-        [HttpPost]
-        public IActionResult Menu(MeasureMenuOptions region)
+        public IActionResult List(MeasureMenuOptions region)
         {
             // pass in the user selection from the Menu
             // take the Area the user selects and show them their selection
@@ -71,17 +59,22 @@ namespace GymRat.Controllers
             else
             {
                 Console.WriteLine("Hello");
-                return View("Index");
+                return View("List");
             }
-
         }
 
-            public IActionResult Add()
-            {
-                //create an instance of the entity model with the new list
-                AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
-                return View(addMeasureViewModel);
-            }
+        public IActionResult Menu()
+        {
+            MeasureMenuViewModel measureMenuViewModel = new MeasureMenuViewModel();
+            return View(measureMenuViewModel);
+        }
+
+        public IActionResult Add()
+        {
+            //create an instance of the entity model with the new list
+            AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
+            return View(addMeasureViewModel);
+        }
 
         [HttpPost]
         public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
