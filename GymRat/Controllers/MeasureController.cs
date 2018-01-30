@@ -32,7 +32,6 @@ namespace GymRat.Controllers
 
         public IActionResult List()
         {
-
             return View();
         }
 
@@ -42,12 +41,47 @@ namespace GymRat.Controllers
             return View(measureMenuViewModel);
         }
 
-        public IActionResult Add()
+        [HttpPost]
+        public IActionResult Menu(MeasureMenuOptions region)
         {
-            //create an instance of the entity model with the new list
-            AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
-            return View(addMeasureViewModel);
+            // pass in the user selection from the Menu
+            // take the Area the user selects and show them their selection
+
+            // make a list of the measurements
+            IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
+
+            var regions = context
+                    .Measurements
+                    .Select(m => m.Region)
+                    .Distinct()
+                    .ToList();
+
+            if (region.Equals(MeasureMenuOptions.all))
+            {
+                // display all the entries to the user
+                // entries have a date and size and should be grouped into regions
+                var entries = context
+                .Measurements
+                // m is the RECORD/ENTRY
+                .OrderBy(m => m.Date);
+
+                return View("List", entries);
+            }
+
+            else
+            {
+                Console.WriteLine("Hello");
+                return View("Index");
+            }
+
         }
+
+            public IActionResult Add()
+            {
+                //create an instance of the entity model with the new list
+                AddMeasureViewModel addMeasureViewModel = new AddMeasureViewModel();
+                return View(addMeasureViewModel);
+            }
 
         [HttpPost]
         public IActionResult Add(AddMeasureViewModel addMeasureViewModel)
