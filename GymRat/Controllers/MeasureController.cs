@@ -38,8 +38,8 @@ namespace GymRat.Controllers
 
         public IActionResult Menu()
         {
-            SearchMeasureViewModel measureRecordsViewModel = new SearchMeasureViewModel();
-            return View();
+            MeasureMenuViewModel measureMenuViewModel = new MeasureMenuViewModel();
+            return View(measureMenuViewModel);
         }
 
         public IActionResult Add()

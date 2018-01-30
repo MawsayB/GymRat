@@ -1,4 +1,5 @@
-﻿@model GymRat.ViewModels.MeasureFieldsViewModel
+﻿@model GymRat.ViewModels.MeasureMenuViewModel
+
 <style>
     .button {
         background-color: white;
@@ -20,7 +21,6 @@
     .logo {
         width: 230px;
         height: 230px;
-        margin-top: 100px;
     }
 
     .headline {
@@ -34,66 +34,51 @@
     }
 
     table {
-        width: 35%;
+        width: 200px;
         margin-left: auto;
         margin-right: auto;
         border: 4px solid #3F99DB;
     }
 
-        table th {
-            font-size: 36px;
-            border: 4px solid #3F99DB;
-            text-align: center;
-        }
+    table th {
+        font-size: 36px;
+        border: 4px solid #3F99DB;
+        text-align: center;
+    }
+
 </style>
 
 <body>
     <div>
 
         <div class="col-lg-6">
-            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQ5NS4zMDUsMTk4LjA1NWMtMTIuNDIxLDAtMjI0Ljg1MSwwLTIyOS41NTcsMGMwLTQ2LjY1NSwwLjAxOS00Mi4zNTMtMC4wMjQtNDIuOTgyICAgIGMtMS4wNzktNDQuOTIxLTYzLjA4NS03NC4zMDgtMTMyLjg0OS03NC4zMDhDNjEuMjM5LDgwLjc2NiwwLDExMS4zODEsMCwxNTYuMjM3djE5OS41MjZjMCwyMi4zMTgsMTUuMzM3LDQyLjM2OCw0My4xODYsNTYuNDU4ICAgIGMyNC4yMzUsMTIuMjYxLDU2LjA4NiwxOS4wMTMsODkuNjg3LDE5LjAxM2g4MS45NjRIMzEyLjVoOTcuNjYyaDg1LjE0MmM5LjIyLDAsMTYuNjk1LTcuNDc1LDE2LjY5NS0xNi42OTVWMjE0Ljc1MSAgICBDNTEyLDIwNS41MjksNTA0LjUyNSwxOTguMDU1LDQ5NS4zMDUsMTk4LjA1NXogTTMzLjQxLDE1NS45NTNjMC40MDEtMTcuNTUxLDM4LjE1Ny00MS43OTYsOTkuNDY0LTQxLjc5NiAgICBjNjEuNjM2LDAsOTkuNDgzLDI0LjUxLDk5LjQ4Myw0Mi4wODFjMCwxNi41NjgtMjMuMTg4LDQxLjgxNy0xMDEuMDk5LDQxLjgxN2MtNjMuODEzLDAtOTcuODY3LTI0LjMzOS05Ny44NjctNDEuODE5ICAgIEMzMy4zOTEsMTU2LjE0MiwzMy40MDcsMTU2LjA0OCwzMy40MSwxNTUuOTUzeiBNNDc4LjYwOSwzOTcuODQzTDQ3OC42MDksMzk3Ljg0M2gtNTEuNzUxVjM1Ny4yOSAgICBjMC05LjIyLTcuNDc1LTE2LjY5NS0xNi42OTUtMTYuNjk1cy0xNi42OTUsNy40NzUtMTYuNjk1LDE2LjY5NXY0MC41NTNoLTY0LjI3MlYzNTcuMjljMC05LjIyLTcuNDc1LTE2LjY5NS0xNi42OTUtMTYuNjk1ICAgIHMtMTYuNjk1LDcuNDc1LTE2LjY5NSwxNi42OTV2NDAuNTUzaC02NC4yNzJWMzU3LjI5YzAtOS4yMi03LjQ3NS0xNi42OTUtMTYuNjk1LTE2LjY5NXMtMTYuNjk1LDcuNDc1LTE2LjY5NSwxNi42OTV2NDAuNTUzICAgIGgtNjUuMjY5Yy02MS42MzYsMC05OS40ODMtMjQuNTA5LTk5LjQ4My00Mi4wOFYyMDcuMTc0YzI3Ljk5MywxNy41OTYsNjYuMDQ4LDI0LjUzMyw5OS40ODMsMjQuNTMzICAgIGMwLDAsMzQ1LjcyOC0wLjI2MiwzNDUuNzM1LTAuMjYyVjM5Ny44NDN6IiBmaWxsPSIjM2Y5OWRiIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" class="logo" />
+            <a href="/Measure"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQ5NS4zMDUsMTk4LjA1NWMtMTIuNDIxLDAtMjI0Ljg1MSwwLTIyOS41NTcsMGMwLTQ2LjY1NSwwLjAxOS00Mi4zNTMtMC4wMjQtNDIuOTgyICAgIGMtMS4wNzktNDQuOTIxLTYzLjA4NS03NC4zMDgtMTMyLjg0OS03NC4zMDhDNjEuMjM5LDgwLjc2NiwwLDExMS4zODEsMCwxNTYuMjM3djE5OS41MjZjMCwyMi4zMTgsMTUuMzM3LDQyLjM2OCw0My4xODYsNTYuNDU4ICAgIGMyNC4yMzUsMTIuMjYxLDU2LjA4NiwxOS4wMTMsODkuNjg3LDE5LjAxM2g4MS45NjRIMzEyLjVoOTcuNjYyaDg1LjE0MmM5LjIyLDAsMTYuNjk1LTcuNDc1LDE2LjY5NS0xNi42OTVWMjE0Ljc1MSAgICBDNTEyLDIwNS41MjksNTA0LjUyNSwxOTguMDU1LDQ5NS4zMDUsMTk4LjA1NXogTTMzLjQxLDE1NS45NTNjMC40MDEtMTcuNTUxLDM4LjE1Ny00MS43OTYsOTkuNDY0LTQxLjc5NiAgICBjNjEuNjM2LDAsOTkuNDgzLDI0LjUxLDk5LjQ4Myw0Mi4wODFjMCwxNi41NjgtMjMuMTg4LDQxLjgxNy0xMDEuMDk5LDQxLjgxN2MtNjMuODEzLDAtOTcuODY3LTI0LjMzOS05Ny44NjctNDEuODE5ICAgIEMzMy4zOTEsMTU2LjE0MiwzMy40MDcsMTU2LjA0OCwzMy40MSwxNTUuOTUzeiBNNDc4LjYwOSwzOTcuODQzTDQ3OC42MDksMzk3Ljg0M2gtNTEuNzUxVjM1Ny4yOSAgICBjMC05LjIyLTcuNDc1LTE2LjY5NS0xNi42OTUtMTYuNjk1cy0xNi42OTUsNy40NzUtMTYuNjk1LDE2LjY5NXY0MC41NTNoLTY0LjI3MlYzNTcuMjljMC05LjIyLTcuNDc1LTE2LjY5NS0xNi42OTUtMTYuNjk1ICAgIHMtMTYuNjk1LDcuNDc1LTE2LjY5NSwxNi42OTV2NDAuNTUzaC02NC4yNzJWMzU3LjI5YzAtOS4yMi03LjQ3NS0xNi42OTUtMTYuNjk1LTE2LjY5NXMtMTYuNjk1LDcuNDc1LTE2LjY5NSwxNi42OTV2NDAuNTUzICAgIGgtNjUuMjY5Yy02MS42MzYsMC05OS40ODMtMjQuNTA5LTk5LjQ4My00Mi4wOFYyMDcuMTc0YzI3Ljk5MywxNy41OTYsNjYuMDQ4LDI0LjUzMyw5OS40ODMsMjQuNTMzICAgIGMwLDAsMzQ1LjcyOC0wLjI2MiwzNDUuNzM1LTAuMjYyVjM5Ny44NDN6IiBmaWxsPSIjM2Y5OWRiIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" class="logo" /></a>
             <p class="headline">Measure</p>
         </div>
 
-        <h2 class="headline">Select a Muscle Group</h2>
-        <hr />
+        
 
         <div class="col-lg-6">
+            <h2 class="headline">Select Area</h2>
+            <br />
 
             <table>
-                @foreach (var field in Model.Fields)
+                @foreach (var region in Model.Regions)
                 {
+                    var checkedRegion = region.Equals(Model.Region);
+
                     <tr>
-                        <td><a asp-controller="Measure"
-                            asp-action="List"
-                            asp-route-column="Model.Column"
-                            asp-route-value="@field.Value">@field.Value</a></td>
+                        <th>
+                            <a style="text-decoration:none;"
+                               asp-controller="Measure"
+                               asp-action="Menu"
+                               asp-route-value="@region">@region</a>
+                        </th>
                     </tr>
 
                 }
             </table>
 
-            <div class="radio">
-                <label><input type="radio" name="butt"> Butt</label>
-            </div>
-
-            <div class="radio">
-                <label><input type="radio" name="thighs"> Thighs</label>
-            </div>
-
-            <div class="radio">
-                <label><input type="radio" name="waist"> Waist</label>
-            </div>
-
-            <div class="radio">
-                <label><input type="radio" name="all"> All of the Above</label>
-            </div>
-
-            <br />
-            <a href="https://localhost:44357/Measure/Details" class="button" style="text-decoration:none">Submit</a>
-            <br />
-            <br />
-            <br />
         </div>
     </div>
 </body>
