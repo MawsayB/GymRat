@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NeedFiles.Data.Migrations
+namespace GymRat.Data.Migrations
 {
     public partial class AddMeasure : Migration
     {

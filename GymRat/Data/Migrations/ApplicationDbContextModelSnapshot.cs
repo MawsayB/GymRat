@@ -82,7 +82,7 @@ namespace NeedFiles.Data.Migrations
 
                     b.Property<double>("Size");
 
-                    b.Property<int>("UserID");
+                    b.Property<string>("UserID");
 
                     b.HasKey("ID");
 

@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace NeedFiles.Data.Migrations
+namespace GymRat.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180123025454_AddMeasure")]
-    partial class AddMeasure
+    [Migration("20180131123718_newMigration")]
+    partial class newMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,7 +83,7 @@ namespace NeedFiles.Data.Migrations
 
                     b.Property<double>("Size");
 
-                    b.Property<int>("UserID");
+                    b.Property<string>("UserID");
 
                     b.HasKey("ID");
 
