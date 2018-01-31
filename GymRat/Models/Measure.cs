@@ -16,6 +16,6 @@ namespace GymRat.Models
         //easy way to have consistent regions in table
         public string Region { get; set; }
         //to be able to record for individual users
-        public int UserID { get; set; }
+        public string UserID { get; set; }
     }
 }

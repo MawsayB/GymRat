@@ -7,9 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using GymRat.Data;
 using GymRat.Models;
 using GymRat.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace GymRat.Controllers
 {
+    [Authorize]
     public class MeasureController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -30,10 +33,37 @@ namespace GymRat.Controllers
             return View(measureViewModel);
         }
 
-        public IActionResult List()
+        public IActionResult List(MeasureMenuOptions region)
         {
+            // pass in the user selection from the Menu
+            // take the Area the user selects and show them their selection
 
-            return View();
+            // make a list of the measurements
+            IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
+
+            var regions = context
+                    .Measurements
+                    .Select(m => m.Region)
+                    .Distinct()
+                    .ToList();
+
+            if (region.Equals(MeasureMenuOptions.all))
+            {
+                // display all the entries to the user
+                // entries have a date and size and should be grouped into regions
+                var entries = context
+                .Measurements
+                // m is the RECORD/ENTRY
+                .OrderBy(m => m.Date);
+
+                return View("List", entries);
+            }
+
+            else
+            {
+                Console.WriteLine("Hello");
+                return View("List");
+            }
         }
 
         public IActionResult Menu()
@@ -58,8 +88,9 @@ namespace GymRat.Controllers
                 {
                     Date = addMeasureViewModel.Date,
                     Region = addMeasureViewModel.Region,
-                    Size = addMeasureViewModel.Size
-                };
+                    Size = addMeasureViewModel.Size,
+                    UserID = User.Identity.Name
+            };
                 context.Measurements.Add(newMeasure);
                 context.SaveChanges();
 
@@ -122,6 +153,7 @@ namespace GymRat.Controllers
             // push these variables to the view
             // show variable in the table in the View
             return View("Index", measurements);
+
         }
     }
 }
