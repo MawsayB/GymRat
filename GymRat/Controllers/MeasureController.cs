@@ -7,9 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using GymRat.Data;
 using GymRat.Models;
 using GymRat.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace GymRat.Controllers
 {
+    [Authorize]
     public class MeasureController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -85,8 +88,9 @@ namespace GymRat.Controllers
                 {
                     Date = addMeasureViewModel.Date,
                     Region = addMeasureViewModel.Region,
-                    Size = addMeasureViewModel.Size
-                };
+                    Size = addMeasureViewModel.Size,
+                    UserID = User.Identity.Name
+            };
                 context.Measurements.Add(newMeasure);
                 context.SaveChanges();
 
@@ -149,6 +153,7 @@ namespace GymRat.Controllers
             // push these variables to the view
             // show variable in the table in the View
             return View("Index", measurements);
+
         }
     }
 }
