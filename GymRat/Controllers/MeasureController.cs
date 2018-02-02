@@ -33,38 +33,44 @@ namespace GymRat.Controllers
             return View(measureViewModel);
         }
 
+
+        [HttpPost]
         public IActionResult List(MeasureMenuOptions region)
         {
-            // pass in the user selection from the Menu
             // take the Area the user selects and show them their selection
 
             // make a list of the measurements
-            IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
+            IList<MeasureListViewModel> measurements = new List<MeasureListViewModel>();
 
-            var regions = context
-                    .Measurements
-                    .Select(m => m.Region)
-                    .Distinct()
-                    .ToList();
+            // sort the table by region
+            var records = context
+                .Measurements
+                .Distinct()
+                .ToList();
 
+            // pass in the user selection from the Menu
             if (region.Equals(MeasureMenuOptions.all))
             {
                 // display all the entries to the user
                 // entries have a date and size and should be grouped into regions
-                var entries = context
-                .Measurements
-                // m is the RECORD/ENTRY
-                .OrderBy(m => m.Date);
+                {
+                    MeasureListViewModel newMeasureListViewModel = new MeasureListViewModel();
 
-                return View("List", entries);
+                    newMeasureListViewModel.Date = date;
+                    newMeasureListViewModel.Region = region;
+                    newMeasureListViewModel.Size = size;
+
+                    measurements.Add(newMeasureListViewModel);
+                }
             }
 
             else
             {
                 Console.WriteLine("Hello");
-                return View("List");
             }
-        }
+
+            return View("List");
+    }
 
         public IActionResult Menu()
         {
