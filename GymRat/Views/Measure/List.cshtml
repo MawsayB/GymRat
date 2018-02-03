@@ -77,12 +77,12 @@
                 <th>Region</th>
                 <th>Size</th>
             </tr>
-            @foreach (var record in Model)
+            @foreach (var measurement in Model)
             {
             <tr>
-                <td>@record.Date</td>
-                <td>@record.Region</td>
-                <td>@record.Size</td>
+                <td>@measurement.Date</td>
+                <td>@measurement.Region</td>
+                <td>@measurement.Size</td>
             </tr>
             }
         </table>
