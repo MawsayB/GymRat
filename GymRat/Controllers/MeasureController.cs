@@ -33,7 +33,7 @@ namespace GymRat.Controllers
             return View(measureViewModel);
         }
 
-        public IActionResult List(MeasureMenuOptions region)
+        public IActionResult List()
         {
             // take the Region the user selects in MeasureMenu and show a list of the selection
 
@@ -43,7 +43,10 @@ namespace GymRat.Controllers
                 // entries have a date and size and should be grouped into regions
 
             //TODO: sort by date, then by region
-                IList<Measure> Measurements = context.Measurements.ToList();
+                IList<Measure> Measurements = context
+                    .Measurements
+                    .OrderByDescending(m=>m.Date).ThenBy(m=>m.Region)
+                    .ToList();
                 return View("List", Measurements);
 
         }
