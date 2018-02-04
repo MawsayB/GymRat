@@ -33,37 +33,22 @@ namespace GymRat.Controllers
             return View(measureViewModel);
         }
 
-        public IActionResult List(MeasureMenuOptions region)
+        public IActionResult List()
         {
-            // pass in the user selection from the Menu
-            // take the Area the user selects and show them their selection
+            // take the Region the user selects in MeasureMenu and show a list of the selection
 
-            // make a list of the measurements
-            IList<MeasureViewModel> measurements = new List<MeasureViewModel>();
+            MeasureMenuViewModel measureMenuViewModel = new MeasureMenuViewModel();
 
-            var regions = context
-                    .Measurements
-                    .Select(m => m.Region)
-                    .Distinct()
-                    .ToList();
-
-            if (region.Equals(MeasureMenuOptions.all))
-            {
                 // display all the entries to the user
                 // entries have a date and size and should be grouped into regions
-                var entries = context
-                .Measurements
-                // m is the RECORD/ENTRY
-                .OrderBy(m => m.Date);
 
-                return View("List", entries);
-            }
+            //TODO: sort by date, then by region
+                IList<Measure> Measurements = context
+                    .Measurements
+                    .OrderByDescending(m=>m.Date).ThenBy(m=>m.Region)
+                    .ToList();
+                return View("List", Measurements);
 
-            else
-            {
-                Console.WriteLine("Hello");
-                return View("List");
-            }
         }
 
         public IActionResult Menu()
@@ -90,7 +75,7 @@ namespace GymRat.Controllers
                     Region = addMeasureViewModel.Region,
                     Size = addMeasureViewModel.Size,
                     UserID = User.Identity.Name
-            };
+                };
                 context.Measurements.Add(newMeasure);
                 context.SaveChanges();
 
