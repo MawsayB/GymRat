@@ -33,29 +33,20 @@ namespace GymRat.Controllers
             return View(measureViewModel);
         }
 
-
-        [HttpPost]
         public IActionResult List(MeasureMenuOptions region)
         {
             // take the Region the user selects in MeasureMenu and show a list of the selection
 
-            if (region.Equals(MeasureMenuOptions.all))
-            {
+            MeasureMenuViewModel measureMenuViewModel = new MeasureMenuViewModel();
+
                 // display all the entries to the user
                 // entries have a date and size and should be grouped into regions
-                {
-                    IList<Measure> Measurements = context.Measurements.ToList();
-                    return View(Measurements);
-                }
-            }
 
-            else
-            {
-                Console.WriteLine("Hello");
-            }
+            //TODO: sort by date, then by region
+                IList<Measure> Measurements = context.Measurements.ToList();
+                return View("List", Measurements);
 
-            return View("List");
-    }
+        }
 
         public IActionResult Menu()
         {
@@ -81,7 +72,7 @@ namespace GymRat.Controllers
                     Region = addMeasureViewModel.Region,
                     Size = addMeasureViewModel.Size,
                     UserID = User.Identity.Name
-            };
+                };
                 context.Measurements.Add(newMeasure);
                 context.SaveChanges();
 

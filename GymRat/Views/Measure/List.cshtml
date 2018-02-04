@@ -1,4 +1,5 @@
-﻿@model GymRat.ViewModels.MeasureListViewModel
+﻿@model IEnumerable<GymRat.Models.Measure>
+
 <style>
     tr td {
         font-size: 20px;
@@ -14,6 +15,10 @@
         font-size: 16px;
         font-weight: bold;
         text-decoration: none;
+    }
+
+    h3 {
+        color: #3F99DB
     }
 
     .logo {
@@ -69,7 +74,7 @@
         <br />
 
 
-        <p class="headline">Region</p>
+        <p class="headline">My Records</p>
 
         <table>
             <tr>
@@ -80,12 +85,17 @@
             @foreach (var measurement in Model)
             {
             <tr>
-                <td>@measurement.Date</td>
+                <td>@measurement.Date.ToShortDateString()</td>
                 <td>@measurement.Region</td>
                 <td>@measurement.Size</td>
             </tr>
             }
         </table>
     </div>
+
+    @if (Model.Count() == 0)
+    {
+        <h3>Add an Update</h3>
+    }
     <br />
 </body>

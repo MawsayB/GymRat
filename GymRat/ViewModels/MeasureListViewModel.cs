@@ -9,6 +9,6 @@ namespace GymRat.ViewModels
 {
     public class MeasureListViewModel : Measure
     {
-        public List<SelectListItem> Measurements { get; set; }
+
     }
 }
