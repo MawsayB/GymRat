@@ -17,10 +17,18 @@ namespace GymRat.ViewModels
         [Required]
         [Display(Name = "Muscle Group(s)")]
         public string Muscle { get; set; }
-        public List<MeasureRegionOptions> Muscles { get; set; }
+        public List<MuscleGroups> Muscles { get; set; }
 
-        //TODO: get the list of MuscleGroups
-        //public List<SelectListItem> MucleGroups { get; set; }
+        public AddWorkoutViewModel()
+        {
+            Muscles = new List<MuscleGroups>();
+
+            foreach (MuscleGroups enumVal in Enum.GetValues(typeof(MuscleGroups)))
+            {
+                Muscles.Add(enumVal);
+            }
+
+        }
 
     }
 }

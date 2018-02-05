@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GymRat.Models;
 using GymRat.Data;
+using GymRat.ViewModels;
 
 namespace GymRat.Controllers
 {
@@ -34,7 +35,8 @@ namespace GymRat.Controllers
 
         public IActionResult Create2()
         {
-            return View();
+            AddWorkoutViewModel addWorkoutViewModel = new AddWorkoutViewModel();
+            return View(addWorkoutViewModel);
         }
 
         public IActionResult Workout()
