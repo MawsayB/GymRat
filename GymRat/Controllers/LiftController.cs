@@ -32,6 +32,10 @@ namespace GymRat.Controllers
             return View();
         }
 
+        public IActionResult Create2()
+        {
+            return View();
+        }
 
         public IActionResult Workout()
         {
