@@ -14,7 +14,7 @@ namespace GymRat.Models
         shoulders,
         back,
         chest,
-        [Description("biceps & triceps")] bisTris,
-        [Description("legs & butt")] legsButt
+        bisTris,
+        legsButt
     }
 }
