@@ -16,7 +16,10 @@
         font-size: 16px;
         font-weight: bold;
         text-decoration: none;
-        margin-left: 500px;
+    }
+
+    .date {
+        padding-left: 45px;
     }
 
     .down {
@@ -24,6 +27,14 @@
         font-size: 18px;
         width: 250px;
         margin-bottom: 5px;
+    }
+
+    .field-name {
+        color: #3F99DB;
+    }
+
+    input[type="datetime"] {
+        text-align: center;
     }
 
     .lift {
@@ -37,6 +48,8 @@
         margin-top: 110px;
         margin-left: 30px;
     }
+
+
 </style>
 <body>
     <div class="col-lg-6">
@@ -49,48 +62,36 @@
         <form asp-controller="Lift" asp-action="Add" method="post">
 
             <div class="form-group">
-                <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name"></span>
+                <label asp-for="Date" class="field-name"></label>
+                <input asp-for="Date" size="20" value="01/01/2018" class="form-control date" />
+                <span asp-validation-for="Date"></span>
             </div>
 
-            <!-- TODO: add MuscleGroup name as Dropdown menu -->
             <div class="form-group">
-                <label asp-for="MuscleGroupID"></label>
-                <input asp-for="MuscleGroupID" class="form-control" />
-                <span asp-validation-for="MuscleGroupID"></span>
+                <strong><label asp-for="Region" class="region field-name"></label></strong>
+                <h5>(select one)</h5>
+                <div class="listRegions">
+                    @foreach (var muscle in Model.Muscles)
+                    {
+                        var checkedRegion = muscle.Equals(Model.Muscles;
+
+                        <p class="regionOptions">
+                            <input type="radio"
+                                   name="Region"
+                                   id="@muscle"
+                                   value="@muscle"
+                                   checked="checkedMuscle" />
+                            <label for="@muscle" class="muscleOptions">@muscle</label>
+                        </p>
+                    }
+                </div>
             </div>
-    </div>
 
-    <div class="col-lg-3 down">
 
-        <!-- TODO: add Activites Downdown menu -->
 
-        <div class="form-group">
-            <label asp-for="ActivityID"></label>
-            <input asp-for="ActivityID" class="form-control">
-            <span asp-validation-for="ActivityID"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ActivityID"></label>
-            <input asp-for="ActivityID" class="form-control">
-            <span asp-validation-for="ActivityID"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ActivityID"></label>
-            <input asp-for="ActivityID" class="form-control">
-            <span asp-validation-for="ActivityID"></span>
-        </div>
-
-    </div>
-
-    <div class="col-lg-3 down">
-
-    <div class="form-group">
-        <input type="submit" class="button" value="Save" />
-    </div>
-    </form>
+            <div class="form-group">
+                <input type="submit" class="button" value="Save" />
+            </div>
+        </form>
     </div>
 </body>
