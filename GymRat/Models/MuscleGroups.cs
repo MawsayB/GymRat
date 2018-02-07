@@ -11,10 +11,10 @@ namespace GymRat.Models
         // Enum representing the Body Region options of a Measurement
         // that can be viewed and searched.
 
-        shoulders,
+        arms,
         back,
         chest,
-        bisTris,
-        legsButt
+        legs,
+        shoulders
     }
 }
