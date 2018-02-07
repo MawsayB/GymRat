@@ -5,7 +5,7 @@
         width: 500px;
         font-size: 18px;
     }
-    
+
     .button {
         background-color: white;
         color: #3F99DB;
@@ -18,6 +18,34 @@
         text-decoration: none;
     }
 
+    .date {
+        padding-left: 45px;
+        margin-left: 110px;
+    }
+
+    .down {
+        margin-top: 20px;
+        font-size: 18px;
+        width: 250px;
+        margin-bottom: 5px;
+    }
+
+    .field-name {
+        color: #3F99DB;
+    }
+
+   .form-control {
+       width: 50%;
+   }
+
+    input[type="datetime"] {
+        text-align: center;
+    }
+
+    input[type="checkbox"]{
+        margin: 0px 0px 0 5px;
+        margin-left: 190px;
+    }
 
     .lift {
         font-size: 48px;
@@ -30,6 +58,13 @@
         margin-top: 110px;
         margin-left: 30px;
     }
+
+    .muscleOptions {
+        font-weight: normal;
+        text-align: left;
+    }
+
+
 </style>
 <body>
     <div class="col-lg-6">
@@ -37,13 +72,41 @@
         <p class="lift">Lift</p>
     </div>
 
-    <br />
     <div class="col-lg-6 across">
+        <br />
         <form asp-controller="Lift" asp-action="Add" method="post">
+
+            <div class="form-group">
+                <label asp-for="Date" class="field-name"></label>
+                <input asp-for="Date" size="20" value="01/01/2018" class="form-control date" />
+                <span asp-validation-for="Date"></span>
+            </div>
+
+            <div class="form-group">
+                <strong><label asp-for="Muscle" class="field-name"></label></strong>
+                <h5>(select one or more)</h5>
+                <div class="listMuscles">
+                    @foreach (var muscle in Model.Muscles)
+                    {
+                        var checkedRegion = muscle.Equals(Model.Muscles);
+
+                        <p class="muscleOptions">
+                            <input type="checkbox"
+                                   name="MuscleGroup"
+                                   id="@muscle"
+                                   value="@muscle"
+                                   />
+                            <label for="@muscle" class="muscleOptions">@muscle</label>
+                        </p>
+                    }
+                </div>
+            </div>
+
+
 
             <div class="form-group">
                 <input type="submit" class="button" value="Save" />
             </div>
         </form>
-</div>
+    </div>
 </body>

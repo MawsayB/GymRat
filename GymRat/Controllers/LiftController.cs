@@ -30,7 +30,8 @@ namespace GymRat.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            AddWorkoutViewModel addWorkoutViewModel = new AddWorkoutViewModel();
+            return View(addWorkoutViewModel);
         }
 
         public IActionResult Create2()
