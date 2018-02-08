@@ -20,7 +20,7 @@
 
     .date {
         padding-left: 45px;
-        margin-left: 110px;
+        margin-left: 120px;
     }
 
     .down {
@@ -84,7 +84,6 @@
 
             <div class="form-group">
                 <strong><label asp-for="Muscle" class="field-name"></label></strong>
-                <h5>(select one or more)</h5>
                 <div class="listMuscles">
                     @foreach (var muscle in Model.Muscles)
                     {
@@ -105,7 +104,8 @@
 
 
             <div class="form-group">
-                <input type="submit" class="button" value="Save" />
+                <input type="submit" class="button" value="Create Workout
+                       " />
             </div>
         </form>
     </div>

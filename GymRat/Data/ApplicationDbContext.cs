@@ -13,6 +13,10 @@ namespace GymRat.Data
         //Measurement table
         public DbSet<Measure> Measurements { get; set; }
 
+        public DbSet<Exercise> Exercises { get; set; }
+
+        public DbSet<ExerciseLabel> ExerciseLabels { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
