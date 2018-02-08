@@ -71,6 +71,32 @@ namespace GymRat.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("GymRat.Models.Exercise", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("LabelID");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Exercises");
+                });
+
+            modelBuilder.Entity("GymRat.Models.ExerciseLabel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Label");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ExerciseLabels");
+                });
+
             modelBuilder.Entity("GymRat.Models.Measure", b =>
                 {
                     b.Property<int>("ID")

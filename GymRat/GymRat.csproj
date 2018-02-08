@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\**" />
     <Compile Remove="Migrations\**" />
+    <Content Remove="Data\Migrations\**" />
     <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Data\Migrations\**" />
     <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Data\Migrations\**" />
     <None Remove="Migrations\**" />
   </ItemGroup>
 
@@ -21,8 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Migrations\20180131173755_newMigration.cs" />
-    <Compile Include="Migrations\20180131173755_newMigration.Designer.cs" />
+    <Compile Include="Migrations\20180208205745_initialMigration.cs" />
+    <Compile Include="Migrations\20180208205745_initialMigration.Designer.cs" />
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
   </ItemGroup>
 
@@ -42,10 +46,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>
