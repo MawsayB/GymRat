@@ -11,9 +11,10 @@ using System;
 namespace GymRat.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180212224010_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,26 +136,6 @@ namespace GymRat.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Measurements");
-                });
-
-            modelBuilder.Entity("GymRat.Models.Set", b =>
-                {
-                    b.Property<int>("SetID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ExerciseID");
-
-                    b.Property<int>("Rep");
-
-                    b.Property<int>("UserID");
-
-                    b.Property<float>("Weight");
-
-                    b.Property<int>("WorkoutID");
-
-                    b.HasKey("SetID");
-
-                    b.ToTable("Sets");
                 });
 
             modelBuilder.Entity("GymRat.Models.Workout", b =>

@@ -25,8 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Migrations\20180208205745_initialMigration.cs" />
-    <Compile Include="Migrations\20180208205745_initialMigration.Designer.cs" />
+    <Compile Include="Migrations\20180212224010_InitialCreate.cs" />
+    <Compile Include="Migrations\20180212224010_InitialCreate.Designer.cs" />
+    <Compile Include="Migrations\20180212224141_AddSet.cs" />
+    <Compile Include="Migrations\20180212224141_AddSet.Designer.cs" />
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
   </ItemGroup>
 

@@ -11,8 +11,8 @@ using System;
 namespace GymRat.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180208205745_initialMigration")]
-    partial class initialMigration
+    [Migration("20180212224141_AddSet")]
+    partial class AddSet
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,11 +77,21 @@ namespace GymRat.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("ExerciseTypeID");
+
                     b.Property<int>("LabelID");
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("Type");
+
+                    b.Property<int?>("WorkoutID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("ExerciseTypeID");
+
+                    b.HasIndex("WorkoutID");
 
                     b.ToTable("Exercises");
                 });
@@ -96,6 +106,18 @@ namespace GymRat.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("ExerciseLabels");
+                });
+
+            modelBuilder.Entity("GymRat.Models.ExerciseType", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ExerciseTypes");
                 });
 
             modelBuilder.Entity("GymRat.Models.Measure", b =>
@@ -114,6 +136,40 @@ namespace GymRat.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Measurements");
+                });
+
+            modelBuilder.Entity("GymRat.Models.Set", b =>
+                {
+                    b.Property<int>("SetID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ExerciseID");
+
+                    b.Property<int>("Rep");
+
+                    b.Property<int>("UserID");
+
+                    b.Property<float>("Weight");
+
+                    b.Property<int>("WorkoutID");
+
+                    b.HasKey("SetID");
+
+                    b.ToTable("Sets");
+                });
+
+            modelBuilder.Entity("GymRat.Models.Workout", b =>
+                {
+                    b.Property<int>("WorkoutID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("WorkoutID");
+
+                    b.ToTable("Workouts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -222,6 +278,17 @@ namespace GymRat.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("GymRat.Models.Exercise", b =>
+                {
+                    b.HasOne("GymRat.Models.ExerciseType")
+                        .WithMany("Exercise")
+                        .HasForeignKey("ExerciseTypeID");
+
+                    b.HasOne("GymRat.Models.Workout")
+                        .WithMany("Exercise")
+                        .HasForeignKey("WorkoutID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

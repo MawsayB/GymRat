@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GymRat.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,17 +62,16 @@ namespace GymRat.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Exercises",
+                name: "ExerciseTypes",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LabelID = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Exercises", x => x.ID);
+                    table.PrimaryKey("PK_ExerciseTypes", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -89,6 +88,20 @@ namespace GymRat.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Measurements", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Workouts",
+                columns: table => new
+                {
+                    WorkoutID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Workouts", x => x.WorkoutID);
                 });
 
             migrationBuilder.CreateTable(
@@ -197,6 +210,35 @@ namespace GymRat.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Exercises",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ExerciseTypeID = table.Column<int>(nullable: true),
+                    LabelID = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true),
+                    WorkoutID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exercises", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Exercises_ExerciseTypes_ExerciseTypeID",
+                        column: x => x.ExerciseTypeID,
+                        principalTable: "ExerciseTypes",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Exercises_Workouts_WorkoutID",
+                        column: x => x.WorkoutID,
+                        principalTable: "Workouts",
+                        principalColumn: "WorkoutID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -235,6 +277,16 @@ namespace GymRat.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Exercises_ExerciseTypeID",
+                table: "Exercises",
+                column: "ExerciseTypeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Exercises_WorkoutID",
+                table: "Exercises",
+                column: "WorkoutID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -268,6 +320,12 @@ namespace GymRat.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "ExerciseTypes");
+
+            migrationBuilder.DropTable(
+                name: "Workouts");
         }
     }
 }

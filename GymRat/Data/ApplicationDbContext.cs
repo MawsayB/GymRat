@@ -21,6 +21,9 @@ namespace GymRat.Data
 
         public DbSet<Workout> Workouts { get; set; }
 
+        public DbSet<Set> Sets { get; set; }
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
