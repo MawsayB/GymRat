@@ -17,6 +17,10 @@ namespace GymRat.Data
 
         public DbSet<ExerciseLabel> ExerciseLabels { get; set; }
 
+        public DbSet<ExerciseType> ExerciseTypes { get; set; }
+
+        public DbSet<Workout> Workouts { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
