@@ -1,0 +1,1 @@
+﻿INSERT INTO [dbo].[ExerciseLabel] ([ID], [Label]) VALUES ([1], ["arms"])
