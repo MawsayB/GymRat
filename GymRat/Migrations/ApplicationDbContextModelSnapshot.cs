@@ -142,6 +142,8 @@ namespace GymRat.Migrations
                     b.Property<int>("SetID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<int>("ExerciseID");
 
                     b.Property<int>("Rep");
@@ -161,8 +163,6 @@ namespace GymRat.Migrations
                 {
                     b.Property<int>("WorkoutID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Date");
 
                     b.Property<string>("Name");
 

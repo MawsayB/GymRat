@@ -11,8 +11,8 @@ using System;
 namespace GymRat.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180212224141_AddSet")]
-    partial class AddSet
+    [Migration("20180213214132_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -143,6 +143,8 @@ namespace GymRat.Migrations
                     b.Property<int>("SetID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<int>("ExerciseID");
 
                     b.Property<int>("Rep");
@@ -162,8 +164,6 @@ namespace GymRat.Migrations
                 {
                     b.Property<int>("WorkoutID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Date");
 
                     b.Property<string>("Name");
 
