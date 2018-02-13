@@ -1,3 +1,6 @@
-﻿SET IDENTITY_INSERT [dbo].[Exercises] ON
-INSERT INTO [dbo].[Exercises] ([ID], [LabelID], [Name]) VALUES (1, 5, N'Front Cable Raise')
-SET IDENTITY_INSERT [dbo].[Exercises] OFF
+﻿SET IDENTITY_INSERT dbo.Exercises ON
+
+insert into dbo.Exercises (ID, ExerciseTypeID, LabelID, Name, Type, WorkoutID) VALUES
+(1, 2, 5, 'Front Cable Raise', 2)
+
+SET IDENTITY_INSERT dbo.Exercises OFF

@@ -12,6 +12,7 @@ namespace GymRat.Models
         // each exercise is completed X many sets within a workout
 
         public int UserID { get; set; }
+        public DateTime Date { get; set; }
         public int WorkoutID { get; set; }
         public int ExerciseID { get; set; }
         public int SetID { get; set; }

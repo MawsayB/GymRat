@@ -13,7 +13,6 @@ namespace GymRat.Models
         // 3 are cardio exercises
         public int WorkoutID { get; set; }
         public string Name { get; set; }
-        public DateTime Date { get; set; }
         public IList<Exercise> Exercise { get; set; }
     }
 }
