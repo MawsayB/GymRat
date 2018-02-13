@@ -12,7 +12,7 @@ namespace GymRat.Models
         public string Name { get; set; }
         //LabelID tells which muscle group
         public int LabelID { get; set; }
-        //Type options: weightlifting OR cardio
+        //Type options: cardio OR weight lifting 
         public string Type { get; set; }
     }
 }
