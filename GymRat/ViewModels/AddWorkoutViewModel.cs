@@ -7,8 +7,24 @@ using GymRat.Models;
 
 namespace GymRat.ViewModels
 {
-    public class AddWorkoutViewModel : Exercise
+    public class AddWorkoutViewModel
     {
+
+        [Required]
+        [Display(Name = "Workout Name: ")]
+        public string Name { get; set; }
+
+        [Display(Name = "Short Description: ")]
+        public string Description { get; set; }
+
+        // add IEnumerable for Exercises
+
+        
+
+        public AddWorkoutViewModel()
+        {
+
+        }
 
     }
 }
