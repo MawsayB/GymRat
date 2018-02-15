@@ -1,5 +1,0 @@
-SET IDENTITY_INSERT dbo.Exercises ON
-
-ALTER TABLE dbo.Exercises DROP COLUMN LabelID;
-
-SET IDENTITY_INSERT dbo.Exercises OFF
