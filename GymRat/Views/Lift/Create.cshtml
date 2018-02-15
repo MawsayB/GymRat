@@ -48,7 +48,6 @@
 
     .exerciseList {
         text-align: left;
-        margin-bottom: 10px;
     }
 
     .field-name {
@@ -132,7 +131,9 @@
 
                 <div id="exerciseDropDown" class="exerciseDropDown">
                     <label class="unboldLabel">Exercise 1: </label>
-                    <select asp-for="ExerciseID" asp-items="Model.Exercises"></select>
+                    <div class="dropdown">
+                    <select asp-for="ExerciseID" asp-items="Model.Exercises" id="dropdown"></select>
+                    </div>
                 </div>
                 <br />
                     <input id="addExercise" class="button2" type="button" value="Add Another Exercise" />
@@ -149,12 +150,16 @@
 </body>
 
 <script>
+    //declare counter and populateMenu variables
     var counter = 1;
+    var populateMenu = $(".dropdown");
+
+    //upon click, increase the counter by 1
     $("#addExercise").click(function () {
         counter++;
         $()
-        $("#exerciseDropDown").append("<br/> Exercise " + counter +
-            ": <select></select> ");
+        //attach a label of Exercise X and the dropdown menu
+            $("#exerciseDropDown").append("<br/> Exercise " + counter + ": ").append(populateMenu.clone());
     });
 
 </script>
