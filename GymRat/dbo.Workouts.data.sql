@@ -1,0 +1,5 @@
+﻿SET IDENTITY_INSERT dbo.Workouts ON
+
+ALTER TABLE dbo.Workouts ADD UserID NVARCHAR (MAX);
+
+SET IDENTITY_INSERT dbo.Workouts OFF

@@ -14,6 +14,7 @@ namespace GymRat.Models
         public string UserID { get; set; }
         public int WorkoutID { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public IList<Exercise> Exercise { get; set; }
     }
 }
