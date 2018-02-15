@@ -91,7 +91,11 @@
 
     .unboldLabel {
         font-weight: normal;
-    }        
+    }
+
+    select {
+        border: 3px solid #3F99DB ;
+    }
 
     .workoutName {
         text-align: left;
@@ -148,8 +152,9 @@
     var counter = 1;
     $("#addExercise").click(function () {
         counter++;
+        $()
         $("#exerciseDropDown").append("<br/> Exercise " + counter +
-            ": <select asp-for='ExerciseID' asp-items='Model.Exercises'></select> ");
+            ": <select></select> ");
     });
 
 </script>
