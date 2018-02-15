@@ -31,7 +31,8 @@ namespace GymRat.Controllers
         public IActionResult Create()
         {
             // show a list of Exercise options
-            AddWorkoutViewModel addWorkoutViewModel = new AddWorkoutViewModel(context.Exercises.ToList());
+            AddWorkoutViewModel addWorkoutViewModel = new AddWorkoutViewModel(context.
+                Exercises.OrderBy(e => e.Name).ToList());
 
             return View(addWorkoutViewModel);
         }
