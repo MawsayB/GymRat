@@ -11,6 +11,7 @@ namespace GymRat.Models
         // a Workout consists of 9 exercises
         // 6 are weightlifting exercises
         // 3 are cardio exercises
+        public string UserID { get; set; }
         public int WorkoutID { get; set; }
         public string Name { get; set; }
         public IList<Exercise> Exercise { get; set; }
