@@ -1,5 +1,9 @@
 ﻿@model GymRat.ViewModels.AddWorkoutViewModel
 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
 <style>
     .across {
         width: 500px;
@@ -39,21 +43,23 @@
         color: #3F99DB;
     }
 
-   .form-control {
-       width: 50%;
-   }
+    .form-control {
+        width: 50%;
+        margin-left: 120px;
+    }
 
     input[type="datetime"] {
         text-align: center;
     }
 
-    input[type="checkbox"]{
+    input[type="checkbox"] {
         margin: 0px 0px 0 5px;
         margin-left: 190px;
     }
 
     label {
-        font-weight: normal;        
+        text-align: left;
+        font-weight: normal;
     }
 
     .lift {
@@ -75,7 +81,6 @@
     .workoutName {
         text-align: left;
     }
-
 </style>
 <body>
     <div class="col-lg-6">
@@ -101,15 +106,35 @@
                 <span asp-validation-for="Description"></span>
             </div>
 
+
             <div class="form-group exerciseList">
-                <p>Select Exercises:</p>
-                <label asp-for="ExerciseID"></label>
-                <select asp-for="ExerciseID" asp-items="Model.Exercises"></select>
+                <p>Select Exercise(s)</p>
+                <h5>in sequence of use</h5>
+
+                <div id="exerciseDropDown" class="exerciseDropDown">
+                    <label>Exercise 1: </label>
+                    <select asp-for="ExerciseID" asp-items="Model.Exercises"></select>
+                </div>
+                <br />
+                    <input id="addExercise" type="button" value="Add Another Exercise" />
+
             </div>
 
             <div class="form-group">
+
                 <input type="submit" class="button" value="Create Workout" />
             </div>
         </form>
     </div>
 </body>
+
+<script>
+    var counter = 1;
+    $("#addExercise").click(function () {
+        counter++;
+        $("#exerciseDropDown").append("<br/> Exercise " + counter +
+            ": <select asp-for='ExerciseID' asp-items='Model.Exercises'></select> ");
+
+    });
+
+</script>

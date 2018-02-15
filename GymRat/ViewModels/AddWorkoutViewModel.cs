@@ -12,10 +12,10 @@ namespace GymRat.ViewModels
     {
 
         [Required]
-        [Display(Name = "Workout Name: ")]
+        [Display(Name = "Workout Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Short Description: ")]
+        [Display(Name = "Short Description")]
         public string Description { get; set; }
 
         [Required]
@@ -25,6 +25,7 @@ namespace GymRat.ViewModels
         // add IEnumerable for Exercises
         public List<SelectListItem> Exercises { get; set; }
 
+        // makes a down-down of exercises
         public AddWorkoutViewModel(IEnumerable<Exercise> exercises)
         {
 
