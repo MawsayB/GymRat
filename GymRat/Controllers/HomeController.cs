@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GymRat.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GymRat.Controllers
 {
@@ -22,6 +23,7 @@ namespace GymRat.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Menu()
         {
             return View();
