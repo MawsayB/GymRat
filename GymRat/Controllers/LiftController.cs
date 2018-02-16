@@ -37,6 +37,17 @@ namespace GymRat.Controllers
             return View(addWorkoutViewModel);
         }
 
+        [HttpPost]
+        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View(addWorkoutViewModel);
+        }
+
         public IActionResult Workout()
         {
             // after Workout is complete
