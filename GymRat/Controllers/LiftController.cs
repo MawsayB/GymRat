@@ -42,6 +42,17 @@ namespace GymRat.Controllers
         {
             if (ModelState.IsValid)
             {
+                Workout newWorkout = new Workout
+                {
+                    Date = addMeasureViewModel.Date,
+                    Region = addMeasureViewModel.Region,
+                    Size = addMeasureViewModel.Size,
+                    UserID = User.Identity.Name
+                };
+                context.Workouts.Add(newWorkout);
+                context.SaveChanges();
+
+                return View("Confirmation");
 
             }
 
