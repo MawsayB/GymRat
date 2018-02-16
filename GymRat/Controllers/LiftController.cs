@@ -53,7 +53,6 @@ namespace GymRat.Controllers
                 foreach (int Id in exerciseIds)
                 {
                     Exercise newExercise = context.Exercises.Single(e => e.ID == addWorkoutViewModel.ExerciseID);
-                }
 
                     Workout newWorkout = new Workout
                     {
@@ -66,6 +65,7 @@ namespace GymRat.Controllers
                     context.SaveChanges();
 
                     return View("Confirmation");
+                }
 
             }
 
