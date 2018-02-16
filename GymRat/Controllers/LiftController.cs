@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using GymRat.Models;
 using GymRat.Data;
 using GymRat.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GymRat.Controllers
 {
+    [Authorize]
     public class LiftController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -19,6 +21,11 @@ namespace GymRat.Controllers
         }
 
         public IActionResult Menu()
+        {
+            return View();
+        }
+
+        public IActionResult CreateConfirmation()
         {
             return View();
         }
