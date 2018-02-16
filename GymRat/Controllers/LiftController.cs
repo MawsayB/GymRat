@@ -45,21 +45,27 @@ namespace GymRat.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel)
+        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel, int[] exerciseIds)
+
         {
             if (ModelState.IsValid)
             {
-                Workout newWorkout = new Workout
+                foreach (int Id in exerciseIds)
                 {
-                    Date = addMeasureViewModel.Date,
-                    Region = addMeasureViewModel.Region,
-                    Size = addMeasureViewModel.Size,
-                    UserID = User.Identity.Name
-                };
-                context.Workouts.Add(newWorkout);
-                context.SaveChanges();
+                    Exercise newExercise = context.Exercises.Single(e => e.ID == addWorkoutViewModel.ExerciseID);
+                }
 
-                return View("Confirmation");
+                    Workout newWorkout = new Workout
+                    {
+                        Name = addWorkoutViewModel.Name,
+                        Description = addWorkoutViewModel.Description,
+                        Exercise = newExercise,
+                        UserID = User.Identity.Name
+                    };
+                    context.Workouts.Add(newWorkout);
+                    context.SaveChanges();
+
+                    return View("Confirmation");
 
             }
 
