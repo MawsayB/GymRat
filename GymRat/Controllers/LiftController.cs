@@ -50,21 +50,30 @@ namespace GymRat.Controllers
         {
             if (ModelState.IsValid)
             {
+                //do I need this line of code below?
+                IList<AddWorkoutViewModel> exercises = new List<AddWorkoutViewModel>();
+
                 foreach (int Id in exerciseIds)
                 {
-                    Exercise newExercise = context.Exercises.Single(e => e.ID == addWorkoutViewModel.ExerciseID);
-
-                    Workout newWorkout = new Workout
+                    Exercise newExercise = context.Exercises.Single(e => e.ID ==
+                    addWorkoutViewModel.ExerciseID);
+                    //put the int into a list?
+         
                     {
-                        Name = addWorkoutViewModel.Name,
-                        Description = addWorkoutViewModel.Description,
-                        Exercise = newExercise,
-                        UserID = User.Identity.Name
-                    };
-                    context.Workouts.Add(newWorkout);
-                    context.SaveChanges();
+                        Workout newWorkout = new Workout
+                        {
+                            Name = addWorkoutViewModel.Name,
+                            Description = addWorkoutViewModel.Description,
+                            Exercises = new List<Exercise>(),
+                            UserID = User.Identity.Name
+                        };
+                        newWorkout.Exercises.Add(Exercise);
 
-                    return View("Confirmation");
+                        context.Workouts.Add(newWorkout);
+                        context.SaveChanges();
+
+                        return View("Confirmation");
+                    }
                 }
 
             }
