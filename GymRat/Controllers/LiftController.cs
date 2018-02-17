@@ -50,9 +50,7 @@ namespace GymRat.Controllers
         {
             if (ModelState.IsValid)
             {
-                //do I need this line of code below?
-                IList<AddWorkoutViewModel> exercises = new List<AddWorkoutViewModel>();
-
+      
                 foreach (int Id in exerciseIds)
                 {
                     Exercise newExercise = context.Exercises.Single(e => e.ID ==
@@ -67,18 +65,21 @@ namespace GymRat.Controllers
                             Exercises = new List<Exercise>(),
                             UserID = User.Identity.Name
                         };
-                        newWorkout.Exercises.Add(Exercise);
+
+                        newWorkout.Exercises.Add(newExercise);
 
                         context.Workouts.Add(newWorkout);
                         context.SaveChanges();
 
-                        return View("Confirmation");
+                        return View("CreateConfirmation");
                     }
                 }
 
             }
+            
+            // can this be written as a return View("Create")?
 
-            return View(addWorkoutViewModel);
+            return Redirect("localhost:44357/Lift/Create");
         }
 
         public IActionResult Workout()

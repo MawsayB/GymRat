@@ -78,6 +78,7 @@
     .lift {
         font-size: 48px;
         padding-top: 5px;
+        color: white;
     }
 
     .logo {
@@ -113,9 +114,7 @@
 
     <div class="col-lg-6 across">
         <br />
-        <form asp-controller="Lift" asp-action="Add" method="post">
-
-            <!-- TODO: Add field to NAME Workout -->
+        <form asp-controller="Lift" asp-action="Create" method="post">
 
             <div class="form-group">
                 <label asp-for="Name"></label>
