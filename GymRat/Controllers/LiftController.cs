@@ -27,6 +27,9 @@ namespace GymRat.Controllers
 
         public IActionResult CreateConfirmation()
         {
+
+            //TODO: push the name of the exercise through to the View
+
             return View();
         }
 
@@ -45,41 +48,36 @@ namespace GymRat.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel, int[] exerciseIds)
+        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel, int [] exerciseIDs)
 
         {
             if (ModelState.IsValid)
             {
-      
-                foreach (int Id in exerciseIds)
+
                 {
-                    Exercise newExercise = context.Exercises.Single(e => e.ID ==
-                    addWorkoutViewModel.ExerciseID);
-                    //put the int into a list?
-         
+                    foreach (int id in exerciseIDs)
                     {
                         Workout newWorkout = new Workout
                         {
                             Name = addWorkoutViewModel.Name,
                             Description = addWorkoutViewModel.Description,
-                            Exercises = new List<Exercise>(),
+                            ExerciseID = addWorkoutViewModel.ExerciseID,
                             UserID = User.Identity.Name
                         };
 
-                        newWorkout.Exercises.Add(newExercise);
-
                         context.Workouts.Add(newWorkout);
                         context.SaveChanges();
-
-                        return View("CreateConfirmation");
                     }
+
+                    return View("CreateConfirmation");
+
+
                 }
 
             }
-            
-            // can this be written as a return View("Create")?
 
-            return Redirect("localhost:44357/Lift/Create");
+            // can this be written as a return View("Create")?
+            return View("localhost:44357/Lift/Create");
         }
 
         public IActionResult Workout()
