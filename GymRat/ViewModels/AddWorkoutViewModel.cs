@@ -15,8 +15,8 @@ namespace GymRat.ViewModels
         [Display(Name = "Workout Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Short Description")]
-        public string Description { get; set; }
+        [Display(Name = "Scheduled Date")]
+        public DateTime Date { get; set; }
 
         [Required]
         [Display(Name = "Select Exercises: ")]

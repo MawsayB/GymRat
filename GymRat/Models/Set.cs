@@ -16,7 +16,8 @@ namespace GymRat.Models
         public int WorkoutID { get; set; }
         public int ExerciseID { get; set; }
         public int SetID { get; set; }
-        public int Rep { get; set; }
+        public int ExpectedReps { get; set; }
+        public int ActualReps { get; set; }
         public float Weight { get; set; }
 
     }
