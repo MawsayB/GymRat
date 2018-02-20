@@ -12,6 +12,11 @@
         font-weight: bold;
         text-decoration: none;
     }
+
+    .date {
+        font-size: 18px;
+        font-weight: normal;
+    }
     
     .lift {
         font-size: 48px;
@@ -34,6 +39,23 @@
         margin-bottom: 30px;
     }
 
+    table {
+        width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 4px solid #3F99DB;
+    }
+
+    table th {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .workout-name {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
 </style>
 <body>
     <div class="col-lg-6">
@@ -41,25 +63,26 @@
         <p class="lift">Lift</p>
     </div>
 
+    @* TODO: make URL link to WorkoutID *@
     <div class="col-lg-6 across">
         <br />
-        <form asp-controller="Lift" asp-action="Select" method="post">
+        
+                <table>
+                    <tr>
+                        <th>DAY</th>
+                    </tr>
 
-            <div class="form-group">
-                <p class="headline">Select Workout</p>
+                    <tr>
+                        <th class="date">MM/DD</th>
+                    </tr>
 
-                <div id="exerciseDropDown" class="exerciseDropDown">
-                    <div class="dropdown">
-                        <select asp-for="WorkoutID" asp-items="Model.Workouts" id="dropdown" name="workoutId"></select>
-                    </div>
-                </div>
-            </div>
+                    <tr>
+                        <td class="workout-name">Workout Name</td>
+                    </tr>
 
-            <div class="form-group">
+                </table>
+
                 <br />
 
-                <input type="submit" class="button" value="Submit" />
             </div>
-        </form>
-    </div>
 </body>
