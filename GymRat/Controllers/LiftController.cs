@@ -33,6 +33,11 @@ namespace GymRat.Controllers
             return View();
         }
 
+        public IActionResult OnTheFly()
+        {
+            return View();
+        }
+
         public IActionResult Select()
         {
             SelectWorkoutViewModel selectWorkoutViewModel = new SelectWorkoutViewModel();
