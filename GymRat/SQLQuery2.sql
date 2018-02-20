@@ -1,0 +1,6 @@
+SET IDENTITY_INSERT dbo.Workouts ON
+
+ALTER TABLE dbo.Workouts DROP COLUMN Description
+
+
+SET IDENTITY_INSERT dbo.Workouts OFF
