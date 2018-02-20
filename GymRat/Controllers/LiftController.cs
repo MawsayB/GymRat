@@ -48,32 +48,35 @@ namespace GymRat.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel, int [] exerciseIDs)
+        // add the drop down menu selection here
+        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel, int[] exerciseIds)
 
         {
             if (ModelState.IsValid)
             {
-
-                {
-                    foreach (int id in exerciseIDs)
                     {
-                        Workout newWorkout = new Workout
+
+                       foreach (int exerciseId in exerciseIds)
+
+                    // for each drop-down menu selection
+
+                    {
+                        //make a Workout
+                        Workout newWorkoutEntry = new Workout
                         {
                             Name = addWorkoutViewModel.Name,
                             Description = addWorkoutViewModel.Description,
-                            ExerciseID = addWorkoutViewModel.ExerciseID,
-                            UserID = User.Identity.Name
+                            UserID = User.Identity.Name,
+                            //ExerciseID = the Value of the Dropdown Menu Selection
                         };
 
-                        context.Workouts.Add(newWorkout);
+                        //save the Workout to the Db
+                        context.Workouts.Add(newWorkoutEntry);
                         context.SaveChanges();
                     }
 
-                    return View("CreateConfirmation");
-
-
                 }
-
+                return View("CreateConfirmation");
             }
 
             // can this be written as a return View("Create")?

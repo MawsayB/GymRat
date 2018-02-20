@@ -134,9 +134,9 @@
                 <h5>(in sequence of use)</h5>
 
                 <div id="exerciseDropDown" class="exerciseDropDown">
-                    <label class="unboldLabel">Exercise 1: </label>
+                    <label for="ExerciseID" class="unboldLabel">Exercise 1: </label>
                     <div class="dropdown">
-                    <select asp-for="ExerciseID" asp-items="Model.Exercises" id="dropdown"></select>
+                    <select asp-for="ExerciseID" asp-items="Model.Exercises" id="dropdown" name="exerciseIds"></select>
                     </div>
                 </div>
                 <br />
