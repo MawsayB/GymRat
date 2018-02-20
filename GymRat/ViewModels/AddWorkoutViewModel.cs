@@ -16,11 +16,21 @@ namespace GymRat.ViewModels
         public string Name { get; set; }
 
         [Display(Name = "Scheduled Date")]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
         [Required]
         [Display(Name = "Select Exercises: ")]
         public int ExerciseID { get; set; }
+
+        [Required]
+        [Display(Name = "# of Rounds: ")]
+        public int ExpectedSets { get; set; }
+
+        [Required]
+        [Display(Name = "# of Reps: ")]
+        public int ExpectedReps { get; set; }
+
 
         // add IEnumerable for Exercises
         public List<SelectListItem> Exercises { get; set; }

@@ -36,7 +36,7 @@
 
     .date {
         padding-left: 45px;
-        margin-left: 120px;
+        width: 250px;
     }
 
     .down {
@@ -59,15 +59,11 @@
     }
 
     .form-control {
+        font-size: 20px;
     }
 
     input[type="datetime"] {
         text-align: center;
-    }
-
-    input[type="checkbox"] {
-        margin: 0px 0px 0 5px;
-        margin-left: 190px;
     }
 
     label {
@@ -88,6 +84,11 @@
         margin-left: 30px;
     }
 
+    .num-box {
+        width: 100px;
+        margin-left: 60px;
+    }
+
     p {
         font-weight: bold;
         color: #3F99DB;
@@ -98,8 +99,28 @@
         color: white;
     }
 
+    .same-line1{
+        float: left;
+        margin-top: 10px;
+        margin-left: 40px;
+    }
+
+    .same-line1 label {
+        margin-left: 55px;
+    }
+
+    .same-line2 {
+        padding-right: 20px;
+        float: left;
+        margin-top: 10px;
+    }
+
+    .same-line2 label {
+        margin-left: 55px;
+    }
+
     select {
-        border: 3px solid #3F99DB ;
+        border: 3px solid #3F99DB;
     }
 
     .workoutName {
@@ -123,8 +144,8 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Date"></label>
-                <input class="form-control" asp-for="Date" />
+                <label asp-for="Date" class="field-name"></label>
+                <input asp-for="Date" size="20" value="01/01/2018" class="form-control date" />
                 <span asp-validation-for="Date"></span>
             </div>
 
@@ -135,11 +156,25 @@
                 <div id="exerciseDropDown" class="exerciseDropDown">
                     <label for="ExerciseID" class="unboldLabel">Exercise 1: </label>
                     <div class="dropdown">
-                    <select asp-for="ExerciseID" asp-items="Model.Exercises" id="dropdown" name="exerciseIds"></select>
+                        <select asp-for="ExerciseID" asp-items="Model.Exercises" id="dropdown" name="exerciseIds"></select>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group same-line1">
+                        <label asp-for="ExpectedSets"></label>
+                        <input class="form-control num-box" asp-for="ExpectedSets" />
+                        <span asp-validation-for="ExpectedSets"></span>
+                    </div>
+
+                    <div class="form-group same-line2">
+                        <label asp-for="ExpectedReps"></label>
+                        <input class="form-control num-box" asp-for="ExpectedReps" />
+                        <span asp-validation-for="ExpectedReps"></span>
                     </div>
                 </div>
                 <br />
-                    <input id="addExercise" class="button2" type="button" value="Add Another Exercise" />
+                <input id="addExercise" class="button2" type="button" value="Add Another Exercise" />
 
             </div>
 
@@ -162,7 +197,7 @@
         counter++;
         $()
         //attach a label of Exercise X and the dropdown menu
-            $("#exerciseDropDown").append("<br/> Exercise " + counter + ": ").append(populateMenu.clone());
+        $("#exerciseDropDown").append("<br/> Exercise " + counter + ": ").append(populateMenu.clone());
     });
 
 </script>

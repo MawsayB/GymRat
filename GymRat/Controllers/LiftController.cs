@@ -71,7 +71,6 @@ namespace GymRat.Controllers
                         Workout newWorkoutEntry = new Workout
                         {
                             Name = addWorkoutViewModel.Name,
-                            Description = addWorkoutViewModel.Description,
                             UserID = User.Identity.Name,
                             //ExerciseID = the Value of the Dropdown Menu Selection
                         };
