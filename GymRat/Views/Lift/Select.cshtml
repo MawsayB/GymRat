@@ -1,6 +1,18 @@
 ﻿@model GymRat.ViewModels.SelectWorkoutViewModel
 
 <style>
+    .button {
+        background-color: white;
+        color: #3F99DB;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Century Gothic';
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
     .lift {
         font-size: 48px;
         padding-top: 5px;
@@ -13,6 +25,15 @@
         margin-left: 30px;
         margin-top: 50px;
     }
+
+    p {
+        font-weight: bold;
+        color: #3F99DB;
+        font-size: 18px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
 </style>
 <body>
     <div class="col-lg-6">
@@ -20,13 +41,25 @@
         <p class="lift">Lift</p>
     </div>
 
-    <div class="col-lg-6 message">
+    <div class="col-lg-6 across">
+        <br />
+        <form asp-controller="Lift" asp-action="Select" method="post">
 
-        <div id="exerciseDropDown" class="exerciseDropDown">
-            <div class="dropdown">
-                <select asp-for="WorkoutID" asp-items="Model.Workouts" id="dropdown"></select>
+            <div class="form-group">
+                <p>Select Workout</p>
+
+                <div id="exerciseDropDown" class="exerciseDropDown">
+                    <div class="dropdown">
+                        <select asp-for="WorkoutID" asp-items="Model.Workouts" id="dropdown" name="workoutId"></select>
+                    </div>
+                </div>
             </div>
-        </div>
 
+            <div class="form-group">
+                <br />
+
+                <input type="submit" class="button" value="Submit" />
+            </div>
+        </form>
     </div>
 </body>
