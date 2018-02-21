@@ -12,5 +12,7 @@ namespace GymRat.Models
         public string Name { get; set; }
         //Type options: cardio OR weight lifting 
         public string Type { get; set; }
+        public int ExpectedSets { get; set; }
+        public int ExpectedReps { get; set; }
     }
 }

@@ -74,8 +74,6 @@ namespace GymRat.Controllers
                             UserID = User.Identity.Name,
                             Date = addWorkoutViewModel.Date,
                             SelectedExercise = addWorkoutViewModel.SelectedExercise,
-                            ExpectedSets = addWorkoutViewModel.ExpectedSets,
-                            ExpectedReps = addWorkoutViewModel.ExpectedReps
                         };
 
                         //save the Workout to the Db
