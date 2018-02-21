@@ -31,6 +31,7 @@ namespace GymRat.ViewModels
         [Display(Name = "# of Reps: ")]
         public int ExpectedReps { get; set; }
 
+        public int SelectedExercise { get; set; }
 
         // add IEnumerable for Exercises
         public List<SelectListItem> Exercises { get; set; }

@@ -55,14 +55,14 @@ namespace GymRat.Controllers
 
         [HttpPost]
         // add the drop down menu selection here
-        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel, int[] exerciseIds)
+        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel, int[] ddlExercise)
 
         {
             if (ModelState.IsValid)
             {
-                    {
+                {
 
-                       foreach (int exerciseId in exerciseIds)
+                    foreach (int userSelection in ddlExercise)
 
                     // for each drop-down menu selection
 
@@ -72,7 +72,10 @@ namespace GymRat.Controllers
                         {
                             Name = addWorkoutViewModel.Name,
                             UserID = User.Identity.Name,
-                            //ExerciseID = the Value of the Dropdown Menu Selection
+                            Date = addWorkoutViewModel.Date,
+                            ExerciseID = addWorkoutViewModel.SelectedExercise,
+                            ExpectedSets = addWorkoutViewModel.ExpectedSets,
+                            //ExpectedReps = addWorkoutViewModel.ExpectedReps
                         };
 
                         //save the Workout to the Db
