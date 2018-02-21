@@ -63,10 +63,6 @@
         font-size: 20px;
     }
 
-    input[type="datetime"] {
-        
-    }
-
     label {
         text-align: left;
         color: #3F99DB;
@@ -98,26 +94,6 @@
     .unboldLabel {
         font-weight: normal;
         color: white;
-    }
-
-    .same-line1{
-        float: left;
-        margin-top: 10px;
-        margin-left: 40px;
-    }
-
-    .same-line1 label {
-        margin-left: 55px;
-    }
-
-    .same-line2 {
-        padding-right: 20px;
-        float: left;
-        margin-top: 10px;
-    }
-
-    .same-line2 label {
-        margin-left: 55px;
     }
 
     select {
@@ -159,20 +135,6 @@
                     <div class="dropdown">
                         <select asp-for="SelectedExercise" asp-items="Model.Exercises" value="SelectedExercise" id="SelectedExercise" name="SelectedExercise"></select>
 
-
-                        <div>
-                            <div class="form-group same-line1">
-                                <label asp-for="ExpectedSets"></label>
-                                <input class="form-control num-box" asp-for="ExpectedSets" />
-                                <span asp-validation-for="ExpectedSets"></span>
-                            </div>
-
-                            <div class="form-group same-line2">
-                                <label asp-for="ExpectedReps"></label>
-                                <input class="form-control num-box" asp-for="ExpectedReps" />
-                                <span asp-validation-for="ExpectedReps"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <br />
@@ -199,7 +161,7 @@
         counter++;
         $()
         //attach a label of Exercise X and the dropdown menu
-        $("#exerciseDropDown").append("<br/><br/><br/><br/> Exercise " + counter + ": ").append(populateMenu.clone());
+        $("#exerciseDropDown").append("<br/> Exercise " + counter + ": ").append(populateMenu.clone());
     });
 
 </script>
