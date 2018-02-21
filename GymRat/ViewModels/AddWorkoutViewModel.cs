@@ -23,14 +23,6 @@ namespace GymRat.ViewModels
         [Display(Name = "Select Exercises: ")]
         public int ExerciseID { get; set; }
 
-        [Required]
-        [Display(Name = "# of Rounds: ")]
-        public int ExpectedSets { get; set; }
-
-        [Required]
-        [Display(Name = "# of Reps: ")]
-        public int ExpectedReps { get; set; }
-
         public int SelectedExercise { get; set; }
 
         // add IEnumerable for Exercises

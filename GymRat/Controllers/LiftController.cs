@@ -44,6 +44,12 @@ namespace GymRat.Controllers
             return View(selectWorkoutViewModel);
         }
 
+        [HttpPost]
+        public IActionResult Select(SelectWorkoutViewModel selectWorkoutViewModel)
+        {
+            return View("Workout");
+        }
+
         public IActionResult Create()
         {
             // show a list of Exercise options
@@ -86,7 +92,7 @@ namespace GymRat.Controllers
             }
 
             // can this be written as a return View("Create")?
-            return View("localhost:44357/Lift/Create");
+            return View("Create");
         }
 
         public IActionResult Workout()
