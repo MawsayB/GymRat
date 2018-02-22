@@ -27,9 +27,6 @@ namespace GymRat.Controllers
 
         public IActionResult CreateConfirmation()
         {
-
-            //TODO: push the name of the exercise through to the View
-
             return View();
         }
 
@@ -40,7 +37,9 @@ namespace GymRat.Controllers
 
         public IActionResult Select()
         {
-            SelectWorkoutViewModel selectWorkoutViewModel = new SelectWorkoutViewModel();
+            // show a list of Workout options
+            SelectWorkoutViewModel selectWorkoutViewModel = new SelectWorkoutViewModel(context.
+                Workouts.OrderBy(w => w.Date).ToList());
             return View(selectWorkoutViewModel);
         }
 

@@ -67,6 +67,13 @@
     <div class="col-lg-6 across">
         <br />
         
+        <div>
+            <label for="SelectWorkout">Select Workout</label>
+            <div class="dropdown">
+                <select asp-for="WorkoutID" asp-items="Model.Workouts" value="WorkoutID" id="WorkoutID" name="WorkoutID"></select>
+
+            </div>
+        </div>
                 <table>
                     <tr>
                         <th>DAY</th>
