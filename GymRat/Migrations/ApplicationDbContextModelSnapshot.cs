@@ -71,6 +71,40 @@ namespace GymRat.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("GymRat.Models.Exercise", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("ExerciseTypeID");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Type");
+
+                    b.Property<int?>("WorkoutID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ExerciseTypeID");
+
+                    b.HasIndex("WorkoutID");
+
+                    b.ToTable("Exercises");
+                });
+
+            modelBuilder.Entity("GymRat.Models.ExerciseType", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ExerciseTypes");
+                });
+
             modelBuilder.Entity("GymRat.Models.Measure", b =>
                 {
                     b.Property<int>("ID")
@@ -87,6 +121,46 @@ namespace GymRat.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Measurements");
+                });
+
+            modelBuilder.Entity("GymRat.Models.Set", b =>
+                {
+                    b.Property<int>("SetID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ActualReps");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("ExerciseID");
+
+                    b.Property<int>("UserID");
+
+                    b.Property<float>("Weight");
+
+                    b.Property<int>("WorkoutID");
+
+                    b.HasKey("SetID");
+
+                    b.ToTable("Sets");
+                });
+
+            modelBuilder.Entity("GymRat.Models.Workout", b =>
+                {
+                    b.Property<int>("WorkoutID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("SelectedExercise");
+
+                    b.Property<string>("UserID");
+
+                    b.HasKey("WorkoutID");
+
+                    b.ToTable("Workouts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -195,6 +269,17 @@ namespace GymRat.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("GymRat.Models.Exercise", b =>
+                {
+                    b.HasOne("GymRat.Models.ExerciseType")
+                        .WithMany("Exercise")
+                        .HasForeignKey("ExerciseTypeID");
+
+                    b.HasOne("GymRat.Models.Workout")
+                        .WithMany("Exercises")
+                        .HasForeignKey("WorkoutID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

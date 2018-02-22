@@ -1,11 +1,15 @@
 ﻿@model GymRat.ViewModels.AddWorkoutViewModel
 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
 <style>
     .across {
         width: 500px;
         font-size: 18px;
     }
-    
+
     .button {
         background-color: white;
         color: #3F99DB;
@@ -16,7 +20,24 @@
         font-size: 16px;
         font-weight: bold;
         text-decoration: none;
-        margin-left: 500px;
+    }
+
+    .button2 {
+        background-color: white;
+        color: #3F99DB;
+        padding: 5px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Century Gothic';
+        font-size: 12px;
+        text-decoration: none;
+        margin-left: 160px;
+    }
+
+    .date {
+        width: 250px;
+        margin-left: 110px;
+        padding-left: 52px;
     }
 
     .down {
@@ -26,9 +47,32 @@
         margin-bottom: 5px;
     }
 
+    .dropdown {
+        font-size: 16px;
+    }
+
+    .exerciseList {
+        text-align: left;
+    }
+
+    .field-name {
+        color: #3F99DB;
+    }
+
+    .form-control {
+        font-size: 20px;
+    }
+
+    label {
+        text-align: left;
+        color: #3F99DB;
+    }
+
     .lift {
         font-size: 48px;
         padding-top: 5px;
+        color: white;
+        font-weight: normal;
     }
 
     .logo {
@@ -37,82 +81,87 @@
         margin-top: 110px;
         margin-left: 30px;
     }
+
+    .num-box {
+        width: 100px;
+        margin-left: 60px;
+    }
+
+    p {
+        font-weight: bold;
+        color: #3F99DB;
+    }
+
+    .unboldLabel {
+        font-weight: normal;
+        color: white;
+    }
+
+    select {
+        border: 3px solid #3F99DB;
+    }
+
+    .workoutName {
+        text-align: left;
+    }
 </style>
 <body>
     <div class="col-lg-6">
-        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTI1Ni4zODYsMzQxLjUyaC01Ny40OTljLTI5LjQ3LDAtNTMuNDQ1LDIzLjk3Ni01My40NDUsNTMuNDQ1djQwLjA3YzAsOS4xNzEsNy40MzUsMTYuNjA2LDE2LjYwNiwxNi42MDZoMTMxLjE3OCAgICBjOS4xNzEsMCwxNi42MDYtNy40MzUsMTYuNjA2LTE2LjYwNnYtNDAuMDdDMzA5LjgzMSwzNjUuNDk2LDI4NS44NTYsMzQxLjUyLDI1Ni4zODYsMzQxLjUyeiBNMTc4LjY1Miw0MTguNDMxdi0yMy40NjQgICAgYzAtMTEuMTU3LDkuMDc3LTIwLjIzNCwyMC4yMzQtMjAuMjM0aDU3LjQ5OWMxMS4xNTcsMCwyMC4yMzQsOS4wNzcsMjAuMjM0LDIwLjIzNHYyMy40NjRIMTc4LjY1MnoiIGZpbGw9IiMzZjk5ZGIiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NjkuOTc2LDIyMC45NTdsLTQ5LjQzMi00Ny44MzRjLTEwLjM3MS0xMC4wMzQtMjYuNjc4LTkuODQ2LTM2Ljg2NCwwLjAxNmwxMy4xNTYtMTI4LjI5OCAgICBjMS40NzgtMTQuNDE0LTguNjIyLTI3LjE0NC0yMi45OTItMjguOTg0Yy02Mi4zNTYtNy45OC02Mi43NzItOS4yNjEtNzEuNjc1LTUuMjU2QzI5Ny4zMjksNC4xNjgsMjg5LjYzNCwwLDI4MC45ODIsMGgtNTcuNzE4ICAgIGMtOC44ODksMC0xNi43NjksNC4zOTktMjEuNTc3LDExLjEzNmMtNC45MjctMi43MTktMTAuNjUtMy44NDYtMTYuNDU5LTMuMDE3bC01Ny4xNCw4LjE1MyAgICBjLTEzLjMyMSwxLjkwMi0yMi45MzIsMTMuNDYzLTIyLjc1LDI2LjU3OWMtMy4wNTktMC4wNzEtNi4xNDYsMC4zODctOS4wNzksMS4zNzNMNTIuMDM4LDU5LjA3ICAgIGMtMTMuODgxLDQuNjYtMjEuMzQ2LDE5LjY2Ni0xNi42ODMsMzMuNTQ4bDIyLjk0Myw2OC4zNGMzLjIyNSw5LjYwNiw1LjQ4OCwxOS41NzgsNi43MjUsMjkuNjM5bDMwLjE4NywyNDUuNDU1djMzLjQ1OSAgICBjMCwyMy40MjksMTkuMDYsNDIuNDg5LDQyLjQ4OSw0Mi40ODloMTc0LjA2MmMyMy40MjcsMCw0Mi40ODgtMTkuMDYsNDIuNDg4LTQyLjQ4OXYtMzIuMjFsMTIuNjA1LTQ1LjMxNyAgICBjNi43My0yNC4xOTUsMTkuNTE4LTQ2LjUyNCwzNi45ODItNjQuNTc1bDY2Ljc1OS02OC45OTFDNDgwLjc1LDI0Ny45MjEsNDgwLjQ3NCwyMzEuMTE3LDQ2OS45NzYsMjIwLjk1N3ogTTM3OS45NjYsMzA0LjMxNiAgICBjLTIxLjMwMywyMi4wMTgtMzYuOTAzLDQ5LjI1NS00NS4xMTEsNzguNzY5Yy0xNC4zNTQsNTEuNjA4LTEzLjgxOSw0OC44MjItMTMuODE5LDUxLjk1MXYzNC40NzZjMCw1LjExNi00LjE2MSw5LjI3Ny05LjI3Niw5LjI3NyAgICBIMTM3LjY5N2MtNS4xMTYsMC05LjI3Ny00LjE2MS05LjI3Ny05LjI3N3YtMzQuNDc2YzAtMS41MywxLjY1NiwxMi40NDktMzAuNDM1LTI0OC40OTJjLTEuNTA5LTEyLjI3NC00LjI3LTI0LjQzOC04LjIwNC0zNi4xNTUgICAgTDY4Ljk3Niw4OC40MTdsMzEuNDg1LTEwLjU3bDE3LjI3Miw1MS40NDVjMi43MzIsOC4xMzksMTEuMjEzLDEyLjg1MywxOS41NzQsMTAuODc0YzguMzU0LTEuOTgyLDEzLjgyLTEwLjAwNSwxMi42MDgtMTguNTA0ICAgIGwtMTAuNDgzLTczLjQ1OWw0My44MzktNi4yNTVsMTMuNjY3LDk1Ljc3NWMxLjIzMiw4LjYyNyw4LjkxMiwxNC44NTQsMTcuNjE1LDE0LjIxOGM4LjY5My0wLjYxNywxNS40My03Ljg0OSwxNS40My0xNi41NjRWMzMuMjEyICAgIGg0NC4yODJ2OTYuNDY5YzAsOC43NjEsNi44MDYsMTYuMDE2LDE1LjU1LDE2LjU3M2M4Ljc0OSwwLjU2OSwxNi40MTUtNS43NzMsMTcuNTI4LTE0LjQ2NGwxMS40NTUtODkuNDkzbDQ0LjMzMiw1LjY3NCAgICBsLTE3LjM3NiwxNjkuNDZjLTEuNjAyLDE1LjYxNSwxNy41MDcsMjQuNTU2LDI4LjQ1MiwxMy4yNDJsMjguMDctMjkuMDA5bDM5Ljc3OSwzOC40OTJMMzc5Ljk2NiwzMDQuMzE2eiIgZmlsbD0iIzNmOTlkYiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" class="logo" />
-        <p class="lift">Lift</p>
-    </div>
+        <a href="/Lift/Menu"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTI1Ni4zODYsMzQxLjUyaC01Ny40OTljLTI5LjQ3LDAtNTMuNDQ1LDIzLjk3Ni01My40NDUsNTMuNDQ1djQwLjA3YzAsOS4xNzEsNy40MzUsMTYuNjA2LDE2LjYwNiwxNi42MDZoMTMxLjE3OCAgICBjOS4xNzEsMCwxNi42MDYtNy40MzUsMTYuNjA2LTE2LjYwNnYtNDAuMDdDMzA5LjgzMSwzNjUuNDk2LDI4NS44NTYsMzQxLjUyLDI1Ni4zODYsMzQxLjUyeiBNMTc4LjY1Miw0MTguNDMxdi0yMy40NjQgICAgYzAtMTEuMTU3LDkuMDc3LTIwLjIzNCwyMC4yMzQtMjAuMjM0aDU3LjQ5OWMxMS4xNTcsMCwyMC4yMzQsOS4wNzcsMjAuMjM0LDIwLjIzNHYyMy40NjRIMTc4LjY1MnoiIGZpbGw9IiMzZjk5ZGIiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NjkuOTc2LDIyMC45NTdsLTQ5LjQzMi00Ny44MzRjLTEwLjM3MS0xMC4wMzQtMjYuNjc4LTkuODQ2LTM2Ljg2NCwwLjAxNmwxMy4xNTYtMTI4LjI5OCAgICBjMS40NzgtMTQuNDE0LTguNjIyLTI3LjE0NC0yMi45OTItMjguOTg0Yy02Mi4zNTYtNy45OC02Mi43NzItOS4yNjEtNzEuNjc1LTUuMjU2QzI5Ny4zMjksNC4xNjgsMjg5LjYzNCwwLDI4MC45ODIsMGgtNTcuNzE4ICAgIGMtOC44ODksMC0xNi43NjksNC4zOTktMjEuNTc3LDExLjEzNmMtNC45MjctMi43MTktMTAuNjUtMy44NDYtMTYuNDU5LTMuMDE3bC01Ny4xNCw4LjE1MyAgICBjLTEzLjMyMSwxLjkwMi0yMi45MzIsMTMuNDYzLTIyLjc1LDI2LjU3OWMtMy4wNTktMC4wNzEtNi4xNDYsMC4zODctOS4wNzksMS4zNzNMNTIuMDM4LDU5LjA3ICAgIGMtMTMuODgxLDQuNjYtMjEuMzQ2LDE5LjY2Ni0xNi42ODMsMzMuNTQ4bDIyLjk0Myw2OC4zNGMzLjIyNSw5LjYwNiw1LjQ4OCwxOS41NzgsNi43MjUsMjkuNjM5bDMwLjE4NywyNDUuNDU1djMzLjQ1OSAgICBjMCwyMy40MjksMTkuMDYsNDIuNDg5LDQyLjQ4OSw0Mi40ODloMTc0LjA2MmMyMy40MjcsMCw0Mi40ODgtMTkuMDYsNDIuNDg4LTQyLjQ4OXYtMzIuMjFsMTIuNjA1LTQ1LjMxNyAgICBjNi43My0yNC4xOTUsMTkuNTE4LTQ2LjUyNCwzNi45ODItNjQuNTc1bDY2Ljc1OS02OC45OTFDNDgwLjc1LDI0Ny45MjEsNDgwLjQ3NCwyMzEuMTE3LDQ2OS45NzYsMjIwLjk1N3ogTTM3OS45NjYsMzA0LjMxNiAgICBjLTIxLjMwMywyMi4wMTgtMzYuOTAzLDQ5LjI1NS00NS4xMTEsNzguNzY5Yy0xNC4zNTQsNTEuNjA4LTEzLjgxOSw0OC44MjItMTMuODE5LDUxLjk1MXYzNC40NzZjMCw1LjExNi00LjE2MSw5LjI3Ny05LjI3Niw5LjI3NyAgICBIMTM3LjY5N2MtNS4xMTYsMC05LjI3Ny00LjE2MS05LjI3Ny05LjI3N3YtMzQuNDc2YzAtMS41MywxLjY1NiwxMi40NDktMzAuNDM1LTI0OC40OTJjLTEuNTA5LTEyLjI3NC00LjI3LTI0LjQzOC04LjIwNC0zNi4xNTUgICAgTDY4Ljk3Niw4OC40MTdsMzEuNDg1LTEwLjU3bDE3LjI3Miw1MS40NDVjMi43MzIsOC4xMzksMTEuMjEzLDEyLjg1MywxOS41NzQsMTAuODc0YzguMzU0LTEuOTgyLDEzLjgyLTEwLjAwNSwxMi42MDgtMTguNTA0ICAgIGwtMTAuNDgzLTczLjQ1OWw0My44MzktNi4yNTVsMTMuNjY3LDk1Ljc3NWMxLjIzMiw4LjYyNyw4LjkxMiwxNC44NTQsMTcuNjE1LDE0LjIxOGM4LjY5My0wLjYxNywxNS40My03Ljg0OSwxNS40My0xNi41NjRWMzMuMjEyICAgIGg0NC4yODJ2OTYuNDY5YzAsOC43NjEsNi44MDYsMTYuMDE2LDE1LjU1LDE2LjU3M2M4Ljc0OSwwLjU2OSwxNi40MTUtNS43NzMsMTcuNTI4LTE0LjQ2NGwxMS40NTUtODkuNDkzbDQ0LjMzMiw1LjY3NCAgICBsLTE3LjM3NiwxNjkuNDZjLTEuNjAyLDE1LjYxNSwxNy41MDcsMjQuNTU2LDI4LjQ1MiwxMy4yNDJsMjguMDctMjkuMDA5bDM5Ljc3OSwzOC40OTJMMzc5Ljk2NiwzMDQuMzE2eiIgZmlsbD0iIzNmOTlkYiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" class="logo" /></a>
+            <p class="lift">Lift</p>
+</div>
 
     <div class="col-lg-6 across">
         <br />
-        <form asp-controller="Lift" asp-action="Add" method="post">
+        <form asp-controller="Lift" asp-action="Create" method="post">
 
             <div class="form-group">
                 <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control"/>
+                <input class="form-control" asp-for="Name" />
                 <span asp-validation-for="Name"></span>
             </div>
 
-            <!-- TODO: add MuscleGroup name as Dropdown menu -->
             <div class="form-group">
-                <label asp-for="MuscleGroupID"></label>
-                <input asp-for="MuscleGroupID" class="form-control" />
-                <span asp-validation-for="MuscleGroupID"></span>
-            </div>
-        </div>
-
-        <div class="col-lg-3 down">
-
-            <!-- TODO: add Activites Downdown menu -->
-
-            <div class="form-group">
-                <label asp-for="ActivityID"></label>
-                <input asp-for="ActivityID" class="form-control">
-                <span asp-validation-for="ActivityID"></span>
+                <label asp-for="Date" class="field-name"></label>
+                <input asp-for="Date" size="20" value="01/01/2018" class="form-control date" />
+                <span asp-validation-for="Date"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="ActivityID"></label>
-                <input asp-for="ActivityID" class="form-control">
-                <span asp-validation-for="ActivityID"></span>
+            <div class="form-group exerciseList">
+                <p>Select Exercise(s)</p>
+                <h5>(in sequence of use)</h5>
+
+                <div id="exerciseDropDown" class="exerciseDropDown">
+                    <label for="ExerciseID" class="unboldLabel">Exercise 1: </label>
+                    <div class="dropdown">
+                        <select asp-for="SelectedExercise" asp-items="Model.Exercises" value="SelectedExercise" id="SelectedExercise" name="SelectedExercise"></select>
+
+                    </div>
+                </div>
+                <br />
+                <input id="addExercise" class="button2" type="button" value="Add Another Exercise" />
+
             </div>
 
             <div class="form-group">
-                <label asp-for="ActivityID"></label>
-                <input asp-for="ActivityID" class="form-control">
-                <span asp-validation-for="ActivityID"></span>
-            </div>
 
-            </div>
-
-    <div class="col-lg-3 down">
-
-        <!-- TODO: add Activites Downdown menu -->
-
-        <div class="form-group">
-            <label asp-for="ActivityID"></label>
-            <input asp-for="ActivityID" class="form-control">
-            <span asp-validation-for="ActivityID"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ActivityID"></label>
-            <input asp-for="ActivityID" class="form-control">
-            <span asp-validation-for="ActivityID"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ActivityID"></label>
-            <input asp-for="ActivityID" class="form-control">
-            <span asp-validation-for="ActivityID"></span>
-        </div>
-
-    </div>
-
-            <div class="form-group">
-                <input type="submit" class="button" value="Save" />
+                <input type="submit" class="button" value="Create Workout" />
             </div>
         </form>
-</div>
+    </div>
 </body>
+
+<script>
+    //declare counter and populateMenu variables
+    var counter = 1;
+    var populateMenu = $(".dropdown");
+
+    //upon click, increase the counter by 1
+    $("#addExercise").click(function () {
+        counter++;
+        $()
+        //attach a label of Exercise X and the dropdown menu
+        $("#exerciseDropDown").append("<br/> Exercise " + counter + ": ").append(populateMenu.clone());
+    });
+
+</script>

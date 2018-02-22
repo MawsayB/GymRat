@@ -42,7 +42,7 @@ namespace GymRat.Controllers
                 // display all the entries to the user
                 // entries have a date and size and should be grouped into regions
 
-            //TODO: sort by date, then by region
+            //sort by date, then by region
                 IList<Measure> Measurements = context
                     .Measurements
                     .OrderByDescending(m=>m.Date).ThenBy(m=>m.Region)

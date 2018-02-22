@@ -4,79 +4,52 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using GymRat.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GymRat.ViewModels
 {
     public class AddWorkoutViewModel
     {
+
         [Required]
         [Display(Name = "Workout Name")]
-        public DateTime Name { get; set; }
+        public string Name { get; set; }
 
-        //region - optional input field
-        [Display(Name = "Muscle Group")]
-        public int MuscleGroupID { get; set; }
+        [Display(Name = "Scheduled Date")]
+        [DataType(DataType.Date)]
+        public DateTime Date { get; set; }
 
-        //TODO: get the list of MuscleGroups
-        //public List<SelectListItem> MucleGroups { get; set; }
-
-        //activity
         [Required]
-        [Display(Name = "Activity 1")]
-        public int ActivityID { get; set; }
+        [Display(Name = "Select Exercises: ")]
+        public int ExerciseID { get; set; }
 
-        //[Required]
-        //[Display(Name = "Activity 2")]
-        //public int ActivityID { get; set; }
+        public int SelectedExercise { get; set; }
 
-        //[Required]
-        //[Display(Name = "Activity 3")]
-        //public int ActivityID { get; set; }
+        // add IEnumerable for Exercises
+        public List<SelectListItem> Exercises { get; set; }
 
-        //[Required]
-        //[Display(Name = "Activity 4")]
-        //public int ActivityID { get; set; }
+        // makes a down-down of exercises
+        public AddWorkoutViewModel(IEnumerable<Exercise> exercises)
+        {
 
-        //[Required]
-        //[Display(Name = "Activity 5")]
-        //public int ActivityID { get; set; }
+            Exercises = new List<SelectListItem>();
 
-        //[Required]
-        //[Display(Name = "Activity 6")]
-        //public int ActivityID { get; set; }
+            foreach (var exercise in exercises)
+            {
+                Exercises.Add(new SelectListItem
+                {
+                    Value = exercise.ID.ToString(),
+                    Text = exercise.Name
+                });
 
-        //# of sets???
-        //TODO: make default 3
-        [Required]
-        [Display(Name = "Number of Sets")]
-        public int Sets { get; set; }
+            }
 
-        // # of reps in set
-        [Required]
-        [Display(Name = "Number of Reps")]
-        public int Reps { get; set; }
+        }
 
         public AddWorkoutViewModel()
-
         {
 
         }
 
-        //public AddWorkoutViewModel(IEnumerable<MuscleGroup> muscleGroup)
-        //{
-
-            //BodyRegions = new List<SelectListItem>();
-
-            //foreach (var bodyregion in bodyRegions)
-            //{
-                //BodyRegions.Add(new SelectListItem
-                //{
-                    //Value = bodyregion.ID.ToString(),
-                    //Text = bodyregion.Name
-                //});
-
-            //}
-
-        //}
     }
 }
