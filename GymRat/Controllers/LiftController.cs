@@ -53,7 +53,7 @@ namespace GymRat.Controllers
         public IActionResult Create()
         {
             // show a list of Exercise options
-            AddWorkoutViewModel addWorkoutViewModel = new AddWorkoutViewModel(context.
+            CreateWorkoutViewModel addWorkoutViewModel = new CreateWorkoutViewModel(context.
             Exercises.OrderBy(e => e.Name).ToList());
 
             return View(addWorkoutViewModel);
@@ -61,7 +61,7 @@ namespace GymRat.Controllers
 
         [HttpPost]
         // add the drop down menu selection here
-        public IActionResult Create(AddWorkoutViewModel addWorkoutViewModel, int[] SelectedExercise)
+        public IActionResult Create(CreateWorkoutViewModel addWorkoutViewModel, int[] SelectedExercise)
 
         {
             if (ModelState.IsValid)
