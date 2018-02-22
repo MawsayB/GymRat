@@ -29,6 +29,8 @@
     <Compile Include="Migrations\20180213214132_InitialCreate.Designer.cs" />
     <Compile Include="Migrations\20180219041931_addExercisetoWorkout.cs" />
     <Compile Include="Migrations\20180219041931_addExercisetoWorkout.Designer.cs" />
+    <Compile Include="Migrations\20180221200008_updatedWorkout.cs" />
+    <Compile Include="Migrations\20180221200008_updatedWorkout.Designer.cs" />
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
   </ItemGroup>
 

@@ -11,9 +11,10 @@ using System;
 namespace GymRat.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180221200008_updatedWorkout")]
+    partial class updatedWorkout
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,6 +79,10 @@ namespace GymRat.Migrations
 
                     b.Property<int?>("ExerciseTypeID");
 
+                    b.Property<int>("ExpectedReps");
+
+                    b.Property<int>("ExpectedSets");
+
                     b.Property<string>("Name");
 
                     b.Property<string>("Type");
@@ -133,6 +138,8 @@ namespace GymRat.Migrations
                     b.Property<DateTime>("Date");
 
                     b.Property<int>("ExerciseID");
+
+                    b.Property<int>("ExpectedReps");
 
                     b.Property<int>("UserID");
 
