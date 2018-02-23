@@ -59,7 +59,7 @@ namespace GymRat.Controllers
         }
 
         [HttpPost]
-        // add the drop down menu selection here
+        // grab the drop down menu selection
         public IActionResult Create(CreateWorkoutViewModel addWorkoutViewModel, int[] SelectedExercise)
 
         {
