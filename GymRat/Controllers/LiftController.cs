@@ -70,7 +70,7 @@ namespace GymRat.Controllers
                     foreach (int userSelection in SelectedExercise)
                     {
 
-                        // for each drop-down menu selection
+                        // for each drop-down menu selection 
 
                         {
                             //make a Workout
