@@ -75,7 +75,7 @@ namespace GymRat.Controllers
                         {
                             //make a Workout
 
-                            // TODO: add the SAME WorkoutID to the GROUP of Exercises
+                            // TODO: add SAME WorkoutID to the GROUP of Exercises
 
                             Workout newWorkoutEntry = new Workout
                             {
