@@ -20,7 +20,6 @@ namespace GymRat.ViewModels
         public DateTime Date { get; set; }
 
         [Required]
-        [Display(Name = "Select Exercises: ")]
         public int ExerciseID { get; set; }
 
         public int SelectedExercise { get; set; }

@@ -68,29 +68,34 @@ namespace GymRat.Controllers
                 {
 
                     foreach (int userSelection in SelectedExercise)
-
-                    // for each drop-down menu selection
-
                     {
-                        //make a Workout
-                        Workout newWorkoutEntry = new Workout
-                        {
-                            Name = addWorkoutViewModel.Name,
-                            UserID = User.Identity.Name,
-                            Date = addWorkoutViewModel.Date,
-                            SelectedExercise = addWorkoutViewModel.SelectedExercise,
-                        };
 
-                        //save the Workout to the Db
-                        context.Workouts.Add(newWorkoutEntry);
-                        context.SaveChanges();
+                        // for each drop-down menu selection
+
+                        {
+                            //make a Workout
+
+                            // TODO: add the SAME WorkoutID to the GROUP of Exercises
+
+                            Workout newWorkoutEntry = new Workout
+                            {
+                                Name = addWorkoutViewModel.Name,
+                                UserID = User.Identity.Name,
+                                Date = addWorkoutViewModel.Date,
+                                SelectedExercise = userSelection
+                            };
+
+                            //save the Workout to the Db
+                            context.Workouts.Add(newWorkoutEntry);
+                            context.SaveChanges();
+                        }
                     }
 
                 }
+
                 return View("CreateConfirmation");
             }
 
-            // can this be written as a return View("Create")?
             return View("Create");
         }
 
