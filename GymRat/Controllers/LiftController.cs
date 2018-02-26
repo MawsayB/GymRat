@@ -42,22 +42,19 @@ namespace GymRat.Controllers
             IList<SelectWorkoutViewModel> workouts = new List<SelectWorkoutViewModel>();
 
             //pull only entries with a UNIQUE date field
-            var uniqueWorkouts = context
+            var uniqueDates = context
                 .Workouts
-                .GroupBy(w => w.Date)
+                .Select(w => w.Date)
                 .Distinct()
                 .ToList();
 
             // for each unique date
-            foreach (var workout in uniqueWorkouts)
+            foreach (var date in uniqueDates)
             {
                 // get the row of data for the unique date
-                var entry = context
-                    .Measurements
-                    // m is the RECORD/ENTRY
-                    .ToList();
-
                 SelectWorkoutViewModel newSelectWorkoutViewModel = new SelectWorkoutViewModel();
+                newSelectWorkoutViewModel.Date = date;
+                //newSelectWorkoutViewModel.Name = //code here
 
                 workouts.Add(newSelectWorkoutViewModel);
             }
