@@ -51,10 +51,17 @@ namespace GymRat.Controllers
             // for each unique date
             foreach (var date in uniqueDates)
             {
+
+                var nameOnThatDate = context
+                    .Workouts
+                    .OrderBy(m => m.Date)
+                    .Where(m => m.Date == date)
+                    .FirstOrDefault();
+
                 // get the row of data for the unique date
                 SelectWorkoutViewModel newSelectWorkoutViewModel = new SelectWorkoutViewModel();
                 newSelectWorkoutViewModel.Date = date;
-                //newSelectWorkoutViewModel.Name = //code here
+                newSelectWorkoutViewModel.Name = nameOnThatDate.Name; 
 
                 workouts.Add(newSelectWorkoutViewModel);
             }

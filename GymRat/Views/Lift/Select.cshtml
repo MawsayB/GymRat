@@ -48,7 +48,7 @@
     }
 
         table th {
-            font-size: 36px;
+            font-size: 18px;
             text-align: center;
         }
 
@@ -67,19 +67,22 @@
     <div class="col-lg-6 across">
         <table>
             <tr>
-                <th>Name</th>
                 <th>Date</th>
+                <th>Name</th>
+            </tr>
+        </table>
+        
+        
+        
+        @foreach (var workout in Model)
+    {
+        <table>
+            <tr>
+                <td>@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</td>
+                <td>@workout.Name</td>
             </tr>
 
-            @foreach (var workout in Model)
-            {
-                <tr>
-                    <td>@workout.Name</td>
-                    <td>@workout.Date.ToShortDateString()</td>
-                </tr>
-
-            }
-
         </table>
+}
     </div>
 </body>
