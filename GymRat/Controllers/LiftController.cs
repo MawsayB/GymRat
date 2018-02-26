@@ -35,16 +35,39 @@ namespace GymRat.Controllers
             return View();
         }
 
-        public IActionResult Select()
+        public IActionResult Select(SelectWorkoutViewModel selectWorkoutViewModel)
         {
             // show a list of Workout options
-            SelectWorkoutViewModel selectWorkoutViewModel = new SelectWorkoutViewModel(context.
-                Workouts.OrderBy(w => w.Date).ToList());
-            return View(selectWorkoutViewModel);
+
+            IList<SelectWorkoutViewModel> workouts = new List<SelectWorkoutViewModel>();
+
+            //pull only entries with a UNIQUE date field
+            var uniqueWorkouts = context
+                .Workouts
+                .GroupBy(w => w.Date)
+                .Distinct()
+                .ToList();
+
+            // for each unique date
+            foreach (var workout in uniqueWorkouts)
+            {
+                // get the row of data for the unique date
+                var entry = context
+                    .Measurements
+                    // m is the RECORD/ENTRY
+                    .ToList();
+
+                SelectWorkoutViewModel newSelectWorkoutViewModel = new SelectWorkoutViewModel();
+
+                workouts.Add(newSelectWorkoutViewModel);
+            }
+
+            return View("Select", workouts);
+
         }
 
         [HttpPost]
-        public IActionResult Select(SelectWorkoutViewModel selectWorkoutViewModel)
+        public IActionResult Select()
         {
             return View("Workout");
         }

@@ -35,8 +35,6 @@ namespace GymRat.Controllers
 
         public IActionResult List()
         {
-            // take the Region the user selects in MeasureMenu and show a list of the selection
-
             MeasureMenuViewModel measureMenuViewModel = new MeasureMenuViewModel();
 
                 // display all the entries to the user
