@@ -19,6 +19,15 @@
         font-weight: normal;
     }
 
+    .DateHeading {
+        padding-left: 20px;
+        text-align: left;
+    }
+
+    label {
+        font-weight: normal;
+    }
+
     .lift {
         font-size: 48px;
         padding-top: 5px;
@@ -40,22 +49,39 @@
         margin-bottom: 30px;
     }
 
+    .NameHeading {
+        text-align: center;
+    }
+
+
     table {
-        width: 350px;
+        width: 450px;
         margin-left: auto;
         margin-right: auto;
         border: 4px solid #3F99DB;
+        margin-top: 30px;
     }
 
         table th {
+            font-size: 36px;
+        }
+
+        .WorkoutIds {
+            font-size: 18px;
+            display: inline-block;
+            float: left;
+            margin-left: 10px;
+        }
+
+        .WorkoutName {
             font-size: 18px;
             text-align: center;
         }
 
-    .workout-name {
-        font-size: 28px;
-        font-weight: bold;
-    }
+        table tr {
+            border: 4px solid #3F99DB;
+        }
+
 </style>
 <body>
     <div class="col-lg-6">
@@ -67,28 +93,32 @@
     <div class="col-lg-6 across">
         <table>
             <tr>
-                <th>Date</th>
-                <th>Name</th>
+                <th class="DateHeading">Date</th>
+                <th class="NameHeading">Name</th>
             </tr>
+
+
+
+            @foreach (var workout in Model)
+    {
+        <tr>
+            <td class="WorkoutIds">
+                <input type="checkbox" name="WorkoutIds" id="@workout.WorkoutID" value="@workout.WorkoutID" />
+                <label for="@workout.WorkoutID">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
+            </td>
+            <td class="WorkoutName">@workout.Name</td>
+        </tr>
+
+
+}
         </table>
-
-
-
-        @foreach (var workout in Model)
-        {
-            <table>
-                <tr>
-                    <td>@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</td>
-                    <td>@workout.Name</td>
-                </tr>
-
-            </table>
-        }
+        <br />
+        <input type="submit" class="button" value="Select Workout" />
 
 
         @if (Model.Count == 0)
-        {
-            <p><a href="/Lift/Create">Add a Workout</a></p>
-        }
+    {
+        <p><a href="/Lift/Create">Add a Workout</a></p>
+}
     </div>
 </body>
