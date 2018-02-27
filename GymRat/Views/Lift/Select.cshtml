@@ -71,22 +71,21 @@
             font-size: 36px;
         }
 
-        .WorkoutIds {
-            font-size: 18px;
-            display: inline-block;
-            float: left;
-            margin-left: 10px;
-        }
+    .WorkoutIds {
+        font-size: 18px;
+        display: inline-block;
+        float: left;
+        margin-left: 10px;
+    }
 
-        .WorkoutName {
-            font-size: 18px;
-            text-align: center;
-        }
+    .WorkoutName {
+        font-size: 18px;
+        text-align: center;
+    }
 
-        table tr {
-            border: 4px solid #3F99DB;
-        }
-
+    table tr {
+        border: 4px solid #3F99DB;
+    }
 </style>
 <body>
     <div class="col-lg-6">
@@ -96,29 +95,30 @@
 
     @* TODO: make URL link to WorkoutID *@
     <div class="col-lg-6 across">
-        <table>
-            <tr>
-                <th class="DateHeading">Date</th>
-                <th class="NameHeading">Name</th>
-            </tr>
+        <form method="post">
+            <table>
+                <tr>
+                    <th class="DateHeading">Date</th>
+                    <th class="NameHeading">Name</th>
+                </tr>
 
 
+                @foreach (var workout in Model)
+            {
+                <tr>
+                    <td class="WorkoutIds">
+                        <input type="checkbox" name="WorkoutIds" id="@workout.WorkoutID" value="@workout.WorkoutID" />
+                        <label for="@workout.WorkoutID">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
+                    </td>
+                    <td class="WorkoutName">@workout.Name</td>
+                </tr>
 
-            @foreach (var workout in Model)
-    {
-        <tr>
-            <td class="WorkoutIds">
-                <input type="checkbox" name="WorkoutIds" id="@workout.WorkoutID" value="@workout.WorkoutID" />
-                <label for="@workout.WorkoutID">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
-            </td>
-            <td class="WorkoutName">@workout.Name</td>
-        </tr>
 
-
-}
-        </table>
-        <br />
-        <input type="submit" class="button" value="Select Workout" />
+        }
+            </table>
+            <br />
+            <input type="submit" class="button" value="Select Workout" />
+        </form>
 
 
         @if (Model.Count == 0)

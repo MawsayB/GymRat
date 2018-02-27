@@ -71,7 +71,7 @@ namespace GymRat.Controllers
         }
 
         [HttpPost]
-        public IActionResult Select()
+        public IActionResult Select(DateTime date)
         {
             return View("Workout");
         }
