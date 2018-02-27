@@ -95,7 +95,7 @@
 
     @* TODO: make URL link to WorkoutID *@
     <div class="col-lg-6 across">
-        <form method="post">
+        <form asp-controller="Lift" asp-action="Select" method="post">
             <table>
                 <tr>
                     <th class="DateHeading">Date</th>
@@ -104,17 +104,17 @@
 
 
                 @foreach (var workout in Model)
-            {
-                <tr>
-                    <td class="WorkoutIds">
-                        <input type="checkbox" name="WorkoutIds" id="@workout.WorkoutID" value="@workout.WorkoutID" />
-                        <label for="@workout.WorkoutID">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
-                    </td>
-                    <td class="WorkoutName">@workout.Name</td>
-                </tr>
+        {
+            <tr>
+                <td class="WorkoutIds">
+                    <input type="checkbox" name="WorkoutIds" id="@workout.WorkoutID" value="@workout.WorkoutID" />
+                    <label for="@workout.WorkoutID">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
+                </td>
+                <td class="WorkoutName">@workout.Name</td>
+            </tr>
 
 
-        }
+}
             </table>
             <br />
             <input type="submit" class="button" value="Select Workout" />
