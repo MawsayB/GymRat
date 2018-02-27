@@ -7,6 +7,7 @@ using GymRat.Models;
 using GymRat.Data;
 using GymRat.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace GymRat.Controllers
 {
@@ -75,14 +76,28 @@ namespace GymRat.Controllers
         {
             //take the user's Workout selection (known as the date)
             selectWorkoutViewModel.Date = date;
+
             //pull all the exerciseIDs for that given date
 
+            List<Workout> exercises = context
+                .Workouts
+                .Include(w => w.SelectedExercise)
+                .Where(record => record.Date == date)
+                .ToList();
+
             //translate the exerciseIDs to Exercise Names
+            Workout workout = context.Workouts.Single(w => w.Date == date);
 
             //push it to the Workout View
 
+            WorkoutViewModel workoutViewModel = new WorkoutViewModel
+            {
+                Workout = workout,
+                Exercises = exercises 
+            };
+
             //include the variable name for the list of selected exercises in the View()
-            return View("Workout");
+            return View(workoutViewModel);
         }
 
         public IActionResult Create()
