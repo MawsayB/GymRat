@@ -73,6 +73,12 @@ namespace GymRat.Controllers
         [HttpPost]
         public IActionResult Select(DateTime date)
         {
+            //take the user's Workout selection (known as the date)
+            //pull all the exerciseIDs for that given date
+            //translate the exerciseIDs to Exercise Names
+            //push it to the Workout View
+
+            //also send the list of selected exercises to the Workout view
             return View("Workout");
         }
 
