@@ -10,6 +10,8 @@ namespace GymRat.ViewModels
 {
     public class WorkoutViewModel
     {
+        //public Workout Workout { get; set; }
 
+        public IList<Workout> Exercises { get; set; }
     }
 }

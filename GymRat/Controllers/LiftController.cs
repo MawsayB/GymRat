@@ -74,25 +74,20 @@ namespace GymRat.Controllers
         [HttpPost]
         public IActionResult Select(SelectWorkoutViewModel selectWorkoutViewModel, DateTime date)
         {
-            //take the user's Workout selection (known as the date)
-            selectWorkoutViewModel.Date = date;
-
             //pull all the exerciseIDs for that given date
 
             List<Workout> exercises = context
                 .Workouts
-                .Include(w => w.SelectedExercise)
-                .Where(record => record.Date == date)
+                .Include(exercise => exercise.SelectedExercise)
+                .Where(w => w.Date == date)
                 .ToList();
 
             //translate the exerciseIDs to Exercise Names
-            Workout workout = context.Workouts.Single(w => w.Date == date);
 
             //push it to the Workout View
 
             WorkoutViewModel workoutViewModel = new WorkoutViewModel
             {
-                Workout = workout,
                 Exercises = exercises 
             };
 
