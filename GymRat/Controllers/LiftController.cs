@@ -78,7 +78,6 @@ namespace GymRat.Controllers
             IList<WorkoutViewModel> exercises = new List<WorkoutViewModel>();
 
             //pull all the rows in the database for the DATE selected
-
             var exercisesInSelectedWorkout = context
                 .Workouts
                 .Where(w => w.Date == date)
@@ -94,7 +93,7 @@ namespace GymRat.Controllers
 
                 // attach the exercise names to the ViewModel
                 WorkoutViewModel newWorkoutViewModel = new WorkoutViewModel();
-                newWorkoutViewModel.Name = exerciseOnThatDate;
+                newWorkoutViewModel.Name = record.Name;
 
                 exercises.Add(newWorkoutViewModel);
             }
