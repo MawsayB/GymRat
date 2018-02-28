@@ -71,18 +71,16 @@
             <table>
                 <tr>
                     <th>Exercise #</th>
-                    <th class="NameHeading">Name</th>
                 </tr>
 
 
-                @foreach (var workout in Model)
+                @foreach (var exercise in Model)
                 {
                     <tr class="border">
                         <td class="WorkoutIds">
-                            <input type="checkbox" name="ExerciseIds" id="@workout" value="@workout.WorkoutID" />
-                            <label for="@workout.WorkoutID">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
+                            <input type="checkbox" name="ExerciseIds" id="@exercise.ID" value="@exercise.ID" />
+                            <label for="@exercise.ID">@exercise.Name</label>
                         </td>
-                        <td class="WorkoutName">@workout.Name</td>
                     </tr>
 
 
