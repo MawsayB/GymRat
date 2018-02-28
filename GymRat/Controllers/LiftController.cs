@@ -74,7 +74,7 @@ namespace GymRat.Controllers
         [HttpPost]
         public IActionResult Select(SelectWorkoutViewModel selectWorkoutViewModel, DateTime date)
         {
-            //create a space to hold the list of exercises
+            // show a list of EXERCISES
             IList<SelectWorkoutViewModel> exercises = new List<SelectWorkoutViewModel>();
 
             //pull all the rows in the database for the DATE selected
@@ -86,6 +86,12 @@ namespace GymRat.Controllers
 
             foreach (var record in exercisesInSelectedWorkout)
             {
+                var exerciseOnThatDate = context
+                    .Workouts
+                    .OrderBy(e => e.WorkoutID)
+                    .Where(e => e.Date == date)
+                    .ToList();
+
                 // attach the exercise names to the ViewModel
                 WorkoutViewModel newWorkoutViewModel = new WorkoutViewModel();
                 newWorkoutViewModel.Exercises = ;
