@@ -1,4 +1,4 @@
-﻿@model GymRat.ViewModels.ViewModel
+﻿@model List<GymRat.ViewModels.WorkoutViewModel>
 
 <style>
     .button {
@@ -66,11 +66,30 @@
         <h2 class="headline">WORKOUT NAME</h2>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 across">
+        <form asp-controller="Lift" asp-action="Select" method="post">
+            <table>
+                <tr>
+                    <th>Exercise #</th>
+                    <th class="NameHeading">Name</th>
+                </tr>
 
-        @foreach (var exercise in Model.Exercises)
-        {
-            <p>@exercise.Exercises.Name</p>
-        }
+
+                @foreach (var workout in Model)
+                {
+                    <tr class="border">
+                        <td class="WorkoutIds">
+                            <input type="checkbox" name="ExerciseIds" id="@workout" value="@workout.WorkoutID" />
+                            <label for="@workout.WorkoutID">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
+                        </td>
+                        <td class="WorkoutName">@workout.Name</td>
+                    </tr>
+
+
+                }
+            </table>
+            <br />
+            <input type="submit" class="button" value="Select Workout" />
+        </form>
     </div>
 </body>

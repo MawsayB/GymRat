@@ -8,10 +8,8 @@ using GymRat.Models;
 
 namespace GymRat.ViewModels
 {
-    public class WorkoutViewModel
+    public class WorkoutViewModel : Exercise
     {
-        //public Workout Workout { get; set; }
 
-        public IList<Workout> Exercises { get; set; }
     }
 }

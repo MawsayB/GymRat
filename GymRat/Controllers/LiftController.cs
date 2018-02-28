@@ -94,7 +94,8 @@ namespace GymRat.Controllers
 
                 // attach the exercise names to the ViewModel
                 WorkoutViewModel newWorkoutViewModel = new WorkoutViewModel();
-                newWorkoutViewModel.Exercises = ;
+                newWorkoutViewModel.Exercises = exerciseOnThatDate;
+
             }
 
             //include the variable name for the list of selected exercises in the View()
