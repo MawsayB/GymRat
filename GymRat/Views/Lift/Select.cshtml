@@ -2,6 +2,10 @@
 
 
 <style>
+    a.button {
+        text-decoration: none;
+    }
+    
     .button {
         background-color: white;
         color: #3F99DB;
@@ -93,7 +97,6 @@
     </div>
 
     <div class="col-lg-6 across">
-        <form asp-controller="Lift" asp-action="Select" method="post">
             <table>
                 <tr>
                     <th class="DateHeading">Date</th>
@@ -105,8 +108,8 @@
         {
             <tr class="border">
                 <td class="WorkoutIds">
-                    <input type="radio" name="WorkoutIds" id="@workout.WorkoutID" value="@workout.WorkoutID" />
-                    <label for="@workout.WorkoutID">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
+                    <input type="radio" name="WorkoutDates" id="@workout.Date" value="@workout.Date" />
+                    <label for="@workout.Date">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
                 </td>
                 <td class="WorkoutName">@workout.Name</td>
             </tr>
@@ -115,9 +118,8 @@
 }
             </table>
             <br />
-            <input type="submit" class="button" value="Select Workout" />
-        </form>
-
+            <p><a asp-controller="Lift" asp-action="Select" asp-route-id="" class="button">Select Workout</a></p>        
+        
 
         @if (Model.Count == 0)
     {

@@ -11,6 +11,8 @@ namespace GymRat.Models
         // 6 are weightlifting exercises
         // 3 are cardio exercises
         public string UserID { get; set; }
+
+        // WorkoutID is really RecordID since each entry has a unique ID number
         public int WorkoutID { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
