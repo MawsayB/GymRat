@@ -73,17 +73,13 @@
                     <th>Exercise #</th>
                 </tr>
 
-
                 @foreach (var exercise in Model)
                 {
                     <tr class="border">
-                        <td class="WorkoutIds">
-                            <input type="checkbox" name="ExerciseIds" id="@exercise.ID" value="@exercise.ID" />
-                            <label for="@exercise.ID">@exercise.Name</label>
+                        <td>
+                            <label for="@exercise.ID">@exercise.ID</label>
                         </td>
                     </tr>
-
-
                 }
             </table>
             <br />

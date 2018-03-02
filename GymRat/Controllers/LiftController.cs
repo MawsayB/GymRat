@@ -78,22 +78,18 @@ namespace GymRat.Controllers
             IList<WorkoutViewModel> exercises = new List<WorkoutViewModel>();
 
             //pull all the rows in the database for the DATE selected
+
             var exercisesInSelectedWorkout = context
                 .Workouts
                 .Where(w => w.Date == date)
+                .Select(w => w.SelectedExercise)
                 .ToList();
 
-            foreach (var record in exercisesInSelectedWorkout)
+            foreach (var exercise in exercisesInSelectedWorkout)
             {
-                var exerciseOnThatDate = context
-                    .Workouts
-                    .OrderBy(e => e.WorkoutID)
-                    .Where(e => e.Date == date)
-                    .ToList();
-
                 // attach the exercise names to the ViewModel
                 WorkoutViewModel newWorkoutViewModel = new WorkoutViewModel();
-                newWorkoutViewModel.Name = record.Name;
+                newWorkoutViewModel.ID = exercise;
 
                 exercises.Add(newWorkoutViewModel);
             }
