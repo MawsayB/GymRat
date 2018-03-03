@@ -11,6 +11,19 @@
         font-size: 16px;
         font-weight: bold;
         text-decoration: none;
+        margin-left: 300px;
+    }
+
+    .button2 {
+        background-color: white;
+        color: #3F99DB;
+        padding: 5px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Century Gothic';
+        font-size: 12px;
+        text-decoration: none;
+        margin-left: -120px;
     }
 
     .block {
@@ -68,6 +81,7 @@
         width: 450px;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 10px;
         border: 4px solid #3F99DB;
     }
 </style>
@@ -84,21 +98,24 @@
         <form asp-controller="Lift" asp-action="Workout" method="post" class="form">
 
             @foreach (var exercise in Model)
-            {
+    {
 
-            <div class="label">
-                <label colspan="2" for="@exercise.ID">@exercise.Name</label>
-            </div>
-                <table>
-                    <tr class="data">
-                        <td class="bold">Set 1</td>
-                        <td>Weight</td>
-                        <td>Reps</td>
-                    </tr>
+        <div class="label">
+            <label colspan="2" for="@exercise.ID">@exercise.Name</label>
+        </div>
+        <table>
+            <tr class="data">
+                <td class="bold">Set 1</td>
+                <td>Weight</td>
+                <td>Reps</td>
+            </tr>
 
-                </table>
-                <br />
-            }
+        </table>
+        <input id="addSet" class="button2" type="button" value="Add Another Set" />
+        <br />
+
+}
+            <br />
             <input type="submit" class="button" value="Save Workout" />
         </form>
     </div>
