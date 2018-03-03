@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GymRat.ViewModels
 {
-    public class AddWorkoutViewModel
+    public class CreateWorkoutViewModel
     {
 
         [Required]
@@ -20,7 +20,6 @@ namespace GymRat.ViewModels
         public DateTime Date { get; set; }
 
         [Required]
-        [Display(Name = "Select Exercises: ")]
         public int ExerciseID { get; set; }
 
         public int SelectedExercise { get; set; }
@@ -29,7 +28,7 @@ namespace GymRat.ViewModels
         public List<SelectListItem> Exercises { get; set; }
 
         // makes a down-down of exercises
-        public AddWorkoutViewModel(IEnumerable<Exercise> exercises)
+        public CreateWorkoutViewModel(IEnumerable<Exercise> exercises)
         {
 
             Exercises = new List<SelectListItem>();
@@ -46,7 +45,7 @@ namespace GymRat.ViewModels
 
         }
 
-        public AddWorkoutViewModel()
+        public CreateWorkoutViewModel()
         {
 
         }

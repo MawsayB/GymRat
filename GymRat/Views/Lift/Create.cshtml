@@ -1,4 +1,4 @@
-﻿@model GymRat.ViewModels.AddWorkoutViewModel
+﻿@model GymRat.ViewModels.CreateWorkoutViewModel
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -134,7 +134,7 @@
                 <div id="exerciseDropDown" class="exerciseDropDown">
                     <label for="ExerciseID" class="unboldLabel">Exercise 1: </label>
                     <div class="dropdown">
-                        <select asp-for="SelectedExercise" asp-items="Model.Exercises" value="SelectedExercise" id="SelectedExercise" name="SelectedExercise"></select>
+                        <select asp-for="SelectedExercise" asp-items="Model.Exercises" name="selectedExercise"></select>
 
                     </div>
                 </div>

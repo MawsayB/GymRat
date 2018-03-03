@@ -1,6 +1,10 @@
-﻿@model GymRat.ViewModels.SelectWorkoutViewModel
+﻿@model List<GymRat.ViewModels.SelectWorkoutViewModel>
 
 <style>
+    a.button {
+        text-decoration: none;
+    }
+
     .button {
         background-color: white;
         color: #3F99DB;
@@ -17,7 +21,16 @@
         font-size: 18px;
         font-weight: normal;
     }
-    
+
+    .DateHeading {
+        padding-left: 20px;
+        text-align: left;
+    }
+
+    label {
+        font-weight: normal;
+    }
+
     .lift {
         font-size: 48px;
         padding-top: 5px;
@@ -39,23 +52,42 @@
         margin-bottom: 30px;
     }
 
-    table {
-        width: 350px;
-        margin-left: auto;
-        margin-right: auto;
-        border: 4px solid #3F99DB;
+    input[type=checkbox] {
+        transform: scale(1.5);
+        margin-right: 10px;
     }
 
-    table th {
-        font-size: 36px;
+    .NameHeading {
         text-align: center;
     }
 
-    .workout-name {
-        font-size: 28px;
-        font-weight: bold;
+
+    table {
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
     }
 
+        table th {
+            font-size: 36px;
+        }
+
+    .WorkoutIds {
+        font-size: 18px;
+        display: inline-block;
+        float: left;
+        margin-left: 10px;
+    }
+
+    .WorkoutName {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .border {
+        border: 4px solid #3F99DB;
+    }
 </style>
 <body>
     <div class="col-lg-6">
@@ -63,26 +95,37 @@
         <p class="lift">Lift</p>
     </div>
 
-    @* TODO: make URL link to WorkoutID *@
     <div class="col-lg-6 across">
-        <br />
-        
-                <table>
-                    <tr>
-                        <th>DAY</th>
+        <form asp-controller="Lift" asp-action="Select" method="post">
+
+            <table>
+                <tr>
+                    <th class="DateHeading">Date</th>
+                    <th class="NameHeading">Name</th>
+                </tr>
+
+
+                @foreach (var workout in Model)
+                {
+                    <tr class="border">
+                        <td class="WorkoutIds">
+                            <input type="radio" name="date" id="@workout.Date" value="@workout.Date" />
+                            <label for="@workout.Date">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
+                        </td>
+                        <td class="WorkoutName">@workout.Name</td>
                     </tr>
 
-                    <tr>
-                        <th class="date">MM/DD</th>
-                    </tr>
 
-                    <tr>
-                        <td class="workout-name">Workout Name</td>
-                    </tr>
+                }
+            </table>
+            <br />
+            <input type="submit" class="button" value="Select Workout" />
+        </form>
 
-                </table>
 
-                <br />
-
-            </div>
+        @if (Model.Count == 0)
+        {
+            <p><a href="/Lift/Create">Add a Workout</a></p>
+        }
+    </div>
 </body>
