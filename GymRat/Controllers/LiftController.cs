@@ -52,7 +52,6 @@ namespace GymRat.Controllers
             // for each unique date
             foreach (var date in uniqueDates)
             {
-
                 var nameOnThatDate = context
                     .Workouts
                     .OrderBy(m => m.Date)
@@ -77,19 +76,28 @@ namespace GymRat.Controllers
             // show a list of EXERCISES
             IList<WorkoutViewModel> exercises = new List<WorkoutViewModel>();
 
-            //pull all the rows in the database for the DATE selected
-
-            var exercisesInSelectedWorkout = context
+            //pull all the ExerciseIDs (aka SelectedExercise) in the database for the DATE selected
+            var exerciseIDsInSelectedWorkout = context
                 .Workouts
                 .Where(w => w.Date == date)
                 .Select(w => w.SelectedExercise)
                 .ToList();
 
-            foreach (var exercise in exercisesInSelectedWorkout)
+            // each ID in a list of IDs
+            foreach (var exerciseID in exerciseIDsInSelectedWorkout)
             {
+                //convert each ExerciseIDs to its Name    
+
+                var name = context
+                    .Exercises
+                    .Where(e => e.ID == exerciseID)
+                    .Select(m => m.Name)
+                    .FirstOrDefault();
+
                 // attach the exercise names to the ViewModel
                 WorkoutViewModel newWorkoutViewModel = new WorkoutViewModel();
-                newWorkoutViewModel.ID = exercise;
+                newWorkoutViewModel.Name = name;
+                newWorkoutViewModel.ID = exerciseID;
 
                 exercises.Add(newWorkoutViewModel);
             }
