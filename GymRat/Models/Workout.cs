@@ -13,7 +13,7 @@ namespace GymRat.Models
         public string UserID { get; set; }
 
         // WorkoutID is really RecordID since each entry has a unique ID number
-        public int WorkoutID { get; set; }
+        public int RecordID { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public IList<Exercise> Exercises { get; set; }

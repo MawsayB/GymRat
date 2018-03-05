@@ -11,6 +11,6 @@ namespace GymRat.ViewModels
 {
     public class WorkoutViewModel : Set
     {
-  
+
     }
 }

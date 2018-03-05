@@ -73,6 +73,11 @@
         margin-top: 5px;
     }
 
+    .num-box {
+        width: 100px;
+        margin-left: 60px;
+    }
+
     .radio {
         font-size: 30px;
         text-align: left;
@@ -84,6 +89,10 @@
         margin-right: auto;
         margin-bottom: 10px;
         border: 4px solid #3F99DB;
+    }
+
+    .wt-rep {
+        font-size: 18px;
     }
 </style>
 
@@ -105,13 +114,21 @@
             <label colspan="2" for="@exercise.ExerciseID">@exercise.ExerciseName</label>
         </div>
 
+
         <table>
             <tr class="data">
                 <td class="bold">Set 1</td>
-                <td>Weight</td>
-                <td>Reps</td>
+                <td>
+                    <label class="wt-rep">Weight</label>
+                    <input asp-for="@exercise.Weight" class="form-control num-box" />
+                    <span asp-validation-for="@exercise.Weight"></span>
+                </td>
+                <td>
+                    <label class="wt-rep">Reps</label>
+                    <input asp-for="@exercise.Reps" class="form-control num-box" />
+                    <span asp-validation-for="@exercise.Reps"></span>
+                </td>
             </tr>
-
         </table>
         <input id="addSet" class="button2" type="button" value="Add Another Set" />
         <br />
