@@ -96,8 +96,8 @@ namespace GymRat.Controllers
 
                 // attach the exercise names to the ViewModel
                 WorkoutViewModel newWorkoutViewModel = new WorkoutViewModel();
-                newWorkoutViewModel.Name = name;
-                newWorkoutViewModel.ID = exerciseID;
+                newWorkoutViewModel.ExerciseName = name;
+                newWorkoutViewModel.ExerciseID = exerciseID;
 
                 exercises.Add(newWorkoutViewModel);
             }
@@ -131,8 +131,6 @@ namespace GymRat.Controllers
 
                         {
                             //make a Workout 
-
-                            // TODO: add SAME WorkoutID to the GROUP of Exercises
 
                             Workout newWorkoutEntry = new Workout
                             {

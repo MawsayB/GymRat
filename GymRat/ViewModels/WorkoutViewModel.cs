@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using GymRat.Models;
+using System.Collections;
 
 namespace GymRat.ViewModels
 {
-    public class WorkoutViewModel : Exercise
+    public class WorkoutViewModel : Set
     {
-
+  
     }
 }

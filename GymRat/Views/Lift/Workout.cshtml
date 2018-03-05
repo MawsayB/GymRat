@@ -99,23 +99,25 @@
         <form asp-controller="Lift" asp-action="Workout" method="post" class="form">
 
             @foreach (var exercise in Model)
-    {
+            {
 
-        <div class="label">
-            <label colspan="2" for="@exercise.ID">@exercise.Name</label>
-        </div>
-        <table>
-            <tr class="data">
-                <td class="bold">Set 1</td>
-                <td>Weight</td>
-                <td>Reps</td>
-            </tr>
+                <div class="label">
+                    <label colspan="2" for="@exercise.ExerciseID">@exercise.ExerciseName</label>
+                </div>
+            }
 
-        </table>
-        <input id="addSet" class="button2" type="button" value="Add Another Set" />
-        <br />
+            <table>
+                <tr class="data">
+                    <td class="bold">Set 1</td>
+                    <td>Weight</td>
+                    <td>Reps</td>
+                </tr>
 
-}
+            </table>
+            <input id="addSet" class="button2" type="button" value="Add Another Set" />
+            <br />
+
+
             <br />
             <input type="submit" class="button" value="Save Workout" />
         </form>
