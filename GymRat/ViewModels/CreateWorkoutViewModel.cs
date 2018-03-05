@@ -15,7 +15,7 @@ namespace GymRat.ViewModels
         [Display(Name = "Workout Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Scheduled Date")]
+        [Display(Name = "Scheduled For")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
