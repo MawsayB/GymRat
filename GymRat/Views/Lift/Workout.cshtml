@@ -11,7 +11,7 @@
         font-size: 16px;
         font-weight: bold;
         text-decoration: none;
-        margin-left: 300px;
+        margin-left: 175px;
     }
 
     .button2 {
@@ -82,8 +82,10 @@
     }
 
     .num-box {
-        width: 100px;
-        margin-left: 60px;
+        width: 75px;
+        margin-left: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     .radio {
@@ -92,17 +94,17 @@
     }
 
     table {
-        width: 375px;
+        width: 325px;
         margin-bottom: 10px;
         border: 4px solid #3F99DB;
     }
 
     .wt-rep {
         font-size: 18px;
-        margin-top: -30px;
-        float: right;
-        margin-right: 5px;
         font-weight: normal;
+        position: absolute;
+        margin-left: 15px;
+        margin-top: -40px;
     }
 
 </style>
@@ -131,7 +133,7 @@
                 <td>
                     <input asp-for="@exercise.Weight" class="form-control num-box" />
                     <span asp-validation-for="@exercise.Weight"></span>
-                    <label class="wt-rep"> lbs. x</label>
+                    <label class="wt-rep"> lbs. X</label>
                 </td>
                 <td>
                     <input asp-for="@exercise.Reps" class="form-control num-box" />
@@ -146,8 +148,6 @@
 
 }
 
-
-            <br />
             <input type="submit" class="button" value="Save Workout" />
         </form>
     </div>
