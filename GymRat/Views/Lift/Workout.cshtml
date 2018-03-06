@@ -1,5 +1,9 @@
 ﻿@model List<GymRat.ViewModels.WorkoutViewModel>
 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
 <style>
     .button {
         background-color: white;
@@ -39,7 +43,7 @@
         font-size: 18px;
     }
 
-    #exercise_Reps{
+    #exercise_Reps {
         margin-left: -1px;
     }
 
@@ -106,7 +110,6 @@
         margin-left: 15px;
         margin-top: -40px;
     }
-
 </style>
 
 <body>
@@ -121,34 +124,54 @@
         <form asp-controller="Lift" asp-action="Workout" method="post" class="form">
 
             @foreach (var exercise in Model)
-    {
+            {
 
-        <div class="label">
-            <label colspan="3" for="@exercise.ExerciseID">@exercise.ExerciseName</label>
-        </div>
+                <div class="label">
+                    <label colspan="3" for="@exercise.ExerciseID">@exercise.ExerciseName</label>
+                </div>
 
-        <table>
-            <tr class="data">
-                <td class="bold">Set 1</td>
-                <td>
-                    <input asp-for="@exercise.Weight" class="form-control num-box" />
-                    <span asp-validation-for="@exercise.Weight"></span>
-                    <label class="wt-rep"> lbs. X</label>
-                </td>
-                <td>
-                    <input asp-for="@exercise.Reps" class="form-control num-box" />
-                    <span asp-validation-for="@exercise.Reps"></span>
-                    <label class="wt-rep"> reps </label>
+                <div class="addSetHere">
+                    <table class="anotherSet">
+                        <tr class="data">
+                            <td class="bold">Set 1</td>
+                            <td>
+                                <input asp-for="@exercise.Weight" class="form-control num-box" />
+                                <span asp-validation-for="@exercise.Weight"></span>
+                                <label class="wt-rep"> lbs. X</label>
+                            </td>
+                            <td>
+                                <input asp-for="@exercise.Reps" class="form-control num-box" />
+                                <span asp-validation-for="@exercise.Reps"></span>
+                                <label class="wt-rep"> reps </label>
 
-                </td>
-            </tr>
-        </table>
-        <input id="addSet" class="button2" type="button" value="Add Another Set" />
-        <br />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <input id="addSet" class="button2" type="button" value="Add Another Set" />
+                <br />
 
-}
+            }
 
             <input type="submit" class="button" value="Save Workout" />
         </form>
     </div>
 </body>
+
+<script>
+
+    //TODO: the counter replaces the set # inside the box
+
+    //declare counter and anotherSet variables
+    var counter = 1;
+    var anotherSet = $(".anotherSet");
+
+    //upon click, increase the counter by 1
+    $("#addSet").click(function () {
+        counter++;
+        $()
+        //attach a label of Set X and the input fields
+        $(".addSetHere").append("<br/> Set " + counter + ": ").append(anotherSet.clone());
+    });
+
+</script>
