@@ -63,15 +63,15 @@
 
 
     table {
-        width: 450px;
+        width: 250px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 30px;
     }
 
-    table th {
-       font-size: 36px;
-    }
+        table th {
+            font-size: 36px;
+        }
 
     .WorkoutIds {
         font-size: 18px;
@@ -81,8 +81,10 @@
     }
 
     .WorkoutName {
-        font-size: 18px;
-        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        float: left;
+        margin-left: 30px;
     }
 
     .border {
@@ -98,26 +100,25 @@
     <div class="col-lg-6 across">
         <form asp-controller="Lift" asp-action="Select" method="post">
 
-            <table>
-                <tr>
-                    <th class="DateHeading">Date</th>
-                    <th class="NameHeading">Name</th>
-                </tr>
 
+            @foreach (var workout in Model)
 
-                @foreach (var workout in Model)
-                {
-                    <tr class="border">
+            {
+                <table class="border">
+
+                    <tr>
                         <td class="WorkoutIds">
                             <input type="radio" name="date" id="@workout.Date" value="@workout.Date" />
                             <label for="@workout.Date">@workout.Date.DayOfWeek, @workout.Date.ToShortDateString()</label>
                         </td>
+                    </tr>
+                    <tr>
                         <td class="WorkoutName">@workout.Name</td>
                     </tr>
+                </table>
 
+            }
 
-                }
-            </table>
             <br />
             <input type="submit" class="button" value="Select Workout" />
         </form>
