@@ -124,34 +124,37 @@
         <form asp-controller="Lift" asp-action="Workout" method="post" class="form">
 
             @foreach (var exercise in Model)
-            {
+    {
 
-                <div class="label">
-                    <label colspan="3" for="@exercise.ExerciseID">@exercise.ExerciseName</label>
-                </div>
+        <div class="label">
+            <label colspan="3" for="@exercise.ExerciseID">@exercise.ExerciseName</label>
+        </div>
 
-                <div class="addSetHere">
-                    <table class="anotherSet">
-                        <tr class="data">
-                            <td class="bold">Set 1</td>
-                            <td>
-                                <input asp-for="@exercise.Weight" class="form-control num-box" />
-                                <span asp-validation-for="@exercise.Weight"></span>
-                                <label class="wt-rep"> lbs. X</label>
-                            </td>
-                            <td>
-                                <input asp-for="@exercise.Reps" class="form-control num-box" />
-                                <span asp-validation-for="@exercise.Reps"></span>
-                                <label class="wt-rep"> reps </label>
+        <div class="addSetHere">
+            <table>
+                <tr class="data">
+                    <td class="bold">Set 1</td>
+                    <td>
+                        <input asp-for="@exercise.Weight" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Weight"></span>
+                        <label class="wt-rep"> lbs. X</label>
+                    </td>
+                    <td>
+                        <input asp-for="@exercise.Reps" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Reps"></span>
+                        <label class="wt-rep"> reps </label>
 
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <input id="addSet" class="button2" type="button" value="Add Another Set" />
-                <br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="anotherSet">
+        </div>
+        <br />
+}
 
-            }
+            <input id="addSet" class="button2" type="button" value="Add Another Set to ALL" />
+            <br />
 
             <input type="submit" class="button" value="Save Workout" />
         </form>
