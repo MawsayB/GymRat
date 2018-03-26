@@ -29,6 +29,7 @@
         text-decoration: none;
         margin-left: -120px;
         margin-bottom: 10px;
+        font-weight: bold;
     }
 
     .block {
@@ -122,6 +123,10 @@
         <br />
 
         <form asp-controller="Lift" asp-action="Workout" method="post" class="form">
+            <div>
+                <input id="addSet" class="button2" type="button" value="Add a Set to ALL" />
+                <br />
+            </div>
 
             @foreach (var exercise in Model)
     {
@@ -148,13 +153,10 @@
                 </tr>
             </table>
         </div>
+        <br />
         <div class="anotherSet">
         </div>
-        <br />
 }
-
-            <input id="addSet" class="button2" type="button" value="Add Another Set to ALL" />
-            <br />
 
             <input type="submit" class="button" value="Save Workout" />
         </form>
@@ -174,7 +176,7 @@
         counter++;
         $()
         //attach a label of Set X and the input fields
-        $(".addSetHere").append("<br/> Set " + counter + ": ").append(anotherSet.clone());
+        $(".addSetHere").append("<br/> Set " + counter).append(anotherSet.clone());
     });
 
 </script>
