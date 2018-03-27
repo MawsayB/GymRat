@@ -40,16 +40,17 @@
         font-weight: bold;
     }
 
+    .border {
+        border: 4px solid #3F99DB;
+    }
+
     .data {
-        font-size: 18px;
+        font-size: 12px;
+        padding: 5px;
     }
 
-    #exercise_Reps {
-        margin-left: -1px;
-    }
-
-    #exercise_Weight {
-        margin-left: -1px;
+    .dataEntry {
+        margin-left: 20px;
     }
 
     form {
@@ -58,6 +59,12 @@
 
     .form {
         float: none;
+    }
+
+    .form-control{
+        font-size: 14px;
+        height: unset;
+        width: 60%;
     }
 
     .label {
@@ -86,31 +93,28 @@
         margin-top: 5px;
     }
 
-    .num-box {
-        width: 75px;
-        margin-left: 100px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
     .radio {
         font-size: 30px;
         text-align: left;
     }
 
     table {
-        width: 325px;
-        margin-bottom: 10px;
-        border: 4px solid #3F99DB;
+        margin-left: 10px;
     }
 
-    .wt-rep {
+
+    table th {
         font-size: 18px;
         font-weight: normal;
-        position: absolute;
-        margin-left: 15px;
-        margin-top: -40px;
+        width: 60px;
+        text-align: center;
     }
+
+    table td {
+        margin-left: 10px;
+        width: 80px;
+    }
+
 </style>
 
 <body>
@@ -123,10 +127,6 @@
         <br />
 
         <form asp-controller="Lift" asp-action="Workout" method="post" class="form">
-            <div>
-                <input id="addSet" class="button2" type="button" value="Add a Set to ALL" />
-                <br />
-            </div>
 
             @foreach (var exercise in Model)
     {
@@ -135,20 +135,86 @@
             <label colspan="3" for="@exercise.ExerciseID">@exercise.ExerciseName</label>
         </div>
         
-        //the Set gets added at "addSetHere"
-        <div class="addSetHere">
-            <table>
+        <div class="dataEntry">
+            <table class="border">
+                <tr>
+                    <th>lbs.</th>
+                    <th>reps</th>
+                </tr>
                 <tr class="data">
-                    <td class="bold">Set 1</td>
+
                     <td>
                         <input asp-for="@exercise.Weight" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Weight"></span>
-                        <label class="wt-rep"> lbs. X</label>
                     </td>
                     <td>
                         <input asp-for="@exercise.Reps" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Reps"></span>
-                        <label class="wt-rep"> reps </label>
+
+                    </td>
+                </tr>
+
+                <tr class="data">
+
+                    <td>
+                        <input asp-for="@exercise.Weight" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Weight"></span>
+                    </td>
+                    <td>
+                        <input asp-for="@exercise.Reps" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Reps"></span>
+
+                    </td>
+                </tr>
+
+                <tr class="data">
+
+                    <td>
+                        <input asp-for="@exercise.Weight" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Weight"></span>
+                    </td>
+                    <td>
+                        <input asp-for="@exercise.Reps" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Reps"></span>
+
+                    </td>
+                </tr>
+
+                <tr class="data">
+
+                    <td>
+                        <input asp-for="@exercise.Weight" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Weight"></span>
+                    </td>
+                    <td>
+                        <input asp-for="@exercise.Reps" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Reps"></span>
+
+                    </td>
+                </tr>
+
+                <tr class="data">
+
+                    <td>
+                        <input asp-for="@exercise.Weight" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Weight"></span>
+                    </td>
+                    <td>
+                        <input asp-for="@exercise.Reps" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Reps"></span>
+
+                    </td>
+                </tr>
+
+                <tr class="data">
+
+                    <td>
+                        <input asp-for="@exercise.Weight" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Weight"></span>
+                    </td>
+                    <td>
+                        <input asp-for="@exercise.Reps" class="form-control num-box" />
+                        <span asp-validation-for="@exercise.Reps"></span>
 
                     </td>
                 </tr>
@@ -161,21 +227,3 @@
         </form>
     </div>
 </body>
-
-<script>
-
-    //TODO: the counter replaces the set # inside the box
-
-    //declare counter and anotherSet variables
-    var counter = 1;
-    var anotherSet = $("table");
-
-    //upon click, increase the counter by 1
-    $("#addSet").click(function () {
-        counter++;
-        $()
-        //attach a label of Set X and the input fields
-        $(".addSetHere").append("<br/> Set " + counter).append(anotherSet.cloneNode(false));
-    });
-
-</script>
