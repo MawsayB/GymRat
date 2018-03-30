@@ -155,11 +155,22 @@ namespace GymRat.Controllers
         }
 
         [HttpPost]
-        public IActionResult Workout(WorkoutViewModel workoutViewModel, int[] Sets)
+        public IActionResult Workout(WorkoutViewModel workoutViewModel, int[] ExerciseID)
         {
-            // after Workout is complete
-            // show User Today's Workout!
-            return View();
+            // after Workout is complete (the user clicks "Save")
+            // store data
+            if (ModelState.IsValid)
+            {
+                foreach (int exerciseID in ExerciseID)
+                {
+
+                }
+
+                // show User Today's Workout!
+                return View("TodaysWorkout");
+
+            }
+                return View();
         }
 
         //summary AFTER workout is complete
