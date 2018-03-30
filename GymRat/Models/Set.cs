@@ -16,6 +16,7 @@ namespace GymRat.Models
         public DateTime ScheduledDate { get; set; }
         public int ExerciseID { get; set; }
         public string ExerciseName { get; set; }
+        //this is more like RecordID
         public int SetID { get; set; }
         public float Reps { get; set; }
         public float Weight { get; set; }

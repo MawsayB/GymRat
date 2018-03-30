@@ -27,7 +27,7 @@ namespace GymRat.ViewModels
         // add IEnumerable for Exercises
         public List<SelectListItem> Exercises { get; set; }
 
-        // makes a down-down of exercises
+        // makes a drop-down of exercises
         public CreateWorkoutViewModel(IEnumerable<Exercise> exercises)
         {
 
