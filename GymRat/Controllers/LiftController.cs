@@ -65,11 +65,11 @@ namespace GymRat.Controllers
 
                 workouts.Add(newSelectWorkoutViewModel);
             }
-
             return View("Select", workouts);
 
         }
 
+        //populates the Workout
         [HttpPost]
         public IActionResult Select(SelectWorkoutViewModel selectWorkoutViewModel, DateTime date)
         {
@@ -117,7 +117,7 @@ namespace GymRat.Controllers
 
         [HttpPost]
         // grab the drop down menu selection
-        public IActionResult Create(CreateWorkoutViewModel addWorkoutViewModel, int[] SelectedExercise)
+        public IActionResult Create(CreateWorkoutViewModel createWorkoutViewModel, int[] SelectedExercise)
 
         {
             if (ModelState.IsValid)
@@ -134,9 +134,9 @@ namespace GymRat.Controllers
 
                             Workout newWorkoutEntry = new Workout
                             {
-                                Name = addWorkoutViewModel.Name,
+                                Name = createWorkoutViewModel.Name,
                                 UserID = User.Identity.Name,
-                                Date = addWorkoutViewModel.Date,
+                                Date = createWorkoutViewModel.Date,
                                 SelectedExercise = userSelection
                             };
 
