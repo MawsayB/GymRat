@@ -154,7 +154,8 @@ namespace GymRat.Controllers
             return View("Create");
         }
 
-        public IActionResult Workout()
+        [HttpPost]
+        public IActionResult Workout(WorkoutViewModel workoutViewModel, int[] Sets)
         {
             // after Workout is complete
             // show User Today's Workout!
