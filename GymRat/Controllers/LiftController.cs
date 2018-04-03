@@ -163,7 +163,13 @@ namespace GymRat.Controllers
             {
                 foreach (int exerciseID in ExerciseID)
                 {
-
+                    Set newWorkoutSet = new Set
+                    {
+                        ExerciseID = workoutViewModel.ExerciseID,
+                        UserID = User.Identity.Name,
+                        Weight = workoutViewModel.Weight,
+                        Reps = workoutViewModel.Reps
+                    };
                 }
 
                 // show User Today's Workout!
