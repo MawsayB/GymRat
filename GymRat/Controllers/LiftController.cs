@@ -161,15 +161,21 @@ namespace GymRat.Controllers
             // store data
             if (ModelState.IsValid)
             {
-                foreach (int exerciseID in ExerciseID)
+                //loop over each Exercise table
+                foreach (int individualExercise in ExerciseID)
                 {
-                    Set newWorkoutSet = new Set
-                    {
-                        ExerciseID = workoutViewModel.ExerciseID,
-                        UserID = User.Identity.Name,
-                        Weight = workoutViewModel.Weight,
-                        Reps = workoutViewModel.Reps
-                    };
+                    //loop over each ROW of the Exercise's table
+                        Set newWorkoutSet = new Set
+                        {
+                            ExerciseID = workoutViewModel.ExerciseID,
+                            UserID = User.Identity.Name,
+                            Weight = workoutViewModel.Weight,
+                            Reps = workoutViewModel.Reps
+                            //store completion date, too
+                        };
+                    //save the Workout to the Db
+                    context.Sets.Add(newWorkoutSet);
+                    context.SaveChanges();
                 }
 
                 // show User Today's Workout!
@@ -179,7 +185,7 @@ namespace GymRat.Controllers
                 return View();
         }
 
-        //summary AFTER workout is complete
+        //confirmation that workout is saved
         public IActionResult TodaysWorkout()
         {
             return View();

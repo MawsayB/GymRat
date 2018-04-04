@@ -1,4 +1,4 @@
-﻿@model List<GymRat.ViewModels.WorkoutViewModel>
+﻿@model IEnumerable<GymRat.ViewModels.WorkoutViewModel>
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -89,7 +89,6 @@
 
     table {
         margin-left: 10px;
-        border-spacing: 
     }
 
     table th {
@@ -124,7 +123,7 @@
     {
 
         <div class="label">
-            <label colspan="3" for="@exercise.ExerciseID">@exercise.ExerciseName</label>
+            <label colspan="3" for="@exercise.ExerciseID" name="ExerciseID">@exercise.ExerciseName</label>
         </div>
         
         <div class="dataEntry">
