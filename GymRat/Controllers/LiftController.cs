@@ -167,8 +167,25 @@ namespace GymRat.Controllers
                         {
                             ExerciseID = workoutViewModel.ExerciseID,
                             UserID = User.Identity.Name,
-                            Weight = workoutViewModel.Weight,
-                            Reps = workoutViewModel.Reps
+
+                            Weight1 = workoutViewModel.Weight1,
+                            Reps1 = workoutViewModel.Reps1,
+
+                            Weight2 = workoutViewModel.Weight2,
+                            Reps2 = workoutViewModel.Reps2,
+
+                            Weight3 = workoutViewModel.Weight3,
+                            Reps3 = workoutViewModel.Reps3,
+
+                            Weight4 = workoutViewModel.Weight4,
+                            Reps4 = workoutViewModel.Reps4,
+
+                            Weight5 = workoutViewModel.Weight5,
+                            Reps5 = workoutViewModel.Reps5,
+
+                            Weight6 = workoutViewModel.Weight6,
+                            Reps6 = workoutViewModel.Reps6
+
                             //store completion date, too
                         };
                     //save the Workout to the Db
