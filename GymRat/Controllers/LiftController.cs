@@ -155,14 +155,17 @@ namespace GymRat.Controllers
         }
 
         [HttpPost]
-        public IActionResult Workout(WorkoutViewModel workoutViewModel)
+        public IActionResult Workout(WorkoutViewModel workoutViewModel, int[] ExerciseID)
         {
             // after Workout is complete (the user clicks "Save")
             // store data
             if (ModelState.IsValid)
             {
-                { 
-                //loop over each Exercise table AND/OR each row of data ...?
+                {
+                    foreach (int exerciseID in ExerciseID)
+                    {
+
+                        //loop over each Exercise table AND/OR each row of data ...?
                         Set newWorkoutSet = new Set
                         {
                             ExerciseID = workoutViewModel.ExerciseID,
@@ -188,9 +191,10 @@ namespace GymRat.Controllers
 
                             //store completion date, too
                         };
-                    //save the Workout to the Db
-                    context.Sets.Add(newWorkoutSet);
-                    context.SaveChanges();
+                        //save the Workout to the Db
+                        context.Sets.Add(newWorkoutSet);
+                        context.SaveChanges();
+                    }
                 }
 
                 // show User Today's Workout!
