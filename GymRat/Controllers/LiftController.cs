@@ -61,7 +61,7 @@ namespace GymRat.Controllers
                 // get the row of data for the unique date
                 SelectWorkoutViewModel newSelectWorkoutViewModel = new SelectWorkoutViewModel();
                 newSelectWorkoutViewModel.Date = date;
-                newSelectWorkoutViewModel.Name = nameOnThatDate.Name; 
+                newSelectWorkoutViewModel.Name = nameOnThatDate.Name;
 
                 workouts.Add(newSelectWorkoutViewModel);
             }
@@ -201,7 +201,8 @@ namespace GymRat.Controllers
                 return View("TodaysWorkout");
 
             }
-                return View();
+
+            return View();
         }
 
         //confirmation that workout is saved
