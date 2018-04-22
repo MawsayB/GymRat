@@ -29,9 +29,11 @@
         border: 4px solid #3F99DB;
     }
 
+
     .data {
         font-size: 12px;
         padding: 5px;
+        padding-right: 10px;
     }
 
     .dataEntry {
@@ -49,7 +51,7 @@
     .form-control{
         font-size: 14px;
         height: unset;
-        width: 60%;
+        width: 80%;
     }
 
     .label {
@@ -96,6 +98,10 @@
         text-align: left;
     }
 
+    .repColumn {
+        padding-right: 10px;
+    }
+
     table {
         margin-left: 10px;
     }
@@ -137,8 +143,9 @@
         
         <div class="dataEntry">
             <table class="border">
+
                 <tr>
-                    <th>set</th>
+                    <th class="setColumn">set</th>
                     <th>lbs.</th>
                     <th>reps</th>
                 </tr>
@@ -148,7 +155,7 @@
                         <input asp-for="@exercise.Weight1" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Weight1"></span>
                     </td>
-                    <td>
+                    <td class="repColumn">
                         <input asp-for="@exercise.Reps1" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Reps1"></span>
 
@@ -161,7 +168,7 @@
                         <input asp-for="@exercise.Weight2" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Weight2"></span>
                     </td>
-                    <td>
+                    <td class="repColumn">
                         <input asp-for="@exercise.Reps2" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Reps2"></span>
 
@@ -174,7 +181,7 @@
                         <input asp-for="@exercise.Weight3" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Weight3"></span>
                     </td>
-                    <td>
+                    <td class="repColumn">
                         <input asp-for="@exercise.Reps3" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Reps3"></span>
 
@@ -187,7 +194,7 @@
                         <input asp-for="@exercise.Weight4" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Weight4"></span>
                     </td>
-                    <td>
+                    <td class="repColumn">
                         <input asp-for="@exercise.Reps4" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Reps4"></span>
 
@@ -200,7 +207,7 @@
                         <input asp-for="@exercise.Weight5" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Weight5"></span>
                     </td>
-                    <td>
+                    <td class="repColumn">
                         <input asp-for="@exercise.Reps5" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Reps5"></span>
 
@@ -213,7 +220,7 @@
                         <input asp-for="@exercise.Weight6" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Weight6"></span>
                     </td>
-                    <td>
+                    <td class="repColumn">
                         <input asp-for="@exercise.Reps6" class="form-control num-box" />
                         <span asp-validation-for="@exercise.Reps6"></span>
 
