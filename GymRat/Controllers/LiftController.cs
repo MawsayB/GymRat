@@ -155,14 +155,15 @@ namespace GymRat.Controllers
         }
 
         [HttpPost]
-        public IActionResult Workout(WorkoutViewModel workoutViewModel, int[] ExerciseID)
+        public IActionResult Workout(WorkoutViewModel workoutViewModel)
         {
             // after Workout is complete (the user clicks "Save")
             // store data
             if (ModelState.IsValid)
             {
                 {
-                    foreach (int exerciseID in ExerciseID)
+                    //loop over all exercises here
+                    //foreach (int exerciseID in ExerciseID)
                     {
 
                         //loop over each Exercise table AND/OR each row of data ...?
