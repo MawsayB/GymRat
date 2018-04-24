@@ -15,23 +15,23 @@ namespace GymRat.ViewModels
 
         public string ExerciseName { get; set; }
 
-        public int Weight1 { get; set; }
-        public int Reps1 { get; set; }
+        public float Weight1 { get; set; }
+        public float Reps1 { get; set; }
 
-        public int Weight2 { get; set; }
-        public int Reps2 { get; set; }
+        public float Weight2 { get; set; }
+        public float Reps2 { get; set; }
 
-        public int Weight3 { get; set; }
-        public int Reps3 { get; set; }
+        public float Weight3 { get; set; }
+        public float Reps3 { get; set; }
 
-        public int Weight4 { get; set; }
-        public int Reps4 { get; set; }
+        public float Weight4 { get; set; }
+        public float Reps4 { get; set; }
 
-        public int Weight5 { get; set; }
-        public int Reps5 { get; set; }
+        public float Weight5 { get; set; }
+        public float Reps5 { get; set; }
 
-        public int Weight6 { get; set; }
-        public int Reps6 { get; set; }
+        public float Weight6 { get; set; }
+        public float Reps6 { get; set; }
 
     }
 }
